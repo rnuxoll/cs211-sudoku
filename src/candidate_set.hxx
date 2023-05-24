@@ -296,5 +296,4 @@ Candidate_set::Candidate_set(FWD_ITER begin, FWD_ITER end)
 }
 
 
-
 #endif //GAME_CANDIDATE_SET_HXX
