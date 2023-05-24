@@ -6,3 +6,6 @@
 #define GAME_SQUARE_HXX
 
 #endif //GAME_SQUARE_HXX
+
+
+private:
