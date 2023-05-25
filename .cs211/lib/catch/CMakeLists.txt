@@ -10,7 +10,7 @@ project(Catch2
 
 add_library(catch
         include/catch.hxx
-        src/catch.cxx ../../../src/board.hxx ../../../src/board.cxx ../../../src/cell.cxx ../../../src/cell.hxx)
+        src/catch.cxx)
 
 set_target_properties(catch PROPERTIES
         CXX_EXTENSIONS  Off
