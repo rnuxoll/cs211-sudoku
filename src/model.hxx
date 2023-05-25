@@ -17,6 +17,9 @@ public:
     // solution has been input
     bool is_game_over() const;
 
+    // mutator methods
+    void set_selected_cell(Position cell_index) const;
+
 
 private:
     //
