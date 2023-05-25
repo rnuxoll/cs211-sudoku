@@ -2,7 +2,6 @@
 
 #include <ge211.hxx>
 #include "board.hxx"
-#include "cell.hxx"
 
 // Represents the state of the Reversi game.
 class Model
