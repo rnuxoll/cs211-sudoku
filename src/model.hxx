@@ -9,27 +9,14 @@ class Model
 {
 public:
 
-    // helpful aliases
-    using Position
+    // helpful aliases (inspired by Othello starter code)
+    using Position = Board::Position;
 
-    // Returns a rectangle containing all the positions of the board.
-    // This can be used to iterate over the positions.
-    Rectangle all_positions() const;
 
     // Returns whether the game is finished. This is true when a correct
     // solution has been input
     bool is_game_over() const;
 
-
-    Cell operator[](Position) const;
-
-
-
-#ifdef CS211_TESTING
-    // When this class is compiled for testing, members of a struct named
-    // Test_access will be allowed to access private members of this class.
-    friend struct Test_access;
-#endif
 
 private:
     //
@@ -44,9 +31,9 @@ private:
     void set_game_over_();
 
     //
-    void input_value(Position square, int value);
+    void input_value_(Position square, int value);
 
-    /// adds a candidate number to the square
-    void input_candidate(Position square, int candidate);
+    // adds a candidate number to the square
+    void input_candidate_(Position square, int candidate);
 
 };
