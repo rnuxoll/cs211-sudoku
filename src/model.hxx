@@ -22,7 +22,7 @@ public:
     /// ## Errors
     ///
     ///  - Throws `ge211::Client_logic_error` if `size` is less than 2
-    ///    or greater than 8.
+    ///    or greater than 10.
     explicit Model(int size = 10);
 
     /// Constructs a model with the given width and height.
@@ -71,7 +71,8 @@ private:
     // PRIVATE HELPER FUNCTIONS
     //
 
-    Position_set find_flips_(Position start, Dimensions dir) const;
+    //
+    Position_set find_contradictions_(Position start, Dimensions dir) const;
 
     /// Sets the game status to over
     /// to be called if a correct solution has been input
