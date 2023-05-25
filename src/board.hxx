@@ -22,7 +22,6 @@ public:
     // HELPFUL TYPE ALIASES
     //
 
-
     // Board positions will use `int` coordinates.
     using Position = ge211::Posn<int>;
 
@@ -44,7 +43,6 @@ private:
 
 
 public:
-
     // constructor
     Board();
 
@@ -68,6 +66,9 @@ public:
     // mutator methods
     void set_cell_value(int row, int col, int value);
     void set_candidate(int row, int col, bool value);
+
+    // TODO
+    // std::array<Cell, BOARD_SIZE> process
 
 };
 

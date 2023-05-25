@@ -28,10 +28,11 @@ public:
 
     // Constructor
     // initialize each square as having no candidates entered
-    Cell() : value(0), fixed(false){
-        for (int i = 1; i <= 9; i++){
-            candidates[i] = false;
-        }
-    }
+    Cell();
+
+    void set_value(int value);
+    void set_fixed(bool value);
+    void set_candidate(int candidate, bool isCandidate);
+
 
 };
