@@ -1,7 +1,3 @@
-/*******************************************/
-/*** DO NOT CHANGE ANYTHING IN THIS FILE ***/
-/*******************************************/
-
 #pragma once
 
 #include <ge211.hxx>
@@ -10,6 +6,14 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <array>
+#include "cell.hxx"
+
+// citation: started with Othello board code and then modified it
+
+const int BOARD_SIZE = 9; // sudoku board is 9x9
+const int SQUARE_SIZE = 3; // sudoku square is 3x3
+
 
 /// Represents the state of the board.
 class Board
@@ -18,13 +22,14 @@ public:
     //
     // HELPFUL TYPE ALIASES
     //
-
     /// Board dimensions will use `int` coordinates.
     using Dimensions = ge211::Dims<int>;
 
     /// Board positions will use `int` coordinates.
     using Position = ge211::Posn<int>;
 
+
+    // TODO can probably delete this
     /// Board rectangles will use `int` coordinates.
     using Rectangle = ge211::Rect<int>;
 
@@ -32,120 +37,28 @@ public:
     class reference;
 
 private:
-    //
-    // PRIVATE DATA MEMBERS
-    //
+
+    // the sudoku board here is an array of Cell objects
+    std::array<std::array<Cell, BOARD_SIZE>, BOARD_SIZE> board;
 
     Dimensions dims_;
 
+
 public:
-    //
-    // PUBLIC CONSTRUCTOR & FUNCTION MEMBERS
-    //
 
-    /// Constructs a board with the given dimensions.
-    ///
-    /// ## Errors
-    ///
-    ///  - Throws `ge211::Client_logic_error` if either dimension is less
-    ///    than 2 or greater than 8.
-    explicit Board(Dimensions dims);
+    // constructor
+    Board();
 
-    /// Returns the same `Dimensions` value passed to the
-    /// constructor.
-    Dimensions dimensions() const;
+    // accessor methods
+    int get_cell_value(int row, int col) const;
+    std::map<int, bool> get_candidates(int row, int col) const;
 
-    /// Returns whether the given position is in bounds.
-    bool good_position(Position) const;
 
-    /// Returns the `Player` stored at `pos`.
-    ///
-    /// ## Errors
-    ///
-    ///  - throws `ge211::Client_logic_error` if `!good_position(pos)`.
-    Player operator[](Position pos) const;
 
+    // mutator methods
+    void set_cell_value(int row, int col, int value);
 
     //
-    // PUBLIC CONSTRUCTOR & FUNCTION MEMBERS
-    //
-
-    /// Returns a reference to the `Player` stored at `pos`. This can
-    /// be assigned to update the board:
-    ///
-    /// ```
-    /// // Light player plays at (3, 4)
-    /// board[{3, 4}] = Player::light;
-    /// ```
-    ///
-    /// ## Errors
-    ///
-    ///  - throws `ge211::Client_logic_error` if `!good_position(pos)`.
-    reference operator[](Position pos);
-
-    /// Stores the given player in all the positions in the given set.
-    /// For example,
-    ///
-    /// ```
-    /// // Sets three positions to dark:
-    /// Position_set positions{{0, 0}, {1, 1}, {2, 2}};
-    /// board.set_all(positions, Player::dark);
-    /// ```
-    ///
-    /// ## Errors
-    ///
-    ///  - behavior is undefined if any positions in the `Position_set`
-    ///    are out of bounds.
-    void set_all(Position_set, Player);
-
-    /// Counts the number of occurrences of the given player in the board.
-    size_t count_player(Player) const;
-
-    /// Returns a rectangle containing all the positions of the board. This
-    /// can be used to iterate over the positions:
-    ///
-    /// ```
-    /// for (Position pos : a_board.all_positions()) {
-    ///     ... a_board[pos] ...;
-    /// }
-    /// ```
-    ///
-    /// Note that `Rectangle`s are considered to be closed on the top
-    /// and left, but open on the bottom and right. The iterator will visit
-    /// the correct positions for the board.
-    Rectangle all_positions() const;
-
-    /// Returns a rectangle containing the four center positions which
-    /// much be occupied for play to move beyond them. This can be used
-    /// to iterate over those positions.
-    Rectangle center_positions() const;
-
-    /// Returns a reference to a `std::vector` containing all eight "unit
-    /// direction vectors". In Python notation, these are:
-    ///
-    /// ```python
-    /// { Dims(dx, dy)
-    ///       for dx in [-1, 0, 1]
-    ///           for dy in [-1, 0, 1]
-    ///               if dx or dy }
-    /// ```
-    static std::vector<Dimensions> const& all_directions();
-
-    /// Equality for boards.
-    friend bool operator==(Board const&, Board const&);
-
-    /// Defined and documented below.
-    class multi_reference;
-
-    /// Returns an object that allows assigning to all the positions in
-    /// `set`. See below for the documentation of
-    /// `Board::multi_reference::operator=(Player)`.
-    ///
-    /// ## Errors
-    ///
-    ///  - behavior is undefined if any positions in the `Position_set`
-    ///    are out of bounds.
-    multi_reference at_set(Position_set set);
 
 private:
     //

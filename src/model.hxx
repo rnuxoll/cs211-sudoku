@@ -2,7 +2,7 @@
 
 #include <ge211.hxx>
 #include "board.hxx"
-#include "square.hxx"
+#include "cell.hxx"
 
 // Represents the state of the Reversi game.
 class Model
@@ -43,13 +43,13 @@ public:
 
 
 
-    /// Returns the Square at the given position
+    /// Returns the Cell at the given position
     ///
     /// ## Errors
     ///
     ///  - Throws `ge211::Client_logic_error` if the position is out of
     ///    bounds.
-    Square operator[](Position) const;
+    Cell operator[](Position) const;
 
 
 

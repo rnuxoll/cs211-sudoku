@@ -10,7 +10,7 @@
 #include <array>
 #include <map>
 
-class Square{
+class Cell{
 
 private:
     int value;
@@ -28,7 +28,7 @@ public:
 
     // Constructor
     // initialize each square as having no candidates entered
-    Square() : value(0), fixed(false){
+    Cell() : value(0), fixed(false){
         for (int i = 1; i <= 9; i++){
             candidates[i] = false;
         }
