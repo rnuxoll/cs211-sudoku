@@ -22,6 +22,11 @@ private:
 
     std::map<int, bool> candidates; // candidate numbers
 
+
+public:
+    // TODO implement accessor and mutator methods for value and candidates
+
+    // Constructor
     // initialize each square as having no candidates entered
     Square() : value(0), fixed(false){
         for (int i = 1; i <= 9; i++){
@@ -29,6 +34,4 @@ private:
         }
     }
 
-public:
-    // TODO implement accessor and mutator methods for value and candidates
 };
