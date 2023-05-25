@@ -37,9 +37,6 @@ private:
     //
 
     Dimensions dims_;
-    Position_set light_;
-    Position_set dark_;
-    // INVARIANT: (light_ & dark_).empty()
 
 public:
     //

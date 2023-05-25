@@ -7,5 +7,10 @@
 
 #endif //GAME_SQUARE_HXX
 
+class Square{
 
 private:
+    // candidate set will be an unordered map
+
+public:
+};
