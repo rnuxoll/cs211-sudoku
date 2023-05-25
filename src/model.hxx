@@ -12,6 +12,7 @@ public:
     using Position = Board::Position;
 
 
+    Model();
     // Returns whether the game is finished. This is true when a correct
     // solution has been input
     bool is_game_over() const;

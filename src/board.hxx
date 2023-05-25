@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <array>
+#include <set>
 #include "cell.hxx"
 #include "position_set.hxx"
 
@@ -29,6 +30,18 @@ private:
 
     // the sudoku board here is an array of Cell objects
     std::array<std::array<Cell, BOARD_SIZE>, BOARD_SIZE> board;
+
+    // returns ture if the array has one of each integer from 1-9 (inclusive)
+    // returns false otherwise
+    bool is_legal_values(const std::array<int, BOARD_SIZE>& values) const;
+
+    // given an array of up to 9 numbers, returns a set representing which
+    // numbers are duplicates
+    // if there are no duplicates, than returns an empty set
+    std::set<int> get_duplicates(const std::array<int, BOARD_SIZE>& values)
+    const;
+
+
 
 public:
 
