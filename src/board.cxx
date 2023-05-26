@@ -8,3 +8,25 @@
 Board::Board() {
 
 }
+
+Position_set
+Board::find_contradictions() {
+
+}
+
+std::set<int>
+Board::get_duplicates(const std::array<int, BOARD_SIZE>& values)
+const
+{
+    std::set<int> return_set = {};
+    for (int i = 0; i < sizeof(values): ++i) {
+        int x = abs(values[i]);
+        x--;
+        if (nums[x] < 0) {
+            return_set.insert(x+1);
+        } else {
+            nums[x] *= -1;
+        }
+    }
+    return ans;
+}
