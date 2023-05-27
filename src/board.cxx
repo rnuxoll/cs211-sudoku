@@ -25,30 +25,19 @@ Board::all_positions() const
     return Rectangle::from_top_left(the_origin, dims_);
 }
 
-// Citation: https://www.tutorialspoint.com/find-all-duplicates-in-an-array-in-cplusplus
-
-std::set<int>
-Board::get_duplicates(std::vector<int>& values)
+/*std::set<int>
+Board::get_duplicates(const std::array<int, BOARD_SIZE>& values)
 const
 {
     std::set<int> return_set = {};
-    for (int i = 0; i < values.size(); ++i) {
-        for (int j = 0; i < values.size(); ++j) {
-            if (i == j) {
-                continue;
-            } else {
-                if (values[i] == values[j]) {
-                    return_set.insert(values[i]);
-                }
-            }
+    for (int i = 0; i < sizeof(values); ++i) {
+        int x = abs(values[i]);
+        x--;
+        if (nums[x] < 0) {
+            return_set.insert(x+1);
+        } else {
+            nums[x] *= -1;
         }
     }
     return return_set;
-}
-
-Position_set
-Board::find_contradicting_squares(Position cell_index) const
-{
-    return {};
-    //int current_value = board[cell_index.x][cell_index.y];
-}
+}*/

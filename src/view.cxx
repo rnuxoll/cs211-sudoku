@@ -22,15 +22,8 @@ View::View(Model const& model)
                                       gridline_color),
           vertical_grid_line_sprite({grid_size / 30, grid_size},
                                     gridline_color),
-          one_sprite("1", sans72),
-          two_sprite("2", sans72),
-          three_sprite("3", sans72),
-          four_sprite("4", sans72),
-          five_sprite("5", sans72),
-          six_sprite("6", sans72),
-          seven_sprite("7", sans72),
-          eight_sprite("8", sans72),
-          nine_sprite("9", sans72)
+          one_sprite("1", sans72)
+          // todo initialize all of the other sprites
 {
 
 }
@@ -38,7 +31,8 @@ View::View(Model const& model)
 void
 View::draw(ge211::Sprite_set& set)
 {
-    // draw_board(set);
+
+    // This needs to do something!
 }
 
 // given a position of a square in board coordinates, convert it to
@@ -78,7 +72,7 @@ View::mouse_posn_to_board(View::Position mouse_posn) const
     return board_pos;
 }
 
-
+/*
 void View::draw_board(ge211::Sprite_set& set){
     for (Position square : model_.all_positions()){
         // draw squares
@@ -92,9 +86,4 @@ void View::draw_board(ge211::Sprite_set& set){
         set.add_sprite(vertical_grid_line_sprite,
                        board_to_screen(lower_ver_line_pos), 1);
     }
-}
-
-void View::draw_cell(ge211::Sprite_set& set, Cell cell)
-{
-
-}
+} */
