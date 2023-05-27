@@ -37,6 +37,17 @@ private:
     ge211::Text_sprite const eight_sprite;
     ge211::Text_sprite const nine_sprite;
 
+    // hint number sprites
+    ge211::Text_sprite const one_hint_sprite;
+    ge211::Text_sprite const two_hint_sprite;
+    ge211::Text_sprite const three_hint_sprite;
+    ge211::Text_sprite const four_hint_sprite;
+    ge211::Text_sprite const five_hint_sprite;
+    ge211::Text_sprite const six_hint_sprite;
+    ge211::Text_sprite const seven_hint_sprite;
+    ge211::Text_sprite const eight_hint_sprite;
+    ge211::Text_sprite const nine_hint_sprite;
+
     // convert between board coordinates and screen coordinates
     Position board_to_screen(Position board) const;
     Position screen_to_board(Position screen) const;
@@ -48,15 +59,15 @@ private:
     void draw_numbers(ge211::Sprite_set& set);
 
     // other helper functions for draw board
-    void draw_one(ge211::Sprite_set& set, Position box_coord);
-    void draw_two(ge211::Sprite_set& set, Position box_coord);
-    void draw_three(ge211::Sprite_set& set, Position box_coord);
-    void draw_four(ge211::Sprite_set& set, Position box_coord);
-    void draw_five(ge211::Sprite_set& set, Position box_coord);
-    void draw_six(ge211::Sprite_set& set, Position box_coord);
-    void draw_seven(ge211::Sprite_set& set, Position box_coord);
-    void draw_eight(ge211::Sprite_set& set, Position box_coord);
-    void draw_nine(ge211::Sprite_set& set, Position box_coord);
+    void draw_one(ge211::Sprite_set& set, Position box_coord, bool is_hint);
+    void draw_two(ge211::Sprite_set& set, Position box_coord, bool is_hint);
+    void draw_three(ge211::Sprite_set& set, Position box_coord, bool is_hint);
+    void draw_four(ge211::Sprite_set& set, Position box_coord, bool is_hint);
+    void draw_five(ge211::Sprite_set& set, Position box_coord, bool is_hint);
+    void draw_six(ge211::Sprite_set& set, Position box_coord, bool is_hint);
+    void draw_seven(ge211::Sprite_set& set, Position box_coord, bool is_hint);
+    void draw_eight(ge211::Sprite_set& set, Position box_coord, bool is_hint);
+    void draw_nine(ge211::Sprite_set& set, Position box_coord, bool is_hint);
 
     // helper function for draw_numbers which gives the
     ge211::Posn<int> get_center_of_square_in_screen(View::Position);

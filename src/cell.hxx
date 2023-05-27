@@ -15,12 +15,17 @@ class Cell{
 private:
     int value;
     bool fixed;
+    // true if this square's value is redundant with another square's value
+    bool is_inconsistent;
+    bool is_hint;
 
+    /*
     // candidate set will be a map with keys that are the numbers 1-9 and
     // values that are either "true" or "false". "true" if the user has
     // entered that number as a candidate and "false" if they haven't.
 
     std::map<int, bool> candidates; // candidate numbers
+    */
 
 
 public:
