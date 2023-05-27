@@ -5,9 +5,9 @@
 #include "cell.hxx"
 
 Cell::Cell() : value(0), fixed(false){
-    for (int i = 1; i <= 9; i++){
+    /*for (int i = 1; i <= 9; i++){
         candidates[i] = false;
-    }
+    }*/
 }
 
 void Cell::set_value(int newValue) {
@@ -22,10 +22,11 @@ void Cell::set_fixed(bool isFixed) {
     fixed = isFixed;
 }
 
+/*
 void Cell::set_candidate(int candidate, bool isCandidate) {
     if(candidate >= 1 && candidate <= 9) {
         candidates[candidate] = isCandidate;
     } else {
         throw std::out_of_range("Invalid candidate for cell. Candidate must be between 1 and 9.");
     }
-}
+}*/

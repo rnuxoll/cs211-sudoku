@@ -37,7 +37,8 @@ public:
 
     void set_value(int value);
     void set_fixed(bool value);
-    void set_candidate(int candidate, bool isCandidate);
+
+    // void set_candidate(int candidate, bool isCandidate);
 
 
 };
