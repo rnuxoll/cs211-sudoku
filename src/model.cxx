@@ -7,8 +7,15 @@
 // where you can set, the square in row i and column j to have a candidate
 // number of "X" by model_.board[i][i][X] = true;
 
-Model::Model()
-    : selected_square_(Position(5, 5))
+Model::Model(int size)
+    : board_({9, 9}),
+      selected_square_(4, 4)
 {
 
+}
+
+Model::Rectangle
+Model::all_positions() const
+{
+    return board_.all_positions();
 }

@@ -5,7 +5,9 @@
 
 #include "board.hxx"
 
-Board::Board() {
+Board::Board(Dimensions dims)
+    :dims_(dims)
+{
 
 }
 
@@ -13,6 +15,14 @@ Position_set
 Board::find_contradictions() const{
     Position_set my_set {};
     return my_set;
+}
+
+
+Board::Rectangle
+Board::all_positions() const
+{
+    Position the_origin = {0, 0};
+    return Rectangle::from_top_left(the_origin, dims_);
 }
 
 /*std::set<int>

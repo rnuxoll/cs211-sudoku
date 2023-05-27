@@ -11,11 +11,16 @@ public:
     // helpful aliases (inspired by Othello starter code)
     using Position = Board::Position;
 
+    using Rectangle = Board::Rectangle;
 
-    Model();
+
+    explicit Model(int size = 9);
+
+    Rectangle all_positions() const;
+
     // Returns whether the game is finished. This is true when a correct
     // solution has been input
-    bool is_game_over() const;
+    bool game_over() const;
 
     // mutator methods
     void set_selected_cell(Position cell_index) const;
@@ -28,6 +33,8 @@ private:
     Board board_;
 
     Position selected_square_;
+
+    bool is_game_over;
 
     // set game status to over, to be called if a correct solution is
     // implemented

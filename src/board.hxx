@@ -23,7 +23,10 @@ public:
     //
 
     // Board positions will use `int` coordinates.
+    using Dimensions = ge211::Dims<int>;
     using Position = ge211::Posn<int>;
+    using Rectangle = ge211::Rect<int>;
+
 
 private:
 
@@ -40,11 +43,14 @@ private:
     std::set<int> get_duplicates(const std::array<int, BOARD_SIZE>& values)
     const;
 
+    Dimensions dims_;
 
 
 public:
     // constructor
-    Board();
+    explicit Board(Dimensions dims);
+
+    Rectangle all_positions() const;
 
     // find which squares have redundant values and return them as a
     // Position_set
