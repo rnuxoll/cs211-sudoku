@@ -20,7 +20,8 @@ private:
     // square sprites
     ge211::Rectangle_sprite const white_square_sprite;
     ge211::Rectangle_sprite const shaded_square_sprite;
-    ge211::Rectangle_sprite const contradiction_square_sprite;
+
+    ge211::Circle_sprite const contradiction_dot_sprite;
 
     // grid line sprites
     ge211::Rectangle_sprite const horizontal_grid_line_sprite;
@@ -56,7 +57,16 @@ private:
     void draw_board(ge211::Sprite_set& set);
 
     // helper function for draw board which draws the numbers on the board
-    void draw_numbers(ge211::Sprite_set& set);
+    // void draw_numbers(ge211::Sprite_set& set);
+
+    // helper function for draw board which draws an individual cell
+    void draw_cell(ge211::Sprite_set& set, Cell cell);
+
+    // draw a white square
+    void draw_value_square(ge211::Sprite_set set, Position box_coord);
+
+    // draw a shaded square
+    void draw_given_square(ge211::Sprite_set set, Position box_coord);
 
     // other helper functions for draw board
     void draw_one(ge211::Sprite_set& set, Position box_coord, bool is_hint);
@@ -71,7 +81,4 @@ private:
 
     // helper function for draw_numbers which gives the
     ge211::Posn<int> get_center_of_square_in_screen(View::Position);
-
-    // other helper functions for draw_numbers
-
 };
