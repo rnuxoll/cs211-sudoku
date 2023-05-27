@@ -21,18 +21,17 @@ View::View(Model const& model)
           horizontal_grid_line_sprite({grid_size, grid_size / 30},
                                       gridline_color),
           vertical_grid_line_sprite({grid_size / 30, grid_size},
-                                    gridline_color),
-          one_sprite("1", sans72)
+                                    gridline_color)
           // todo initialize all of the other sprites
 {
+    std::cout << "View Constructor\n";
 
 }
 
 void
 View::draw(ge211::Sprite_set& set)
 {
-
-    // This needs to do something!
+    draw_board(set);
 }
 
 // given a position of a square in board coordinates, convert it to
@@ -72,7 +71,6 @@ View::mouse_posn_to_board(View::Position mouse_posn) const
     return board_pos;
 }
 
-/*
 void View::draw_board(ge211::Sprite_set& set){
     for (Position square : model_.all_positions()){
         // draw squares
@@ -86,4 +84,4 @@ void View::draw_board(ge211::Sprite_set& set){
         set.add_sprite(vertical_grid_line_sprite,
                        board_to_screen(lower_ver_line_pos), 1);
     }
-} */
+}

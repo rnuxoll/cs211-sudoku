@@ -14,7 +14,7 @@ public:
     using Rectangle = Board::Rectangle;
 
 
-    explicit Model(int size = 9);
+    Model();
 
     Rectangle all_positions() const;
 

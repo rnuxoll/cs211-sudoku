@@ -3,8 +3,14 @@
 //
 
 #include "cell.hxx"
+#include <iostream>
 
-Cell::Cell() : value(0), fixed(false){
+Cell::Cell(Position ind)
+    : value(0),
+    fixed(false),
+    index(ind)
+{
+    std::cout << "Cell constructor\n";
     /*for (int i = 1; i <= 9; i++){
         candidates[i] = false;
     }*/

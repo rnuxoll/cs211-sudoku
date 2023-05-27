@@ -5,6 +5,7 @@
 #include <iostream>
 #include <array>
 #include <set>
+#include <vector>
 #include "cell.hxx"
 #include "position_set.hxx"
 
@@ -31,7 +32,7 @@ public:
 private:
 
     // the sudoku board here is an array of Cell objects
-    std::array<std::array<Cell, BOARD_SIZE>, BOARD_SIZE> board;
+    std::vector<std::vector<Cell>> board;
 
     // returns ture if the array has one of each integer from 1-9 (inclusive)
     // returns false otherwise

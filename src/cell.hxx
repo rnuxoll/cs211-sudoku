@@ -9,15 +9,22 @@
 
 #include <array>
 #include <map>
+#include <ge211.hxx>
 
 class Cell{
 
 private:
+
+    using Position = ge211::Posn<int>;
+
     int value;
     bool fixed;
     // true if this square's value is redundant with another square's value
-    bool is_inconsistent;
-    bool is_hint;
+    bool inconsistent;
+    bool hint;
+
+
+    Position index;
 
     /*
     // candidate set will be a map with keys that are the numbers 1-9 and
@@ -33,7 +40,7 @@ public:
 
     // Constructor
     // initialize each square as having no candidates entered
-    Cell();
+    Cell(Position ind);
 
     void set_value(int value);
     void set_fixed(bool value);

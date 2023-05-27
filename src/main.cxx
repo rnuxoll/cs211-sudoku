@@ -6,7 +6,7 @@
 int
 main()
 {
-    // Controller().run();
+    Controller().run();
 
     std::string example_board = "[ "
     "[ 5, 3, 0, 0, 7, 0, 0, 0, 0 ],"

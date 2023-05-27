@@ -8,6 +8,7 @@
 Board::Board(Dimensions dims)
     :dims_(dims)
 {
+    std::cout << "Board constructor\n";
 
 }
 
