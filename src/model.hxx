@@ -13,7 +13,6 @@ public:
 
     using Rectangle = Board::Rectangle;
 
-
     Model();
 
     Rectangle all_positions() const;

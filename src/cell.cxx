@@ -36,3 +36,23 @@ void Cell::set_candidate(int candidate, bool isCandidate) {
         throw std::out_of_range("Invalid candidate for cell. Candidate must be between 1 and 9.");
     }
 }*/
+
+int
+Cell::get_value() const
+{
+    return value;
+};
+
+bool
+Cell::is_inconsistent() const
+{
+    return inconsistent;
+}
+
+void
+Cell::set_inconsistent()
+{
+    inconsistent = 1;
+}
+
+

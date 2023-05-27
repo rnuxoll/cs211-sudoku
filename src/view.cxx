@@ -34,6 +34,12 @@ View::draw(ge211::Sprite_set& set)
     draw_board(set);
 }
 
+ge211::Dims<int>
+View::initial_window_dimensions() const
+{
+    return {grid_size*9, grid_size*9};
+}
+
 // given a position of a square in board coordinates, convert it to
 // screen (pixel) coordinates
 ge211::Posn<int>

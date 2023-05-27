@@ -26,19 +26,31 @@ Board::all_positions() const
     return Rectangle::from_top_left(the_origin, dims_);
 }
 
-/*std::set<int>
-Board::get_duplicates(const std::array<int, BOARD_SIZE>& values)
+std::set<int>
+Board::get_duplicates(const std::array<Cell, BOARD_SIZE>& values)
 const
 {
     std::set<int> return_set = {};
     for (int i = 0; i < sizeof(values); ++i) {
-        int x = abs(values[i]);
-        x--;
-        if (nums[x] < 0) {
-            return_set.insert(x+1);
-        } else {
-            nums[x] *= -1;
+        for (int j = 0; j < sizeof (values); ++j) {
+            if (i == j) {
+                continue;
+            } else {
+                if (values[i].get_value() == values[j].get_value()) {
+                    return_set.insert(values[i].get_value());
+                    //values[i].set_inconsistent();
+                }
+            }
         }
     }
     return return_set;
-}*/
+}
+
+Position_set
+Board::find_contradicting_squares(Position cell_index) const
+{
+    Cell current_cell = board[cell_index.x][cell_index.y];
+    int current_value = current_cell.get_value();
+    //get_duplicates()
+    return Position_set();
+}

@@ -13,6 +13,8 @@ public:
 
     void draw(ge211::Sprite_set& set);
 
+    ge211::Dims<int> initial_window_dimensions() const;
+
 private:
     Model const& model_;
 

@@ -41,10 +41,11 @@ public:
     // Constructor
     // initialize each square as having no candidates entered
     Cell(Position ind);
-
+    int get_value() const;
     void set_value(int value);
     void set_fixed(bool value);
-
+    void set_inconsistent();
+    bool is_inconsistent() const;
     // void set_candidate(int candidate, bool isCandidate);
 
 

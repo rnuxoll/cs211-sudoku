@@ -41,7 +41,7 @@ private:
     // given an array of up to 9 numbers, returns a set representing which
     // numbers are duplicates
     // if there are no duplicates, than returns an empty set
-    std::set<int> get_duplicates(const std::array<int, BOARD_SIZE>& values)
+    std::set<int> get_duplicates(const std::array<Cell, BOARD_SIZE>& values)
     const;
 
     Dimensions dims_;
