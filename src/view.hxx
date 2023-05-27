@@ -52,7 +52,7 @@ private:
     ge211::Text_sprite const eight_hint_sprite;
     ge211::Text_sprite const nine_hint_sprite;
 
-    ge211::Font sans72{"sans.ttf", 10};
+    ge211::Font sans72{"sans.ttf", 72};
 
     // convert between board coordinates and screen coordinates
     Position board_to_screen(Position board) const;

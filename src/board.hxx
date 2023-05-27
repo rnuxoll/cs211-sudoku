@@ -27,26 +27,6 @@ public:
     using Position = ge211::Posn<int>;
     using Rectangle = ge211::Rect<int>;
 
-
-private:
-
-    // the sudoku board here is an array of Cell objects
-    std::array<std::array<Cell, BOARD_SIZE>, BOARD_SIZE> board;
-
-    // returns ture if the array has one of each integer from 1-9 (inclusive)
-    // returns false otherwise
-    bool is_legal_values(const std::array<int, BOARD_SIZE>& values) const;
-
-    // given an array of up to 9 numbers, returns a set representing which
-    // numbers are duplicates
-    // if there are no duplicates, than returns an empty set
-    std::set<int> get_duplicates(const std::array<int, BOARD_SIZE>& values)
-    const;
-
-    Dimensions dims_;
-
-
-public:
     // constructor
     explicit Board(Dimensions dims);
 
@@ -75,6 +55,24 @@ public:
 
     // TODO
     // std::array<Cell, BOARD_SIZE> process
+
+
+private:
+
+    // the sudoku board here is an array of Cell objects
+    std::vector<std::vector<Cell>> board;
+
+    // returns ture if the array has one of each integer from 1-9 (inclusive)
+    // returns false otherwise
+    bool is_legal_values(const std::array<int, BOARD_SIZE>& values) const;
+
+    // given a vector of up to 9 numbers, returns a set representing which
+    // numbers are duplicates
+    // if there are no duplicates, than returns an empty set
+    std::set<int> get_duplicates(std::vector<int>& values)
+    const;
+
+    Dimensions dims_;
 
 };
 
