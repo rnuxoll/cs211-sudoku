@@ -10,16 +10,17 @@ Board::Board() {
 }
 
 Position_set
-Board::find_contradictions() {
-
+Board::find_contradictions() const{
+    Position_set my_set {};
+    return my_set;
 }
 
-std::set<int>
+/*std::set<int>
 Board::get_duplicates(const std::array<int, BOARD_SIZE>& values)
 const
 {
     std::set<int> return_set = {};
-    for (int i = 0; i < sizeof(values): ++i) {
+    for (int i = 0; i < sizeof(values); ++i) {
         int x = abs(values[i]);
         x--;
         if (nums[x] < 0) {
@@ -28,5 +29,5 @@ const
             nums[x] *= -1;
         }
     }
-    return ans;
-}
+    return return_set;
+}*/
