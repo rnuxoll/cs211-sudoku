@@ -29,6 +29,8 @@ private:
     /// SPRITES
 
     // square sprites
+
+    // TODO make all private variables end in an underscore
     ge211::Rectangle_sprite const white_square_sprite;
     ge211::Rectangle_sprite const shaded_square_sprite;
     ge211::Rectangle_sprite const selected_square_sprite;
@@ -61,7 +63,7 @@ private:
     ge211::Text_sprite const eight_hint_sprite;
     ge211::Text_sprite const nine_hint_sprite;
 
-    ge211::Font sans72{"sans.ttf", 10};
+    ge211::Font sans72_{"sans.ttf", 10};
 
 
 

@@ -24,6 +24,7 @@ View::View(Model const& model)
                                       gridline_color),
           vertical_grid_line_sprite({grid_size / 30, grid_size},
                                     gridline_color)
+
           // todo initialize all of the other sprites
 {
     std::cout << "View Constructor\n";
@@ -81,10 +82,11 @@ View::mouse_posn_to_board(View::Position mouse_posn) const
 
 void View::draw_board(ge211::Sprite_set& set){
 
-    draw_value_square(set, {0, 0});
-
     Board our_board = model_.get_board();
     Position selected = model_.get_selected_cell();
+
+
+    // model_.print_board();
 
     for (int i = 0; i < 9; i++){
         for (int j = 0; j < 9; j++){
@@ -123,22 +125,42 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
                    board_to_screen(lower_hor_line_pos), 1);
     set.add_sprite(vertical_grid_line_sprite,
                    board_to_screen(lower_ver_line_pos), 1);
+
+
+    // draw number inside
+    if (cell.get_value() == 1){
+        // std::cout << "value is 1\n";
+        draw_one(set, corner, false);
+    }
 }
 
 
-void View::draw_value_square(ge211::Sprite_set& set,
-        View::Position box_coord)
-{
-    // draw squares
-    Position corner = board_to_screen(box_coord);
-    std::cout << "Drawing white square in corner: " << corner << "\n";
-    set.add_sprite(white_square_sprite, board_to_screen(box_coord));
+// void View::draw_value_square(ge211::Sprite_set& set,
+//         View::Position box_coord)
+// {
+//     // draw squares
+//     Position corner = board_to_screen(box_coord);
+//     std::cout << "Drawing white square in corner: " << corner << "\n";
+//     set.add_sprite(white_square_sprite, board_to_screen(box_coord));
+//
+//     // draw grid lines
+//     Position lower_hor_line_pos = box_coord.down_by(1);
+//     Position lower_ver_line_pos = box_coord.right_by(1);
+//     set.add_sprite(horizontal_grid_line_sprite,
+//                    board_to_screen(lower_hor_line_pos), 1);
+//     set.add_sprite(vertical_grid_line_sprite,
+//                    board_to_screen(lower_ver_line_pos), 1);
+// }
 
-    // draw grid lines
-    Position lower_hor_line_pos = box_coord.down_by(1);
-    Position lower_ver_line_pos = box_coord.right_by(1);
-    set.add_sprite(horizontal_grid_line_sprite,
-                   board_to_screen(lower_hor_line_pos), 1);
-    set.add_sprite(vertical_grid_line_sprite,
-                   board_to_screen(lower_ver_line_pos), 1);
+void View::draw_one(ge211::Sprite_set& set, Position box_coord, bool is_hint){
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("1");
+
+    Position screen_pos = board_to_screen(box_coord);
+
+    ge211::Text_sprite modified_one_sprite = one_sprite;
+    modified_one_sprite.reconfigure(number_builder);
+
+    // set.add_sprite(modified_one_sprite, screen_pos, 1);
 }
