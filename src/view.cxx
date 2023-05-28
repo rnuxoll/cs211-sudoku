@@ -94,8 +94,6 @@ void View::draw_board(ge211::Sprite_set& set){
 
             if (selected == Position{ i, j} ){
                 is_selected = true;
-                //std::cout << "found selected square is " << i << ", " << j <<
-                "\n";
             }
             draw_cell(set, cell, is_selected);
             //draw_value_square(set, cell_index);
@@ -110,10 +108,10 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     Position corner = board_to_screen(cell_index);
 
     if (selected){
-        set.add_sprite(selected_square_sprite, board_to_screen(cell_index));
+        set.add_sprite(selected_square_sprite, corner);
     }
     else {
-        set.add_sprite(white_square_sprite, board_to_screen(cell_index));
+        set.add_sprite(white_square_sprite, corner);
     }
 
     // draw grid lines

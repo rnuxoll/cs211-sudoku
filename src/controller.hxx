@@ -17,4 +17,9 @@ protected:
 private:
     Model model_;
     View view_;
+
+    ge211::Posn<int> mouse_posn;
+    void on_mouse_move(ge211::Posn<int>);
+
+    void on_mouse_up(ge211::events::Mouse_button, ge211::Posn<int>);
 };

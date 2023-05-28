@@ -15,6 +15,12 @@ public:
 
     ge211::Dims<int> initial_window_dimensions() const;
 
+    // convert between board coordinates and screen coordinates
+    Position board_to_screen(Position board) const;
+    Position screen_to_board(Position screen) const;
+
+    Position mouse_posn_to_board(Position mouse_posn) const;
+
 private:
     Model const& model_;
 
@@ -57,11 +63,7 @@ private:
 
     ge211::Font sans72{"sans.ttf", 10};
 
-    // convert between board coordinates and screen coordinates
-    Position board_to_screen(Position board) const;
-    Position screen_to_board(Position screen) const;
 
-    Position mouse_posn_to_board(Position mouse_posn) const;
 
     // draws the sudoku board, with helper functions
     void draw_board(ge211::Sprite_set& set);

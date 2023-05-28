@@ -7,6 +7,7 @@
 // where you can set, the square in row i and column j to have a candidate
 // number of "X" by model_.board[i][i][X] = true;
 
+
 using Position = ge211::Posn<int>;
 
 Model::Model()
@@ -16,6 +17,12 @@ Model::Model()
     std::cout << "Model constructor\n";
 
 }
+
+void
+Model::set_selected_cell(Position cell_index){
+    selected_square_ = cell_index;
+}
+
 
 Model::Rectangle
 Model::all_positions() const

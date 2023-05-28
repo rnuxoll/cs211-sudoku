@@ -9,7 +9,8 @@ class Model
 public:
 
     // helpful aliases (inspired by Othello starter code)
-    using Position = Board::Position;
+    //using Position = Board::Position;
+    using Position = ge211::Posn<int>;
 
     using Rectangle = Board::Rectangle;
 
@@ -22,7 +23,7 @@ public:
     bool game_over() const;
 
     // mutator methods
-    void set_selected_cell(Position cell_index) const;
+    void set_selected_cell(Position cell_index);
 
     // accessor methods
     Board get_board() const;
