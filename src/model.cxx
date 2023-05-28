@@ -80,6 +80,12 @@ Model::get_board() const
     return board_;
 }
 
+Board&
+Model::get_board_reference()
+{
+    return board_;
+}
+
 
 Position
 Model::get_selected_cell() const
@@ -89,7 +95,7 @@ Model::get_selected_cell() const
 
 void Model::print_board() const{
     Board board = get_board();
-    std::cout << "Board\n ----------------------------\n";
+    std::cout << "Board\n----------------------------\n";
     for (int i = 0; i < BOARD_SIZE; i++){
         for (int j = 0; j < BOARD_SIZE; j++){
             Cell curr = board.get_cell(j, i);

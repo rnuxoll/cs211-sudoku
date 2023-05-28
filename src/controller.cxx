@@ -44,8 +44,22 @@ Controller::on_key(Key key)
 
     std::cout << "Key press: " << key.code() << "\n";
     model_.print_board();
+
+    std::cout << "Printed board\n";
+
     if (key == Key::code('q')) {
         quit();
+    }
+    // todo delete this
+    // testing clause, set the top left corner to inconsistent if i is pressed
+    else if (key == Key::code('i')){
+        std::cout << "setting the top left to be inconsistent\n";
+        Board& board_ref = model_.get_board_reference();
+        Cell& top_left = board_ref.get_cell_reference(0, 0);
+        top_left.set_inconsistent(true);
+
+        std::cout << "final value of set inconsistent = " << top_left
+        .is_inconsistent() << "\n";
     }
     else if (key == Key::up() or key == Key::code('w')){
         // move up
@@ -103,6 +117,14 @@ Controller::on_key(Key key)
         quit();
     }
 
+
+    // after all key presses have been processed and the model has been
+    // updated, it is now time to update the inconsistencies
+
+    Board& my_board = model_.get_board_reference();
+    my_board.mark_duplicates();
+
+    std::cout << "exiting on key\n";
 }
 
 

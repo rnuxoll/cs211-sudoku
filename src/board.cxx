@@ -54,17 +54,22 @@ Board::get_duplicates(const std::array<Cell, BOARD_SIZE> values)
 const
 {
     std::set<int> return_set = {};
-    for (int i = 0; i < sizeof(values); ++i) {
-        for (int j = 0; j < sizeof (values); ++j) {
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        for (int j = i+1; j < BOARD_SIZE; ++j) {
             if (i == j) {
                 // without this clause, everything would be a duplicate
                 continue;
             } else {
-                if (values[i].get_value() == values[j].get_value()) {
+                // if the duplicate value is 0, then it's a blank square and
+                // not really a duplicate
+                if (values[i].get_value() != 0 and values[i].get_value() ==
+                values[j].get_value
+                ()) {
 
                     // modification: return indexes of duplicates
                     // return_set.insert(values[i].get_value());
-                    return_set.insert(values[i].get_value());
+                    return_set.insert(i);
+                    return_set.insert(j);
                     //values[i].set_inconsistent();
                 }
             }
@@ -91,7 +96,7 @@ Board::get_row_values(int row)
 
     std::array<Cell, 9> row_values;
     for (int c = 0; c < 9; c++){
-        row_values[c] = board[row][c];
+        row_values[c] = board[c][row];
     }
 
     return row_values;
@@ -106,7 +111,7 @@ Board::get_col_values(int col)
 
     std::array<Cell, 9> col_values;
     for (int r = 0; r < 9; r++){
-        col_values[r] = board[r][col];
+        col_values[r] = board[col][r];
     }
     return col_values;
 }
@@ -136,33 +141,87 @@ Board::get_subgrid_values(int grid_index) {
 void
 Board::mark_duplicates_in_row(int row){
     std::array<Cell, BOARD_SIZE> row_cells = get_row_values(row);
+    // for(const Cell& cell : row_cells) {
+    //     std::cout << cell.get_value() << " ";
+    // }
     std::set<int> duplicate_indices = get_duplicates(row_cells);
+    //
+    //
+    // std::cout << "row: " << row << "\n";
+    // std::cout << "get duplicates told us that the duplicate indices are: ";
+    for (const auto &index : duplicate_indices) {
+        std::cout << index << " ";
+    }
+
+
     // now, iterate through each cell whose column is duplicate_indices and
     // mark it is a duplicate
 
-    // C++ how to iterate through a set:
-    // https://stackoverflow.com/questions/12863256/how-to-iterate-stdset
-    for (auto col : duplicate_indices){
-        Cell& cell_to_mark = get_cell_reference(row, col);
-    }
     // how to find an element in a set:
     // https://stackoverflow.com/questions/1701067/how-to-check-that-an-element-is-in-a-stdset
     for (int col = 0; col < BOARD_SIZE; col++){
-        Cell& cell_to_mark = get_cell_reference(row, col);
+        Cell& cell_to_mark = get_cell_reference(col, row);
         if (duplicate_indices.find(col) != duplicate_indices.end()){
             // if this cell's index is in the set of duplicate indices
+            //std::cout << "Marking cell: " << cell_to_mark.get_index() <<
+            "as inconsistent\n";
+            // it is marking the positions in
             cell_to_mark.set_inconsistent(true);
         }
         else{
+            // std::cout << "Marking cell: " << cell_to_mark.get_index() << "
+            // as "
+                                                              "consistent\n";
             cell_to_mark.set_inconsistent(false);
         }
     }
-
 }
 void
 Board::mark_duplicates_in_col(int col){
     std::array<Cell, BOARD_SIZE> col_cells = get_col_values(col);
 
+    for(const Cell& cell : col_cells) {
+        std::cout << cell.get_value() << " ";
+    }
+    std::set<int> duplicate_indices = get_duplicates(col_cells);
+
+    std::cout << "col: " << col << "\n";
+
+    std::cout << "get duplicates told us that the " << duplicate_indices.size
+    () << " duplicate indices are: ";
+    for (const auto &index : duplicate_indices) {
+        std::cout << index << " ";
+    }
+
+    // now, iterate through each cell whose column is duplicate_indices and
+    // mark it is a duplicate
+
+    // how to find an element in a set:
+    // https://stackoverflow.com/questions/1701067/how-to-check-that-an-element-is-in-a-stdset
+    for (int row = 0; row < BOARD_SIZE; row++){
+        Cell& cell_to_mark = get_cell_reference(col, row);
+        if (duplicate_indices.find(row) != duplicate_indices.end()){
+            // if this cell's index is in the set of duplicate indices
+            std::cout << "Marking cell: " << cell_to_mark.get_index() <<
+                      "as inconsistent\n";
+            // it is marking the positions in
+            cell_to_mark.set_inconsistent(true);
+
+            Cell cell_to_mark_check = get_cell_reference(col, row);
+            std::cout << "Final value of inconsistent bool: " <<
+            cell_to_mark_check.is_inconsistent() << "\n";
+        }
+        else{
+            // std::cout << "Marking cell: " << cell_to_mark.get_index() << "
+            // as "
+            "consistent\n";
+            cell_to_mark.set_inconsistent(false);
+        }
+
+        std::cout << "checked if we need to mark something in row: " << row
+        << "\n";
+    }
+    std::cout << "exited loop\n";
 }
 
 
@@ -172,10 +231,13 @@ Board::mark_duplicates_in_col(int col){
 void Board::mark_duplicates(){
     // we will iterate through every row, column, and square in the same loop
     for (int i = 0; i < BOARD_SIZE; i++){
+        std::cout << "marking duplicates in row and col: " << i << "\n";
         mark_duplicates_in_row(i);
         mark_duplicates_in_col(i);
         // mark_duplicates_in_square(i);
     }
+
+    std::cout << "finished marking duplicates!\n";
 }
 
 Cell Board::get_cell(int row, int col) const{

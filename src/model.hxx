@@ -34,6 +34,9 @@ public:
 
     // accessor methods
     Board get_board() const;
+
+    Board& get_board_reference();
+
     Position get_selected_cell() const;
 
 
