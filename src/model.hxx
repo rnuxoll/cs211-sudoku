@@ -49,7 +49,7 @@ private:
 
     Board solution_;
 
-    Position selected_square_;
+    Position selected_cell_;
 
     bool is_game_over_;
 

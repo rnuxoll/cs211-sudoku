@@ -13,7 +13,7 @@ using Position = ge211::Posn<int>;
 Model::Model(std::string board_string, std::string solution_string)
     : board_(board_string, {9, 9}),
       solution_(solution_string, {9, 9}),
-      selected_square_(4, 4)
+      selected_cell_(4, 4)
 {
     std::cout << "Model constructor\n";
 
@@ -36,32 +36,32 @@ Model::is_in_bounds(Position cell_index) const {
 void
 Model::set_selected_cell(Position cell_index){
     if (is_in_bounds(cell_index)){
-        selected_square_ = cell_index;
+        selected_cell_ = cell_index;
     }
 }
 
 void
 Model::move_select_up()
 {
-    Position new_pos = selected_square_.up_by(1);
+    Position new_pos = selected_cell_.up_by(1);
     set_selected_cell(new_pos);
 }
 
 void Model::move_select_down()
 {
-    Position new_pos = selected_square_.down_by(1);
+    Position new_pos = selected_cell_.down_by(1);
     set_selected_cell(new_pos);
 }
 
 void Model::move_select_left()
 {
-    Position new_pos = selected_square_.left_by(1);
+    Position new_pos = selected_cell_.left_by(1);
     set_selected_cell(new_pos);
 }
 
 void Model::move_select_right()
 {
-    Position new_pos = selected_square_.right_by(1);
+    Position new_pos = selected_cell_.right_by(1);
     set_selected_cell(new_pos);
 }
 
@@ -84,7 +84,7 @@ Model::get_board() const
 Position
 Model::get_selected_cell() const
 {
-    return selected_square_;
+    return selected_cell_;
 }
 
 void Model::print_board() const{
