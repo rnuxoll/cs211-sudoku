@@ -41,7 +41,7 @@ public:
 
     // Constructor
     // initialize each square as having no candidates entered
-    Cell(Position ind);
+    Cell(int value, Position ind);
     int get_value() const;
     void set_value(int value);
     void set_fixed(bool value);

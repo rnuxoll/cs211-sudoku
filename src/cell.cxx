@@ -7,9 +7,11 @@
 
 using Position = ge211::Posn<int>;
 
-Cell::Cell(Position ind)
-    : value(0),
-    fixed(false),
+Cell::Cell(int value, Position ind)
+    : value(value),
+    fixed(value != 0), // 0s indicate blank squares
+    inconsistent(false),
+    hint(false),
     index(ind)
 {
     std::cout << "Cell constructor\n";

@@ -52,7 +52,7 @@ private:
 
 public:
     // constructor
-    explicit Board(Dimensions dims);
+    explicit Board(std::string board_string, Dimensions dims);
 
     Rectangle all_positions() const;
 

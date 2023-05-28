@@ -5,13 +5,17 @@
 
 #include "board.hxx"
 
-Board::Board(Dimensions dims)
+Board::Board(std::string board_string, Dimensions dims)
     :dims_(dims)
 {
+    std::stringstream ss(board_string);
+    std::string line;
+    int row = 0;
+
     std::cout << "Board constructor\n";
     for (int i = 0; i < dims.width; i++){
         for (int j = 0; j < dims.height; j++){
-            board[i][j] = Cell(ge211::Posn<int>(i, j));
+            board[i][j] = Cell(1, ge211::Posn<int>(i, j));
         }
     }
 }

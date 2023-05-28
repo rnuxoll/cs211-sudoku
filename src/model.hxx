@@ -16,6 +16,8 @@ public:
 
     Model();
 
+    Model(std::string board_string);
+
     Rectangle all_positions() const;
 
     // Returns whether the game is finished. This is true when a correct

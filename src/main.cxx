@@ -6,8 +6,6 @@
 int
 main()
 {
-    Controller().run();
-
     // std::string example_board = "[ "
     // "[ 5, 3, 0, 0, 7, 0, 0, 0, 0 ],"
     // "[ 6, 0, 0, 1, 9, 5, 0, 0, 0 ],"
@@ -30,6 +28,9 @@ main()
             "0_6_0_0_0_0_2_8_0_\n"
             "0_0_0_4_1_9_0_0_5_\n"
             "0_0_0_0_8_0_0_7_9_\n";
+
+    Controller(example_board).run();
+
 
     std::cout << example_board;
 
