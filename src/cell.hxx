@@ -46,7 +46,11 @@ public:
     void set_value(int value);
     void set_fixed(bool value);
     void set_inconsistent();
+
+    // accessor methods
+    bool is_fixed() const;
     bool is_inconsistent() const;
+    bool is_hint() const;
     // void set_candidate(int candidate, bool isCandidate);
 
     Position get_index();

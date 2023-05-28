@@ -42,8 +42,8 @@ void
 Controller::on_key(Key key)
 {
 
-
-    // std::cout << "Key press: " << key.code() << "\n";
+    std::cout << "Key press: " << key.code() << "\n";
+    model_.print_board();
     if (key == Key::code('q')) {
         quit();
     }
@@ -63,6 +63,18 @@ Controller::on_key(Key key)
     else if (key == Key::down() or key == Key::code('s')){
         std::cout << "down\n";
         model_.move_select_down();
+    }
+    // if user presses 1
+    else if (key == Key::code(49)){
+        std::cout << "User pressed 1\n";
+        // process_numerical_input function will take an int
+        // and will update the model only if that square is not a
+        // fixed or not a hint
+    }
+    // if user presses 2
+    else if (key == Key::code(50)){
+        std::cout << "User pressed 2\n";
+        model_.process_numerical_input(2);
     }
 
     if (key == ge211::Key::code(' ')){

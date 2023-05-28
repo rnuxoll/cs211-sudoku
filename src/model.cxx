@@ -13,7 +13,7 @@ using Position = ge211::Posn<int>;
 Model::Model(std::string board_string, std::string solution_string)
     : board_(board_string, {9, 9}),
       solution_(solution_string, {9, 9}),
-      selected_cell_(4, 4)
+      selected_cell_index_(4, 4)
 {
     std::cout << "Model constructor\n";
 
@@ -36,32 +36,32 @@ Model::is_in_bounds(Position cell_index) const {
 void
 Model::set_selected_cell(Position cell_index){
     if (is_in_bounds(cell_index)){
-        selected_cell_ = cell_index;
+        selected_cell_index_ = cell_index;
     }
 }
 
 void
 Model::move_select_up()
 {
-    Position new_pos = selected_cell_.up_by(1);
+    Position new_pos = selected_cell_index_.up_by(1);
     set_selected_cell(new_pos);
 }
 
 void Model::move_select_down()
 {
-    Position new_pos = selected_cell_.down_by(1);
+    Position new_pos = selected_cell_index_.down_by(1);
     set_selected_cell(new_pos);
 }
 
 void Model::move_select_left()
 {
-    Position new_pos = selected_cell_.left_by(1);
+    Position new_pos = selected_cell_index_.left_by(1);
     set_selected_cell(new_pos);
 }
 
 void Model::move_select_right()
 {
-    Position new_pos = selected_cell_.right_by(1);
+    Position new_pos = selected_cell_index_.right_by(1);
     set_selected_cell(new_pos);
 }
 
@@ -84,7 +84,7 @@ Model::get_board() const
 Position
 Model::get_selected_cell() const
 {
-    return selected_cell_;
+    return selected_cell_index_;
 }
 
 void Model::print_board() const{
@@ -97,5 +97,32 @@ void Model::print_board() const{
         }
         std::cout << "\n";
     }
+}
+
+void Model::process_numerical_input(int n){
+    Cell curr_cell = board_.get_cell(selected_cell_index_.x,
+                                     selected_cell_index_.y);
+
+    // if the current cell is fixed or a hint, then we can't write over this
+    // cell
+    if (curr_cell.is_fixed() or curr_cell.is_hint()){
+        return;
+    }
+    // otherwise, set the value of this cell to the user input
+    else{
+        std::cout << "setting value of cell: " << curr_cell.get_index() <<
+        "to " << n << "\n";
+        curr_cell.set_value(n);
+
+
+        Cell same_cell = board_.get_cell(selected_cell_index_.x,
+                                         selected_cell_index_.y);
+
+        int final_value = same_cell.get_value();
+
+        std::cout << "Final value = " << final_value << "\n";
+    }
+
+
 
 }

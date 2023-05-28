@@ -40,6 +40,11 @@ public:
 
     void print_board() const;
 
+    // process_numerical_input function will take an int
+    // and will update the model only if that square is not a
+    // fixed or not a hint
+    void process_numerical_input(int n);
+
 
 private:
     //
@@ -49,7 +54,7 @@ private:
 
     Board solution_;
 
-    Position selected_cell_;
+    Position selected_cell_index_;
 
     bool is_game_over_;
 

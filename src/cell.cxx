@@ -23,6 +23,7 @@ Cell::Cell(int value, Position ind)
 void Cell::set_value(int newValue) {
     if(newValue >= 0 && newValue <= 9) {
         value = newValue;
+        std::cout << "Done setting value!\n";
     } else {
         throw std::out_of_range("Invalid value for cell. Value must be between 0 and 9.");
     }
@@ -47,10 +48,23 @@ Cell::get_value() const
     return value;
 };
 
+
+bool
+Cell::is_fixed() const
+{
+    return fixed;
+}
+
 bool
 Cell::is_inconsistent() const
 {
     return inconsistent;
+}
+
+bool
+Cell::is_hint() const
+{
+    return hint;
 }
 
 void
