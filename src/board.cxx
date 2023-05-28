@@ -9,8 +9,14 @@ Board::Board(Dimensions dims)
     :dims_(dims)
 {
     std::cout << "Board constructor\n";
-
+    for (int i = 0; i < dims.width; i++){
+        for (int j = 0; j < dims.height; j++){
+            board[i][j] = Cell(ge211::Posn<int>(i, j));
+        }
+    }
 }
+
+
 
 Position_set
 Board::find_contradictions() const{

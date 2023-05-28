@@ -32,7 +32,8 @@ public:
 private:
 
     // the sudoku board here is an array of Cell objects
-    std::vector<std::vector<Cell>> board;
+    // std::vector<std::vector<Cell>> board;
+    std::array<std::array<Cell, BOARD_SIZE>, BOARD_SIZE> board;
 
     // returns ture if the array has one of each integer from 1-9 (inclusive)
     // returns false otherwise
@@ -45,6 +46,8 @@ private:
     const;
 
     Dimensions dims_;
+
+
 
 
 public:

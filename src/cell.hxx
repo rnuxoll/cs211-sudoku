@@ -22,8 +22,6 @@ private:
     // true if this square's value is redundant with another square's value
     bool inconsistent;
     bool hint;
-
-
     Position index;
 
     /*
@@ -37,6 +35,9 @@ private:
 
 public:
     // TODO implement accessor and mutator methods for value and candidates
+
+    Cell() : value(0), fixed(false), inconsistent(false), hint(false),
+    index{0, 0} {}
 
     // Constructor
     // initialize each square as having no candidates entered
