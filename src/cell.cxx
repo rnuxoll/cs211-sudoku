@@ -5,6 +5,8 @@
 #include "cell.hxx"
 #include <iostream>
 
+using Position = ge211::Posn<int>;
+
 Cell::Cell(Position ind)
     : value(0),
     fixed(false),
@@ -55,4 +57,9 @@ Cell::set_inconsistent()
     inconsistent = 1;
 }
 
+Position
+Cell::get_index()
+{
+    return index;
+}
 

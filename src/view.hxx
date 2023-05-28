@@ -72,7 +72,7 @@ private:
     void draw_cell(ge211::Sprite_set& set, Cell cell);
 
     // draw a white square
-    void draw_value_square(ge211::Sprite_set set, Position box_coord);
+    void draw_value_square(ge211::Sprite_set& set, Position box_coord);
 
     // draw a shaded square
     void draw_given_square(ge211::Sprite_set set, Position box_coord);
@@ -90,4 +90,6 @@ private:
 
     // helper function for draw_numbers which gives the
     ge211::Posn<int> get_center_of_square_in_screen(View::Position);
+
+
 };

@@ -78,16 +78,28 @@ View::mouse_posn_to_board(View::Position mouse_posn) const
 }
 
 void View::draw_board(ge211::Sprite_set& set){
-    for (Position square : model_.all_positions()){
-        // draw squares
-        set.add_sprite(white_square_sprite, board_to_screen(square));
 
-        // draw grid lines
-        Position lower_hor_line_pos = square.down_by(1);
-        Position lower_ver_line_pos = square.right_by(1);
-        set.add_sprite(horizontal_grid_line_sprite,
-                       board_to_screen(lower_hor_line_pos), 1);
-        set.add_sprite(vertical_grid_line_sprite,
-                       board_to_screen(lower_ver_line_pos), 1);
+    draw_value_square(set, {0, 0});
+    for (Position square : model_.all_positions()){
+        std::cout << "calling draw_value_square: " << square << "\n";
+        draw_value_square(set, square);
     }
+}
+
+
+void View::draw_value_square(ge211::Sprite_set& set,
+        View::Position box_coord)
+{
+    // draw squares
+    Position corner = board_to_screen(box_coord);
+    std::cout << "Drawing white square in corner: " << corner << "\n";
+    set.add_sprite(white_square_sprite, board_to_screen(box_coord));
+
+    // draw grid lines
+    Position lower_hor_line_pos = box_coord.down_by(1);
+    Position lower_ver_line_pos = box_coord.right_by(1);
+    set.add_sprite(horizontal_grid_line_sprite,
+                   board_to_screen(lower_hor_line_pos), 1);
+    set.add_sprite(vertical_grid_line_sprite,
+                   board_to_screen(lower_ver_line_pos), 1);
 }

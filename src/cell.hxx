@@ -49,5 +49,7 @@ public:
     bool is_inconsistent() const;
     // void set_candidate(int candidate, bool isCandidate);
 
+    Position get_index();
+
 
 };
