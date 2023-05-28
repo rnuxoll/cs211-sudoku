@@ -8,7 +8,7 @@
 class Controller : public ge211::Abstract_game
 {
 public:
-    Controller(std::string board_string);
+    Controller(std::string board_string, std::string solution_string);
 
 protected:
     ge211::Dims<int> initial_window_dimensions() const override;

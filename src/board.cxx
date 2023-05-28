@@ -12,7 +12,11 @@ Board::Board(std::string board_string, Dimensions dims)
     std::string line;
     int row = 0;
 
+    // TODO modify this
     std::cout << "Board constructor\n";
+
+    std::cout << board_string;
+
     for (int i = 0; i < dims.width; i++){
         for (int j = 0; j < dims.height; j++){
             board[i][j] = Cell(1, ge211::Posn<int>(i, j));

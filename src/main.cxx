@@ -29,7 +29,19 @@ main()
             "0_0_0_4_1_9_0_0_5_\n"
             "0_0_0_0_8_0_0_7_9_\n";
 
-    Controller(example_board).run();
+    // todo replace this solution string with a solved board
+    std::string example_solution =
+            "5_3_0_0_7_0_0_0_0_\n"
+            "6_0_0_1_9_5_0_0_0_\n"
+            "0_9_8_0_0_0_0_6_0_\n"
+            "8_0_0_0_6_0_0_0_3_\n"
+            "4_0_0_8_0_3_0_0_1_\n"
+            "7_0_0_0_2_0_0_0_6_\n"
+            "0_6_0_0_0_0_2_8_0_\n"
+            "0_0_0_4_1_9_0_0_5_\n"
+            "0_0_0_0_8_0_0_7_9_\n";
+
+    Controller(example_board, example_solution).run();
 
 
     std::cout << example_board;

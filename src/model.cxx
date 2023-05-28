@@ -10,8 +10,9 @@
 
 using Position = ge211::Posn<int>;
 
-Model::Model(std::string board_string)
+Model::Model(std::string board_string, std::string solution_string)
     : board_(board_string, {9, 9}),
+      solution_(solution_string, {9, 9}),
       selected_square_(4, 4)
 {
     std::cout << "Model constructor\n";

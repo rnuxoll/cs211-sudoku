@@ -16,7 +16,7 @@ public:
 
     Model();
 
-    Model(std::string board_string);
+    Model(std::string board_string, std::string solution_string);
 
     Rectangle all_positions() const;
 
@@ -38,9 +38,11 @@ private:
     //
     Board board_;
 
+    Board solution_;
+
     Position selected_square_;
 
-    bool is_game_over;
+    bool is_game_over_;
 
     // set game status to over, to be called if a correct solution is
     // implemented

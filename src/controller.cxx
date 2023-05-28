@@ -1,7 +1,7 @@
 #include "controller.hxx"
 
-Controller::Controller(std::string board_string)
-        : model_(board_string),
+Controller::Controller(std::string board_string, std::string solution_string)
+        : model_(board_string, solution_string),
           view_(model_),
           mouse_posn{0, 0}
 {
