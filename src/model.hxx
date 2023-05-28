@@ -25,7 +25,8 @@ public:
     void set_selected_cell(Position cell_index) const;
 
     // accessor methods
-    Board get_board();
+    Board get_board() const;
+    Position get_selected_cell() const;
 
 
 private:

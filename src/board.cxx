@@ -60,3 +60,9 @@ Board::find_contradicting_squares(Position cell_index) const
     //get_duplicates()
     return Position_set();
 }
+
+Cell
+Board::get_cell(int row, int col) const
+{
+    return board[row][col];
+}

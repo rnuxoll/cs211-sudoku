@@ -71,6 +71,9 @@ public:
 
     // accessor methods
     int get_cell_value(int row, int col) const;
+
+    Cell get_cell(int row, int col) const;
+
     std::map<int, bool> get_candidates(int row, int col) const;
 
     // mutator methods

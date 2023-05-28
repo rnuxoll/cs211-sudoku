@@ -25,6 +25,7 @@ private:
     // square sprites
     ge211::Rectangle_sprite const white_square_sprite;
     ge211::Rectangle_sprite const shaded_square_sprite;
+    ge211::Rectangle_sprite const selected_square_sprite;
 
     ge211::Circle_sprite const contradiction_dot_sprite;
 
@@ -69,7 +70,7 @@ private:
     // void draw_numbers(ge211::Sprite_set& set);
 
     // helper function for draw board which draws an individual cell
-    void draw_cell(ge211::Sprite_set& set, Cell cell);
+    void draw_cell(ge211::Sprite_set& set, Cell cell, bool selected);
 
     // draw a white square
     void draw_value_square(ge211::Sprite_set& set, Position box_coord);

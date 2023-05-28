@@ -10,6 +10,7 @@ static int const grid_size = 72;
 static Color const number_color {0, 0, 0};
 static Color const value_square_color {255, 255, 255};
 static Color const given_square_color {211,211,211};
+static Color const selected_square_color {238,232,170};
 static Color const gridline_color {0, 0, 0};
 static Color const red_dot_color{205, 92,92};
 
@@ -17,6 +18,7 @@ View::View(Model const& model)
         : model_(model),
           white_square_sprite({grid_size, grid_size}, value_square_color),
           shaded_square_sprite({grid_size, grid_size}, given_square_color),
+          selected_square_sprite({grid_size, grid_size}, selected_square_color),
           contradiction_dot_sprite(grid_size / 8, red_dot_color),
           horizontal_grid_line_sprite({grid_size, grid_size / 30},
                                       gridline_color),
@@ -80,10 +82,47 @@ View::mouse_posn_to_board(View::Position mouse_posn) const
 void View::draw_board(ge211::Sprite_set& set){
 
     draw_value_square(set, {0, 0});
-    for (Position square : model_.all_positions()){
-        std::cout << "calling draw_value_square: " << square << "\n";
-        draw_value_square(set, square);
+
+    Board our_board = model_.get_board();
+    Position selected = model_.get_selected_cell();
+
+    for (int i = 0; i < 9; i++){
+        for (int j = 0; j < 9; j++){
+            Cell cell = our_board.get_cell(i, j);
+            Position cell_index = cell.get_index();
+            bool is_selected = false;
+
+            if (selected == Position{ i, j} ){
+                is_selected = true;
+                //std::cout << "found selected square is " << i << ", " << j <<
+                "\n";
+            }
+            draw_cell(set, cell, is_selected);
+            //draw_value_square(set, cell_index);
+        }
     }
+}
+
+void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
+{
+    // draw squares
+    Position cell_index = cell.get_index();
+    Position corner = board_to_screen(cell_index);
+
+    if (selected){
+        set.add_sprite(selected_square_sprite, board_to_screen(cell_index));
+    }
+    else {
+        set.add_sprite(white_square_sprite, board_to_screen(cell_index));
+    }
+
+    // draw grid lines
+    Position lower_hor_line_pos = cell_index.down_by(1);
+    Position lower_ver_line_pos = cell_index.right_by(1);
+    set.add_sprite(horizontal_grid_line_sprite,
+                   board_to_screen(lower_hor_line_pos), 1);
+    set.add_sprite(vertical_grid_line_sprite,
+                   board_to_screen(lower_ver_line_pos), 1);
 }
 
 

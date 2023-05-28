@@ -7,6 +7,8 @@
 // where you can set, the square in row i and column j to have a candidate
 // number of "X" by model_.board[i][i][X] = true;
 
+using Position = ge211::Posn<int>;
+
 Model::Model()
     : board_({9, 9}),
       selected_square_(4, 4)
@@ -22,7 +24,14 @@ Model::all_positions() const
 }
 
 Board
-Model::get_board()
+Model::get_board() const
 {
     return board_;
+}
+
+
+Position
+Model::get_selected_cell() const
+{
+    return selected_square_;
 }
