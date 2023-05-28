@@ -78,11 +78,33 @@ public:
     Cell get_cell (int row, int col) const;
     Cell& get_cell_reference(int row, int col);
 
+
+    // gets the cell objects in the given row as values
+    std::array<Cell, 9> get_row_values(int row);
+
+    std::array<Cell, 9> get_col_values(int col);
+
+    // maybe we can have it return index values instead of numbers
+    // top-left square is 0, top-center is 1, top-right is 2, center-left is
+    // 3, etc.
+    std::array<std::array<Cell, 3>, 3> get_subgrid_values(int grid_index);
+
+
     std::map<int, bool> get_candidates(int row, int col) const;
 
     // mutator methods
     void set_cell_value(int row, int col, int value);
     void set_candidate(int row, int col, bool value);
+
+
+
+    void mark_duplicates_in_row(int row);
+    void mark_duplicates_in_col(int col);
+
+    void mark_duplicates_in_square(int square);
+
+
+    void mark_duplicates();
 
     // TODO
     // std::array<Cell, BOARD_SIZE> process

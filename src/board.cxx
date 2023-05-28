@@ -78,6 +78,66 @@ Board::find_contradicting_squares(Position cell_index) const
     return Position_set();
 }
 
+std::array<Cell, BOARD_SIZE>
+Board::get_row_values(int row)
+{
+    if (row < 0 || row >= 9){
+        throw std::out_of_range("Row index must be between 0 and 8");
+    }
+
+    std::array<Cell, 9> row_values;
+    for (int c = 0; c < 9; c++){
+        row_values[c] = board[row][c];
+    }
+
+    return row_values;
+}
+
+std::array<Cell, BOARD_SIZE>
+Board::get_col_values(int col)
+{
+    if (col < 0 || col >= 9){
+        throw std::out_of_range("Row index must be between 0 and 8");
+    }
+
+    std::array<Cell, 9> col_values;
+    for (int r = 0; r < 9; r++){
+        col_values[r] = board[r][col];
+    }
+    return col_values;
+}
+
+std::array<std::array<Cell, 3>, 3> Board::get_subgrid_values(int grid_index) {
+    if (grid_index < 0 || grid_index >= 9) {
+        throw std::out_of_range("Grid index must be between 0 and 8");
+    }
+
+    // Determine the starting row and column for the sub-grid
+    int start_row = (grid_index / 3) * 3;
+    int start_col = (grid_index % 3) * 3;
+
+    std::array<std::array<Cell, 3>, 3> square_values;
+
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            square_values[i][j] = board[start_row + i][start_col + j];
+        }
+    }
+
+    return square_values;
+}
+
+
+// calling this function has the Board go through every row, column, and then
+// every square and then update all of its constituent Cells to be inconsistent
+// if they are duplicates
+void Board::mark_duplicates(){
+    // we will iterate through every row, column, and square in the same loop
+    for (int i = 0; i < BOARD_SIZE; i++){
+
+    }
+}
+
 Cell Board::get_cell(int row, int col) const{
     return board[row][col];
 }

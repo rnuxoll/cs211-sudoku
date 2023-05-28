@@ -92,8 +92,12 @@ void Model::print_board() const{
     std::cout << "Board\n ----------------------------\n";
     for (int i = 0; i < BOARD_SIZE; i++){
         for (int j = 0; j < BOARD_SIZE; j++){
-            Cell curr = board.get_cell_reference(j, i);
-            std::cout << curr.get_value() << "_";
+            Cell curr = board.get_cell(j, i);
+            std::cout << curr.get_value();
+            if (curr.is_inconsistent()){
+                std::cout << "x";
+            }
+            std::cout << "_";
         }
         std::cout << "\n";
     }
@@ -102,7 +106,6 @@ void Model::print_board() const{
 void Model::process_numerical_input(int n){
     Cell& curr_cell = board_.get_cell_reference(selected_cell_index_.x,
                                                selected_cell_index_.y);
-
     // if the current cell is fixed or a hint, then we can't write over this
     // cell
     if (curr_cell.is_fixed() or curr_cell.is_hint()){
