@@ -90,7 +90,7 @@ void View::draw_board(ge211::Sprite_set& set){
 
     for (int i = 0; i < 9; i++){
         for (int j = 0; j < 9; j++){
-            Cell cell = our_board.get_cell(i, j);
+            Cell cell = our_board.get_cell_reference(i, j);
             Position cell_index = cell.get_index();
             bool is_selected = false;
 

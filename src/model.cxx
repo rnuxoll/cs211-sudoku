@@ -92,7 +92,7 @@ void Model::print_board() const{
     std::cout << "Board\n ----------------------------\n";
     for (int i = 0; i < BOARD_SIZE; i++){
         for (int j = 0; j < BOARD_SIZE; j++){
-            Cell curr = board.get_cell(i, j);
+            Cell curr = board.get_cell_reference(i, j);
             std::cout << curr.get_value() << "_";
         }
         std::cout << "\n";
@@ -100,8 +100,8 @@ void Model::print_board() const{
 }
 
 void Model::process_numerical_input(int n){
-    Cell curr_cell = board_.get_cell(selected_cell_index_.x,
-                                     selected_cell_index_.y);
+    Cell curr_cell = board_.get_cell_reference(selected_cell_index_.x,
+                                               selected_cell_index_.y);
 
     // if the current cell is fixed or a hint, then we can't write over this
     // cell
@@ -115,8 +115,8 @@ void Model::process_numerical_input(int n){
         curr_cell.set_value(n);
 
 
-        Cell same_cell = board_.get_cell(selected_cell_index_.x,
-                                         selected_cell_index_.y);
+        Cell same_cell = board_.get_cell_reference(selected_cell_index_.x,
+                                                   selected_cell_index_.y);
 
         int final_value = same_cell.get_value();
 

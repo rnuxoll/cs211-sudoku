@@ -78,8 +78,11 @@ Board::find_contradicting_squares(Position cell_index) const
     return Position_set();
 }
 
-Cell&
-Board::get_cell(int row, int col)
+Cell Board::get_cell(int row, int col) const{
+    return board[row][col];
+}
+
+Cell& Board::get_cell_reference(int row, int col)
 {
     return board[row][col];
 }

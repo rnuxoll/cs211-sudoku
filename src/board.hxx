@@ -74,7 +74,9 @@ public:
 
     // returns a live reference to a Cell in the board
     // modifying this reference modifies the cell!
-    Cell& get_cell(int row, int col);
+
+    Cell get_cell (int row, int col) const;
+    Cell& get_cell_reference(int row, int col);
 
     std::map<int, bool> get_candidates(int row, int col) const;
 
