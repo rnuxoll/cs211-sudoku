@@ -31,6 +31,8 @@ public:
     Board get_board() const;
     Position get_selected_cell() const;
 
+    void print_board() const;
+
 
 private:
     //

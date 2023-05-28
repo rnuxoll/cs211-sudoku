@@ -43,3 +43,16 @@ Model::get_selected_cell() const
 {
     return selected_square_;
 }
+
+void Model::print_board() const{
+    Board board = get_board();
+    std::cout << "Board\n ----------------------------\n";
+    for (int i = 0; i < BOARD_SIZE; i++){
+        for (int j = 0; j < BOARD_SIZE; j++){
+            Cell curr = board.get_cell(i, j);
+            std::cout << curr.get_value() << "_";
+        }
+        std::cout << "\n";
+    }
+
+}

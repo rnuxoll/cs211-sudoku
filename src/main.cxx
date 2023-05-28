@@ -44,7 +44,5 @@ main()
     Controller(example_board, example_solution).run();
 
 
-    std::cout << example_board;
-
     return 0;
 }
