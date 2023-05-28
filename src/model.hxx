@@ -24,6 +24,9 @@ public:
     // mutator methods
     void set_selected_cell(Position cell_index) const;
 
+    // accessor methods
+    Board get_board();
+
 
 private:
     //

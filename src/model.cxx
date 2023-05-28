@@ -20,3 +20,9 @@ Model::all_positions() const
 {
     return board_.all_positions();
 }
+
+Board
+Model::get_board()
+{
+    return board_;
+}
