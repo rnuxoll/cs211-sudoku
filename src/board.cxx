@@ -63,9 +63,23 @@ const
 Position_set
 Board::find_contradicting_squares(Position cell_index) const
 {
-    Cell current_cell = board[cell_index.x][cell_index.y];
+    Cell current_cell = get_cell(cell_index.x, cell_index.y);
     int current_value = current_cell.get_value();
     //get_duplicates()
+    std::array<Cell, BOARD_SIZE> row;
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        row[i] = get_cell(cell_index.x + i, cell_index.y);
+    }
+    std::set<int> set_of_duplicates = get_duplicates(row);
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        if (set_of_duplicates.find(board[cell_index.x + i][cell_index.y]
+                                               .get_value()) !=
+                                               set_of_duplicates.end()) {
+            //board[cell_index.x + i][cell_index.y].set_inconsistent();
+        }
+    }
+
+
     return Position_set();
 }
 
