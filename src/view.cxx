@@ -96,11 +96,13 @@ void View::draw_board(ge211::Sprite_set& set){
                 is_selected = true;
             }
             draw_cell(set, cell, is_selected);
-            //draw_value_square(set, cell_index);
         }
     }
 }
 
+
+// Todo make this check the indexes of the cell and make thicker gridlines as
+//  necessary
 void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
 {
     // draw squares
