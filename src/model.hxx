@@ -45,6 +45,10 @@ public:
     // fixed or not a hint
     void process_numerical_input(int n);
 
+    // attempt to clear the value from the selected cell
+    // passes only if the cell is not a hint and not a given
+    void attempt_clear_selected_cell();
+
 
 private:
     //

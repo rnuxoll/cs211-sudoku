@@ -64,17 +64,17 @@ Controller::on_key(Key key)
         std::cout << "down\n";
         model_.move_select_down();
     }
+    // if user presses backspace
+    else if (key == Key::code(8)){
+        model_.attempt_clear_selected_cell();
+    }
+
     // if user presses 1
     else if (key == Key::code(49)){
-        std::cout << "User pressed 1\n";
-        // process_numerical_input function will take an int
-        // and will update the model only if that square is not a
-        // fixed or not a hint
         model_.process_numerical_input(1);
     }
     // if user presses 2
     else if (key == Key::code(50)){
-        std::cout << "User pressed 2\n";
         model_.process_numerical_input(2);
     }
     else if (key == Key::code(51)){
