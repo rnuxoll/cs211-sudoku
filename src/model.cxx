@@ -19,10 +19,53 @@ Model::Model(std::string board_string, std::string solution_string)
 
 }
 
+bool
+Model::is_in_bounds(Position cell_index) const {
+    bool oob_horizontal = cell_index.x < 0 or cell_index.x + 1 > BOARD_SIZE;
+    bool oob_vertical = cell_index.y < 0 or cell_index.y + 1 > BOARD_SIZE;
+    if (oob_horizontal or oob_vertical){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+
+// sets the selected cell only if the given cell index is in bounds
 void
 Model::set_selected_cell(Position cell_index){
-    selected_square_ = cell_index;
+    if (is_in_bounds(cell_index)){
+        selected_square_ = cell_index;
+    }
 }
+
+void
+Model::move_select_up()
+{
+    Position new_pos = selected_square_.up_by(1);
+    set_selected_cell(new_pos);
+}
+
+void Model::move_select_down()
+{
+    Position new_pos = selected_square_.down_by(1);
+    set_selected_cell(new_pos);
+}
+
+void Model::move_select_left()
+{
+    Position new_pos = selected_square_.left_by(1);
+    set_selected_cell(new_pos);
+}
+
+void Model::move_select_right()
+{
+    Position new_pos = selected_square_.right_by(1);
+    set_selected_cell(new_pos);
+}
+
+
 
 
 Model::Rectangle

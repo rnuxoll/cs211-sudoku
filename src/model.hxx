@@ -27,9 +27,16 @@ public:
     // mutator methods
     void set_selected_cell(Position cell_index);
 
+    void move_select_up();
+    void move_select_down();
+    void move_select_left();
+    void move_select_right();
+
     // accessor methods
     Board get_board() const;
     Position get_selected_cell() const;
+
+
 
     void print_board() const;
 
@@ -45,6 +52,9 @@ private:
     Position selected_square_;
 
     bool is_game_over_;
+
+    bool is_in_bounds(Position cell_index) const;
+
 
     // set game status to over, to be called if a correct solution is
     // implemented
