@@ -70,11 +70,33 @@ Controller::on_key(Key key)
         // process_numerical_input function will take an int
         // and will update the model only if that square is not a
         // fixed or not a hint
+        model_.process_numerical_input(1);
     }
     // if user presses 2
     else if (key == Key::code(50)){
         std::cout << "User pressed 2\n";
         model_.process_numerical_input(2);
+    }
+    else if (key == Key::code(51)){
+        model_.process_numerical_input(3);
+    }
+    else if (key == Key::code(52)){
+        model_.process_numerical_input(4);
+    }
+    else if (key == Key::code(53)){
+        model_.process_numerical_input(5);
+    }
+    else if (key == Key::code(54)){
+        model_.process_numerical_input(6);
+    }
+    else if (key == Key::code(55)){
+        model_.process_numerical_input(7);
+    }
+    else if (key == Key::code(56)){
+        model_.process_numerical_input(8);
+    }
+    else if (key == Key::code(57)){
+        model_.process_numerical_input(9);
     }
 
     if (key == ge211::Key::code(' ')){

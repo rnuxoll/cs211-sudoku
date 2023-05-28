@@ -45,7 +45,7 @@ public:
     int get_value() const;
     void set_value(int value);
     void set_fixed(bool value);
-    void set_inconsistent();
+    void set_inconsistent(bool value);
 
     // accessor methods
     bool is_fixed() const;
