@@ -17,10 +17,19 @@ Board::Board(std::string board_string, Dimensions dims)
 
     std::cout << board_string;
 
-    for (int i = 0; i < dims.width; i++){
-        for (int j = 0; j < dims.height; j++){
-            board[i][j] = Cell(1, ge211::Posn<int>(i, j));
+    // for (int i = 0; i < dims.width; i++){
+    //     for (int j = 0; j < dims.height; j++){
+    //         board[i][j] = Cell(1, ge211::Posn<int>(i, j));
+    //     }
+    // }
+
+    while (std::getline(ss, line, '\n') && row < BOARD_SIZE) {
+        for (int col = 0; col < BOARD_SIZE; ++col) {
+            char c = line[col * 2];  // Because every other char is an underscore '_'
+            int value = (c == '_') ? 0 : c - '0';  // Convert char to int
+            board[row][col] = Cell(value, {row, col});
         }
+        ++row;
     }
 }
 
