@@ -128,7 +128,6 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     if (cell.is_inconsistent()){
         set.add_sprite(contradiction_dot_sprite, corner_in_screen, 4);
     }
-g
 
     // draw grid lines
     Position lower_hor_line_pos = cell_index.down_by(1);
