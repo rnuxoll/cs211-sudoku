@@ -156,7 +156,6 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
         draw_four(set, cell_index, false);
         break;
     case 5:
-        std::cout << "Drawing 5 at: " << cell_index << "\n";
         draw_five(set, cell_index, false);
         break;
     case 6:
@@ -172,28 +171,7 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
         draw_nine(set, cell_index, false);
         break;
     }
-
-
-
 }
-
-
-// void View::draw_value_square(ge211::Sprite_set& set,
-//         View::Position box_coord)
-// {
-//     // draw squares
-//     Position corner = board_to_screen(box_coord);
-//     std::cout << "Drawing white square in corner: " << corner << "\n";
-//     set.add_sprite(white_square_sprite, board_to_screen(box_coord));
-//
-//     // draw grid lines
-//     Position lower_hor_line_pos = box_coord.down_by(1);
-//     Position lower_ver_line_pos = box_coord.right_by(1);
-//     set.add_sprite(horizontal_grid_line_sprite,
-//                    board_to_screen(lower_hor_line_pos), 1);
-//     set.add_sprite(vertical_grid_line_sprite,
-//                    board_to_screen(lower_ver_line_pos), 1);
-// }
 
 void View::draw_one(ge211::Sprite_set& set, Position cell_index, bool is_hint){
 
