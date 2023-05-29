@@ -9,10 +9,10 @@ using Position = ge211::Posn<int>;
 
 Cell::Cell(int value, Position ind)
     : value(value),
-    fixed(value != 0), // 0s indicate blank squares
-    inconsistent(false),
-    hint(false),
-    index(ind)
+      fixed(value != 0), // 0s indicate blank squares
+    row_inconsistent(false),
+      hint(false),
+      index(ind)
 {
     std::cout << "Cell constructor\n";
     /*for (int i = 1; i <= 9; i++){
@@ -59,7 +59,7 @@ Cell::is_fixed() const
 bool
 Cell::is_inconsistent() const
 {
-    return inconsistent;
+    return row_inconsistent or col_inconsistent or square_inconsistent;
 }
 
 bool
@@ -69,9 +69,19 @@ Cell::is_hint() const
 }
 
 void
-Cell::set_inconsistent(bool value)
+Cell::set_inconsistent(bool value, char code)
 {
-    inconsistent = value;
+    switch(code){
+    case 'r':
+        row_inconsistent = value;
+        break;
+    case 'c':
+        col_inconsistent = value;
+        break;
+    case 's':
+        square_inconsistent = value;
+        break;
+    }
 }
 
 Position

@@ -20,7 +20,9 @@ private:
     int value;
     bool fixed;
     // true if this square's value is redundant with another square's value
-    bool inconsistent;
+    bool row_inconsistent;
+    bool col_inconsistent;
+    bool square_inconsistent;
     bool hint;
     Position index;
 
@@ -36,8 +38,9 @@ private:
 public:
     // TODO implement accessor and mutator methods for value and candidates
 
-    Cell() : value(0), fixed(false), inconsistent(false), hint(false),
-    index{0, 0} {}
+    Cell() : value(0), fixed(false), row_inconsistent(false),
+    col_inconsistent(false), square_inconsistent(false), hint(false),
+             index{0, 0} {}
 
     // Constructor
     // initialize each square as having no candidates entered
@@ -45,7 +48,10 @@ public:
     int get_value() const;
     void set_value(int value);
     void set_fixed(bool value);
-    void set_inconsistent(bool value);
+    // set inconsistent sets row inconsistent if code is r
+    // set inconsistent sets col inconsistent if code is c
+    // set inconsistent sets square inconsistent if code is s
+    void set_inconsistent(bool value, char code);
 
     // accessor methods
     bool is_fixed() const;
