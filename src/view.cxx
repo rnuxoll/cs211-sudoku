@@ -112,13 +112,13 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     if (cell.get_value() == 1){
         std::cout << "Cell index = " << cell_index << "\n";
     }
-    Position corner = board_to_screen(cell_index);
+    Position corner_in_screen = board_to_screen(cell_index);
 
     if (selected){
-        set.add_sprite(selected_square_sprite, corner);
+        set.add_sprite(selected_square_sprite, corner_in_screen);
     }
     else {
-        set.add_sprite(white_square_sprite, corner);
+        set.add_sprite(white_square_sprite, corner_in_screen);
     }
 
     // draw grid lines
@@ -134,7 +134,8 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     if (cell.get_value() == 1){
         // std::cout << "value is 1\n";
         std::cout << "drawing 1\n";
-        draw_one(set, corner, false);
+        model_.print_board();
+        draw_one(set, cell_index, false);
     }
 }
 
@@ -156,8 +157,9 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
 //                    board_to_screen(lower_ver_line_pos), 1);
 // }
 
-void View::draw_one(ge211::Sprite_set& set, Position box_coord, bool is_hint){
+void View::draw_one(ge211::Sprite_set& set, Position cell_index, bool is_hint){
 
+    Position box_coord = board_to_screen(cell_index);
 
     set.add_sprite(one_sprite, box_coord);
 
