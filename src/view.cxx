@@ -109,6 +109,9 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
 {
     // draw squares
     Position cell_index = cell.get_index();
+    if (cell.get_value() == 1){
+        std::cout << "Cell index = " << cell_index << "\n";
+    }
     Position corner = board_to_screen(cell_index);
 
     if (selected){
@@ -130,6 +133,7 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     // draw number inside
     if (cell.get_value() == 1){
         // std::cout << "value is 1\n";
+        std::cout << "drawing 1\n";
         draw_one(set, corner, false);
     }
 }
@@ -153,14 +157,17 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
 // }
 
 void View::draw_one(ge211::Sprite_set& set, Position box_coord, bool is_hint){
+
+
+    set.add_sprite(one_sprite, box_coord);
+
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
     number_builder.message("1");
 
     Position screen_pos = board_to_screen(box_coord);
 
-    ge211::Text_sprite modified_one_sprite = one_sprite;
-    modified_one_sprite.reconfigure(number_builder);
+    one_sprite.reconfigure(number_builder);
 
     // set.add_sprite(modified_one_sprite, screen_pos, 1);
 }

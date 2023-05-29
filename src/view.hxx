@@ -42,7 +42,7 @@ private:
     ge211::Rectangle_sprite const vertical_grid_line_sprite;
 
     // number sprites
-    ge211::Text_sprite const one_sprite;
+    ge211::Text_sprite one_sprite;
     ge211::Text_sprite const two_sprite;
     ge211::Text_sprite const three_sprite;
     ge211::Text_sprite const four_sprite;
@@ -63,7 +63,7 @@ private:
     ge211::Text_sprite const eight_hint_sprite;
     ge211::Text_sprite const nine_hint_sprite;
 
-    ge211::Font sans72_{"sans.ttf", 10};
+    ge211::Font sans72_{"sans.ttf", 72};
 
 
 
