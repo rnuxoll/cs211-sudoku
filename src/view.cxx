@@ -92,8 +92,6 @@ void View::draw_board(ge211::Sprite_set& set){
     Position selected = model_.get_selected_cell();
 
 
-    // model_.print_board();
-
     for (int i = 0; i < 9; i++){
         for (int j = 0; j < 9; j++){
             Cell cell = our_board.get_cell_reference(i, j);
@@ -120,6 +118,7 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     }
     Position corner_in_screen = board_to_screen(cell_index);
 
+    // draw appropriate square color
     if (selected){
         set.add_sprite(selected_square_sprite, corner_in_screen);
     }
@@ -129,6 +128,12 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     else {
         set.add_sprite(white_square_sprite, corner_in_screen);
     }
+
+    // draw contradiction dot if appropriate
+    if (cell.is_inconsistent()){
+        set.add_sprite(contradiction_dot_sprite, corner_in_screen);
+    }
+
 
     // draw grid lines
     Position lower_hor_line_pos = cell_index.down_by(1);
