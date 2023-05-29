@@ -51,16 +51,16 @@ Controller::on_key(Key key)
         quit();
     }
     // todo delete this
-    // testing clause, set the top left corner to inconsistent if i is pressed
-    else if (key == Key::code('i')){
-        std::cout << "setting the top left to be inconsistent\n";
-        Board& board_ref = model_.get_board_reference();
-        Cell& top_left = board_ref.get_cell_reference(0, 0);
-        top_left.set_inconsistent(true);
-
-        std::cout << "final value of set inconsistent = " << top_left
-        .is_inconsistent() << "\n";
-    }
+    // testing clause, set the top left corner to row_inconsistent if i is pressed
+    // else if (key == Key::code('i')){
+    //     std::cout << "setting the top left to be row_inconsistent\n";
+    //     Board& board_ref = model_.get_board_reference();
+    //     Cell& top_left = board_ref.get_cell_reference(0, 0);
+    //     top_left.set_inconsistent(true);
+    //
+    //     std::cout << "final value of set row_inconsistent = " << top_left
+    //     .is_inconsistent() << "\n";
+    // }
     else if (key == Key::up() or key == Key::code('w')){
         // move up
         std::cout << "up\n";

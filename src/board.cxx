@@ -174,13 +174,13 @@ Board::mark_duplicates_in_row(int row){
             // if this cell's index is in the set of duplicate indices
             if (row == 0){
                 std::cout << "Marking cell: " << cell_to_mark.get_index() <<
-                "as inconsistent\n";
+                "as row_inconsistent\n";
             }
             // it is marking the positions in
-            cell_to_mark.set_inconsistent(true);
+            cell_to_mark.set_inconsistent(true, 'r');
 
             Cell cell_to_mark_final = get_cell_reference(col, row);
-            std::cout << "Final value of inconsistent: " <<
+            std::cout << "Final value of row_inconsistent: " <<
             cell_to_mark_final.is_inconsistent() << "\n";
         }
         else{
@@ -190,7 +190,7 @@ Board::mark_duplicates_in_row(int row){
                 std::cout << "Marking cell: " << cell_to_mark.get_index() <<
                           "as consistent\n";
             }
-            cell_to_mark.set_inconsistent(false);
+            cell_to_mark.set_inconsistent(false, 'r');
         }
     }
 }
@@ -221,16 +221,16 @@ Board::mark_duplicates_in_col(int col){
         if (duplicate_indices.find(row) != duplicate_indices.end()){
             // if this cell's index is in the set of duplicate indices
             // std::cout << "Marking cell: " << cell_to_mark.get_index() <<
-            //           "as inconsistent\n";
+            //           "as row_inconsistent\n";
             // it is marking the positions in
-            cell_to_mark.set_inconsistent(true);
+            cell_to_mark.set_inconsistent(true, 'c');
 
             Cell cell_to_mark_check = get_cell_reference(col, row);
-            // std::cout << "Final value of inconsistent bool: " <<
+            // std::cout << "Final value of row_inconsistent bool: " <<
             // cell_to_mark_check.is_inconsistent() << "\n";
         }
         // todo, I think the error is here
-        // cells that are marked inconsistent because of some property in the
+        // cells that are marked row_inconsistent because of some property in the
         // row
         // are marked as consistent in the column if the column is consistent
         // one way around this is to create separate bools for
@@ -238,7 +238,7 @@ Board::mark_duplicates_in_col(int col){
         else{
             std::cout << "Marking cell: " << cell_to_mark.get_index() << "as "
             "consistent\n";
-            cell_to_mark.set_inconsistent(false);
+            cell_to_mark.set_inconsistent(false, 'c');
         }
 
         // std::cout << "checked if we need to mark something in row: " << row
@@ -248,7 +248,7 @@ Board::mark_duplicates_in_col(int col){
 
 
 // calling this function has the Board go through every row, column, and then
-// every square and then update all of its constituent Cells to be inconsistent
+// every square and then update all of its constituent Cells to be row_inconsistent
 // if they are duplicates
 void Board::mark_duplicates(){
     // we will iterate through every row, column, and square in the same loop
