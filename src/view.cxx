@@ -145,22 +145,31 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     switch (cell.get_value()){
     case 1:
         draw_one(set, cell_index, false);
+        break;
     case 2:
         draw_two(set, cell_index, false);
+        break;
     case 3:
         draw_three(set, cell_index, false);
+        break;
     case 4:
         draw_four(set, cell_index, false);
+        break;
     case 5:
         draw_five(set, cell_index, false);
+        break;
     case 6:
         draw_six(set, cell_index, false);
+        break;
     case 7:
         draw_seven(set, cell_index, false);
+        break;
     case 8:
         draw_eight(set, cell_index, false);
+        break;
     case 9:
         draw_nine(set, cell_index, false);
+        break;
     }
 
 
