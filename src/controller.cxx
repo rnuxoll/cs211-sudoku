@@ -121,6 +121,7 @@ Controller::on_key(Key key)
     // after all key presses have been processed and the model has been
     // updated, it is now time to update the inconsistencies
 
+    model_.print_board();
     Board& my_board = model_.get_board_reference();
     my_board.mark_duplicates();
 

@@ -10,7 +10,6 @@ Board::Board(std::string board_string, Dimensions dims)
 {
     std::stringstream ss(board_string);
     std::string line;
-    int row = 0;
 
     // TODO modify this
     std::cout << "Board constructor\n";
@@ -22,12 +21,22 @@ Board::Board(std::string board_string, Dimensions dims)
     //         board[i][j] = Cell(1, ge211::Posn<int>(i, j));
     //     }
     // }
+    // int row = 0;
+    // while (std::getline(ss, line, '\n') && row < BOARD_SIZE) {
+    //     for (int col = 0; col < BOARD_SIZE; ++col) {
+    //         char c = line[col * 2];  // Because every other char is an underscore '_'
+    //         int value = (c == '_') ? 0 : c - '0';  // Convert char to int
+    //         board[row][col] = Cell(value, {row, col});
+    //     }
+    //     ++row;
+    // }
 
+    int row = 0;
     while (std::getline(ss, line, '\n') && row < BOARD_SIZE) {
         for (int col = 0; col < BOARD_SIZE; ++col) {
             char c = line[col * 2];  // Because every other char is an underscore '_'
             int value = (c == '_') ? 0 : c - '0';  // Convert char to int
-            board[row][col] = Cell(value, {row, col});
+            board[col][row] = Cell(value, {col, row});
         }
         ++row;
     }
@@ -155,18 +164,18 @@ Board::get_subgrid_values(int grid_index) {
 void
 Board::mark_duplicates_in_row(int row){
     std::array<Cell, BOARD_SIZE> row_cells = get_row_values(row);
-    // for(const Cell& cell : row_cells) {
-    //     std::cout << cell.get_value() << " ";
-    // }
+    for(const Cell& cell : row_cells) {
+        std::cout << cell.get_value() << " ";
+    }
     std::set<int> duplicate_indices = get_duplicates(row_cells);
     //
     //
-    // std::cout << "row: " << row << "\n";
-    // std::cout << "get duplicates told us that the duplicate indices are: ";
+    std::cout << "row: " << row << "\n";
+    std::cout << "get duplicates told us that the duplicate indices are: ";
     for (const auto &index : duplicate_indices) {
         std::cout << index << " ";
     }
-
+    std::cout << "\n";
 
     // now, iterate through each cell whose column is duplicate_indices and
     // mark it is a duplicate
@@ -177,15 +186,24 @@ Board::mark_duplicates_in_row(int row){
         Cell& cell_to_mark = get_cell_reference(col, row);
         if (duplicate_indices.find(col) != duplicate_indices.end()){
             // if this cell's index is in the set of duplicate indices
-            //std::cout << "Marking cell: " << cell_to_mark.get_index() <<
-            "as inconsistent\n";
+            if (row == 0){
+                std::cout << "Marking cell: " << cell_to_mark.get_index() <<
+                "as inconsistent\n";
+            }
             // it is marking the positions in
             cell_to_mark.set_inconsistent(true);
+
+            Cell cell_to_mark_final = get_cell_reference(col, row);
+            std::cout << "Final value of inconsistent: " <<
+            cell_to_mark_final.is_inconsistent() << "\n";
         }
         else{
             // std::cout << "Marking cell: " << cell_to_mark.get_index() << "
-            // as "
-                                                              "consistent\n";
+            // as ""consistent\n";
+            if (row == 0){
+                std::cout << "Marking cell: " << cell_to_mark.get_index() <<
+                          "as consistent\n";
+            }
             cell_to_mark.set_inconsistent(false);
         }
     }
@@ -199,13 +217,13 @@ Board::mark_duplicates_in_col(int col){
     }
     std::set<int> duplicate_indices = get_duplicates(col_cells);
 
-    std::cout << "col: " << col << "\n";
-
-    std::cout << "get duplicates told us that the " << duplicate_indices.size
-    () << " duplicate indices are: ";
-    for (const auto &index : duplicate_indices) {
-        std::cout << index << " ";
-    }
+    // std::cout << "col: " << col << "\n";
+    // std::cout << "get duplicates told us that the " << duplicate_indices.size
+    // () << " duplicate indices are: ";
+    // for (const auto &index : duplicate_indices) {
+    //     std::cout << index << " ";
+    // }
+    // std::cout << "\n";
 
     // now, iterate through each cell whose column is duplicate_indices and
     // mark it is a duplicate
@@ -216,26 +234,30 @@ Board::mark_duplicates_in_col(int col){
         Cell& cell_to_mark = get_cell_reference(col, row);
         if (duplicate_indices.find(row) != duplicate_indices.end()){
             // if this cell's index is in the set of duplicate indices
-            std::cout << "Marking cell: " << cell_to_mark.get_index() <<
-                      "as inconsistent\n";
+            // std::cout << "Marking cell: " << cell_to_mark.get_index() <<
+            //           "as inconsistent\n";
             // it is marking the positions in
             cell_to_mark.set_inconsistent(true);
 
             Cell cell_to_mark_check = get_cell_reference(col, row);
-            std::cout << "Final value of inconsistent bool: " <<
-            cell_to_mark_check.is_inconsistent() << "\n";
+            // std::cout << "Final value of inconsistent bool: " <<
+            // cell_to_mark_check.is_inconsistent() << "\n";
         }
+        // todo, I think the error is here
+        // cells that are marked inconsistent because of some property in the
+        // row
+        // are marked as consistent in the column if the column is consistent
+        // one way around this is to create separate bools for
+        // row_inconsistent, col_inconsistent, and square_inconsistent
         else{
-            // std::cout << "Marking cell: " << cell_to_mark.get_index() << "
-            // as "
+            std::cout << "Marking cell: " << cell_to_mark.get_index() << "as "
             "consistent\n";
             cell_to_mark.set_inconsistent(false);
         }
 
-        std::cout << "checked if we need to mark something in row: " << row
-        << "\n";
+        // std::cout << "checked if we need to mark something in row: " << row
+        // << "\n";
     }
-    std::cout << "exited loop\n";
 }
 
 
