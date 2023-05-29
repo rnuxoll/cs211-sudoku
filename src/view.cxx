@@ -91,7 +91,6 @@ void View::draw_board(ge211::Sprite_set& set){
     Board our_board = model_.get_board();
     Position selected = model_.get_selected_cell();
 
-
     for (int i = 0; i < 9; i++){
         for (int j = 0; j < 9; j++){
             Cell cell = our_board.get_cell_reference(i, j);
@@ -113,9 +112,6 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
 {
     // draw squares
     Position cell_index = cell.get_index();
-    if (cell.get_value() == 1){
-        std::cout << "Cell index = " << cell_index << "\n";
-    }
     Position corner_in_screen = board_to_screen(cell_index);
 
     // draw appropriate square color
@@ -128,7 +124,6 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     else {
         set.add_sprite(white_square_sprite, corner_in_screen);
     }
-
     // draw contradiction dot if appropriate
     if (cell.is_inconsistent()){
         set.add_sprite(contradiction_dot_sprite, corner_in_screen);
@@ -144,9 +139,7 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
                    board_to_screen(lower_ver_line_pos), 1);
 
 
-    model_.print_board();
     // draw number inside
-
     switch (cell.get_value()){
     case 1:
         draw_one(set, cell_index, false);
