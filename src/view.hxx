@@ -19,6 +19,8 @@ public:
     Position board_to_screen(Position board) const;
     Position screen_to_board(Position screen) const;
 
+    Position cell_index_to_number_pos(Position index) const;
+
     Position mouse_posn_to_board(Position mouse_posn) const;
 
 private:
@@ -43,25 +45,25 @@ private:
 
     // number sprites
     ge211::Text_sprite one_sprite;
-    ge211::Text_sprite const two_sprite;
-    ge211::Text_sprite const three_sprite;
-    ge211::Text_sprite const four_sprite;
-    ge211::Text_sprite const five_sprite;
-    ge211::Text_sprite const six_sprite;
-    ge211::Text_sprite const seven_sprite;
-    ge211::Text_sprite const eight_sprite;
-    ge211::Text_sprite const nine_sprite;
+    ge211::Text_sprite two_sprite;
+    ge211::Text_sprite three_sprite;
+    ge211::Text_sprite four_sprite;
+    ge211::Text_sprite five_sprite;
+    ge211::Text_sprite six_sprite;
+    ge211::Text_sprite seven_sprite;
+    ge211::Text_sprite eight_sprite;
+    ge211::Text_sprite nine_sprite;
 
     // hint number sprites
-    ge211::Text_sprite const one_hint_sprite;
-    ge211::Text_sprite const two_hint_sprite;
-    ge211::Text_sprite const three_hint_sprite;
-    ge211::Text_sprite const four_hint_sprite;
-    ge211::Text_sprite const five_hint_sprite;
-    ge211::Text_sprite const six_hint_sprite;
-    ge211::Text_sprite const seven_hint_sprite;
-    ge211::Text_sprite const eight_hint_sprite;
-    ge211::Text_sprite const nine_hint_sprite;
+    ge211::Text_sprite one_hint_sprite;
+    ge211::Text_sprite two_hint_sprite;
+    ge211::Text_sprite three_hint_sprite;
+    ge211::Text_sprite four_hint_sprite;
+    ge211::Text_sprite five_hint_sprite;
+    ge211::Text_sprite six_hint_sprite;
+    ge211::Text_sprite seven_hint_sprite;
+    ge211::Text_sprite eight_hint_sprite;
+    ge211::Text_sprite nine_hint_sprite;
 
     ge211::Font sans72_{"sans.ttf", 72};
 

@@ -62,6 +62,12 @@ View::screen_to_board(ge211::Posn<int> screen) const
     return board;
 }
 
+Position
+View::cell_index_to_number_pos(Position index) const{
+    Position screen_pos = {grid_size * index.x + 15, grid_size * index.y - 20};
+    return screen_pos;
+}
+
 
 // given the position of the mouse in board coordinates,
 // convert it to board coordinates
@@ -117,6 +123,9 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     if (selected){
         set.add_sprite(selected_square_sprite, corner_in_screen);
     }
+    else if (cell.is_fixed()){
+        set.add_sprite(shaded_square_sprite, corner_in_screen);
+    }
     else {
         set.add_sprite(white_square_sprite, corner_in_screen);
     }
@@ -130,13 +139,32 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
                    board_to_screen(lower_ver_line_pos), 1);
 
 
+    model_.print_board();
     // draw number inside
-    if (cell.get_value() == 1){
-        // std::cout << "value is 1\n";
-        std::cout << "drawing 1\n";
-        model_.print_board();
+
+    switch (cell.get_value()){
+    case 1:
         draw_one(set, cell_index, false);
+    case 2:
+        draw_two(set, cell_index, false);
+    case 3:
+        draw_three(set, cell_index, false);
+    case 4:
+        draw_four(set, cell_index, false);
+    case 5:
+        draw_five(set, cell_index, false);
+    case 6:
+        draw_six(set, cell_index, false);
+    case 7:
+        draw_seven(set, cell_index, false);
+    case 8:
+        draw_eight(set, cell_index, false);
+    case 9:
+        draw_nine(set, cell_index, false);
     }
+
+
+
 }
 
 
@@ -159,17 +187,107 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
 
 void View::draw_one(ge211::Sprite_set& set, Position cell_index, bool is_hint){
 
-    Position box_coord = board_to_screen(cell_index);
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(one_sprite, box_coord);
+    set.add_sprite(one_sprite, number_pos_in_screen);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
     number_builder.message("1");
-
-    Position screen_pos = board_to_screen(box_coord);
-
     one_sprite.reconfigure(number_builder);
+}
 
-    // set.add_sprite(modified_one_sprite, screen_pos, 1);
+void View::draw_two(ge211::Sprite_set& set, Position cell_index, bool is_hint){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(two_sprite, number_pos_in_screen);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("2");
+    two_sprite.reconfigure(number_builder);
+}
+
+void View::draw_three(ge211::Sprite_set& set, Position cell_index, bool
+is_hint){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(three_sprite, number_pos_in_screen);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("3");
+    three_sprite.reconfigure(number_builder);
+}
+
+void View::draw_four(ge211::Sprite_set& set, Position cell_index, bool
+is_hint){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(four_sprite, number_pos_in_screen);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("4");
+    four_sprite.reconfigure(number_builder);
+}
+
+void View::draw_five(ge211::Sprite_set& set, Position cell_index, bool
+is_hint){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(five_sprite, number_pos_in_screen);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("5");
+    five_sprite.reconfigure(number_builder);
+}
+
+void View::draw_six(ge211::Sprite_set& set, Position cell_index, bool
+is_hint){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(six_sprite, number_pos_in_screen);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("6");
+    six_sprite.reconfigure(number_builder);
+}
+
+void View::draw_seven(ge211::Sprite_set& set, Position cell_index, bool
+is_hint){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(seven_sprite, number_pos_in_screen);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("7");
+    seven_sprite.reconfigure(number_builder);
+}
+
+void View::draw_eight(ge211::Sprite_set& set, Position cell_index, bool
+is_hint){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(eight_sprite, number_pos_in_screen);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("8");
+    eight_sprite.reconfigure(number_builder);
+}
+
+void View::draw_nine(ge211::Sprite_set& set, Position cell_index, bool
+is_hint){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(nine_sprite, number_pos_in_screen);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("9");
+    nine_sprite.reconfigure(number_builder);
 }
