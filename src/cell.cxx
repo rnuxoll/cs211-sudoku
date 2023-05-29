@@ -24,7 +24,8 @@ void Cell::set_value(int newValue) {
     if(newValue >= 0 && newValue <= 9) {
         value = newValue;
     } else {
-        throw std::out_of_range("Invalid value for cell. Value must be between 0 and 9.");
+        throw std::out_of_range("Invalid value for cell. Value must be"
+                                " between 0 and 9.");
     }
 }
 
@@ -37,7 +38,8 @@ void Cell::set_candidate(int candidate, bool isCandidate) {
     if(candidate >= 1 && candidate <= 9) {
         candidates[candidate] = isCandidate;
     } else {
-        throw std::out_of_range("Invalid candidate for cell. Candidate must be between 1 and 9.");
+        throw std::out_of_range("Invalid candidate for cell. Candidate must
+        be between 1 and 9.");
     }
 }*/
 
@@ -47,16 +49,29 @@ Cell::get_value() const
     return value;
 };
 
+
+bool
+Cell::is_fixed() const
+{
+    return fixed;
+}
+
 bool
 Cell::is_inconsistent() const
 {
     return inconsistent;
 }
 
-void
-Cell::set_inconsistent()
+bool
+Cell::is_hint() const
 {
-    inconsistent = 1;
+    return hint;
+}
+
+void
+Cell::set_inconsistent(bool value)
+{
+    inconsistent = value;
 }
 
 Position

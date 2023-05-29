@@ -13,7 +13,7 @@ using Position = ge211::Posn<int>;
 Model::Model(std::string board_string, std::string solution_string)
     : board_(board_string, {9, 9}),
       solution_(solution_string, {9, 9}),
-      selected_cell_(4, 4)
+      selected_cell_index_(4, 4)
 {
     std::cout << "Model constructor\n";
 
@@ -36,32 +36,32 @@ Model::is_in_bounds(Position cell_index) const {
 void
 Model::set_selected_cell(Position cell_index){
     if (is_in_bounds(cell_index)){
-        selected_cell_ = cell_index;
+        selected_cell_index_ = cell_index;
     }
 }
 
 void
 Model::move_select_up()
 {
-    Position new_pos = selected_cell_.up_by(1);
+    Position new_pos = selected_cell_index_.up_by(1);
     set_selected_cell(new_pos);
 }
 
 void Model::move_select_down()
 {
-    Position new_pos = selected_cell_.down_by(1);
+    Position new_pos = selected_cell_index_.down_by(1);
     set_selected_cell(new_pos);
 }
 
 void Model::move_select_left()
 {
-    Position new_pos = selected_cell_.left_by(1);
+    Position new_pos = selected_cell_index_.left_by(1);
     set_selected_cell(new_pos);
 }
 
 void Model::move_select_right()
 {
-    Position new_pos = selected_cell_.right_by(1);
+    Position new_pos = selected_cell_index_.right_by(1);
     set_selected_cell(new_pos);
 }
 
@@ -80,22 +80,61 @@ Model::get_board() const
     return board_;
 }
 
+Board&
+Model::get_board_reference()
+{
+    return board_;
+}
+
 
 Position
 Model::get_selected_cell() const
 {
-    return selected_cell_;
+    return selected_cell_index_;
 }
 
 void Model::print_board() const{
     Board board = get_board();
-    std::cout << "Board\n ----------------------------\n";
+    std::cout << "Board\n----------------------------\n";
     for (int i = 0; i < BOARD_SIZE; i++){
         for (int j = 0; j < BOARD_SIZE; j++){
-            Cell curr = board.get_cell(i, j);
-            std::cout << curr.get_value() << "_";
+            Cell curr = board.get_cell(j, i);
+            std::cout << curr.get_value();
+            if (curr.is_inconsistent()){
+                std::cout << "x";
+            }
+            std::cout << "_";
         }
         std::cout << "\n";
     }
+}
 
+void Model::process_numerical_input(int n){
+    Cell& curr_cell = board_.get_cell_reference(selected_cell_index_.x,
+                                               selected_cell_index_.y);
+    // if the current cell is fixed or a hint, then we can't write over this
+    // cell
+    if (curr_cell.is_fixed() or curr_cell.is_hint()){
+        return;
+    }
+    // otherwise, set the value of this cell to the user input
+    else{
+        std::cout << "Setting value of " << curr_cell.get_index() << "to " <<
+        n << "\n";
+        curr_cell.set_value(n);
+    }
+}
+
+void Model::attempt_clear_selected_cell()
+{
+    Cell& curr_cell = board_.get_cell_reference(selected_cell_index_.x,
+                                                selected_cell_index_.y);
+
+    if (curr_cell.is_fixed() or curr_cell.is_hint()){
+        return;
+    }
+    else{
+        std::cout << "Clearing cell: " << curr_cell.get_index() << "\n";
+        curr_cell.set_value(0);
+    }
 }
