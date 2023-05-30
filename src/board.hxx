@@ -75,19 +75,29 @@ public:
     // returns a live reference to a Cell in the board
     // modifying this reference modifies the cell!
 
-    Cell get_cell (int row, int col) const;
-    Cell& get_cell_reference(int row, int col);
+    Cell get_cell (int col, int row) const;
+    Cell& get_cell_reference(int col, int row);
 
 
     // gets the cell objects in the given row as values
-    std::array<Cell, 9> get_row_values(int row);
+    std::array<Cell, BOARD_SIZE> get_row_cell_values(int row);
 
-    std::array<Cell, 9> get_col_values(int col);
+    std::array<Cell, BOARD_SIZE> get_col_cell_values(int col);
 
     // maybe we can have it return index values instead of numbers
     // top-left square is 0, top-center is 1, top-right is 2, center-left is
     // 3, etc.
-    std::array<std::array<Cell, 3>, 3> get_subgrid_values(int grid_index);
+
+    // todo for bonus fun, make this depend on the square root of BOARD_SIZE
+    // and therefore see if you can extend it to any integer-square, not just 9
+
+    // the grid indexes are defined as follows
+    // 0 1 2
+    // 3 4 5
+    // 6 7 8
+    // std::array<std::array<Cell, 3>, 3> get_square_cell_values(int square_index);
+    std::array<Cell, BOARD_SIZE> get_square_cell_values(int square_index);
+
 
 
     std::map<int, bool> get_candidates(int row, int col) const;
@@ -101,7 +111,7 @@ public:
     void mark_duplicates_in_row(int row);
     void mark_duplicates_in_col(int col);
 
-    void mark_duplicates_in_square(int square);
+    void mark_duplicates_in_square(int square_index);
 
 
     void mark_duplicates();
