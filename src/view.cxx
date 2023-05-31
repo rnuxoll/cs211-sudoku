@@ -121,6 +121,14 @@ void View::draw_congratulations(ge211::Sprite_set& set)
             draw_cell(set, blank_cell, false);
         }
     }
+    // draw y in 3, 2
+    draw_y(set, {3,2});
+    draw_o(set, {4, 2});
+    draw_u(set, {5,2});
+    draw_w(set,{3,3});
+    draw_i(set,{4,3});
+    draw_n(set,{5,3});
+
 }
 
 
@@ -296,4 +304,169 @@ is_hint){
     number_builder.color(number_color);
     number_builder.message("9");
     nine_sprite.reconfigure(number_builder);
+}
+
+void View::draw_y(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(y_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("Y");
+    y_sprite.reconfigure(number_builder);
+}
+
+void View::draw_o(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(o_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("O");
+    o_sprite.reconfigure(number_builder);
+}
+
+void View::draw_u(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(u_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("U");
+    u_sprite.reconfigure(number_builder);
+}
+
+void View::draw_w(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(w_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("W");
+    w_sprite.reconfigure(number_builder);
+}
+
+void View::draw_i(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(i_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("I");
+    i_sprite.reconfigure(number_builder);
+}
+
+void View::draw_n(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(n_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("N");
+    n_sprite.reconfigure(number_builder);
+}
+
+void View::draw_p(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(p_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("P");
+    p_sprite.reconfigure(number_builder);
+}
+
+void View::draw_r(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(r_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("R");
+    r_sprite.reconfigure(number_builder);
+}
+
+void View::draw_e(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(e_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("E");
+    e_sprite.reconfigure(number_builder);
+}
+
+void View::draw_s(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(s_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("S");
+    s_sprite.reconfigure(number_builder);
+}
+
+void View::draw_apostrophe(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(apos_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("'");
+    apos_sprite.reconfigure(number_builder);
+}
+
+void View::draw_f(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(f_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("F");
+    f_sprite.reconfigure(number_builder);
+}
+
+void View::draw_g(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(g_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("G");
+    g_sprite.reconfigure(number_builder);
+}
+
+void View::draw_a(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(a_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("A");
+    a_sprite.reconfigure(number_builder);
+}
+
+void View::draw_m(ge211::Sprite_set& set, Position cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+
+    set.add_sprite(m_sprite, number_pos_in_screen,5);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("M");
+    m_sprite.reconfigure(number_builder);
 }
