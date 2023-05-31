@@ -74,6 +74,8 @@ private:
     // draws the sudoku board, with helper functions
     void draw_board(ge211::Sprite_set& set);
 
+    void draw_congratulations(ge211::Sprite_set& set);
+
     // helper function for draw board which draws the numbers on the board
     // void draw_numbers(ge211::Sprite_set& set);
 

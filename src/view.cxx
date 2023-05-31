@@ -30,14 +30,19 @@ View::View(Model const& model)
 
           // todo initialize all of the other sprites
 {
-    std::cout << "View Constructor\n";
+    // std::cout << "View Constructor\n";
 
 }
 
 void
 View::draw(ge211::Sprite_set& set)
 {
-    draw_board(set);
+    if (model_.is_game_over()){
+        draw_congratulations(set);
+    }
+    else{
+        draw_board(set);
+    }
 }
 
 ge211::Dims<int>
@@ -104,6 +109,16 @@ void View::draw_board(ge211::Sprite_set& set){
                 is_selected = true;
             }
             draw_cell(set, cell, is_selected);
+        }
+    }
+}
+
+void View::draw_congratulations(ge211::Sprite_set& set)
+{
+    for (int r = 0; r < 9; r++){
+        for (int c = 0; c < 9; c++){
+            Cell blank_cell = Cell(0, {c, r});
+            draw_cell(set, blank_cell, false);
         }
     }
 }

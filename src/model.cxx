@@ -15,7 +15,7 @@ Model::Model(std::string board_string, std::string solution_string)
       solution_(solution_string, {9, 9}),
       selected_cell_index_(4, 4)
 {
-    std::cout << "Model constructor\n";
+    // std::cout << "Model constructor\n";
     board_.mark_duplicates();
 
 }
@@ -172,6 +172,6 @@ void Model::check_game_over(){
     game_over_ = true;
 }
 
-bool Model::is_game_over(){
+bool Model::is_game_over() const{
     return game_over_;
 }

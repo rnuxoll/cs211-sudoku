@@ -14,7 +14,7 @@ Cell::Cell(int value, Position ind)
       hint(false),
       index(ind)
 {
-    std::cout << "Cell constructor\n";
+    // std::cout << "Cell constructor\n";
     /*for (int i = 1; i <= 9; i++){
         candidates[i] = false;
     }*/

@@ -25,7 +25,7 @@ public:
     void check_game_over();
 
     // accessor method for the game_over variable
-    bool is_game_over();
+    bool is_game_over() const;
 
     // mutator methods
     void set_selected_cell(Position cell_index);

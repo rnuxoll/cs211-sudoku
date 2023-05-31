@@ -11,7 +11,7 @@ Controller::Controller(std::string board_string, std::string solution_string)
           view_(model_),
           mouse_posn{0, 0}
 {
-    std::cout << "Controller constructor\n";
+    // std::cout << "Controller constructor\n";
 }
 
 ge211::Dims<int>
