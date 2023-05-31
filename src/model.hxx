@@ -14,7 +14,7 @@ public:
 
     using Rectangle = Board::Rectangle;
 
-    Model();
+    // Model();
 
     Model(std::string board_string, std::string solution_string);
 
@@ -22,7 +22,10 @@ public:
 
     // Returns whether the game is finished. This is true when a correct
     // solution has been input
-    bool game_over() const;
+    void check_game_over();
+
+    // accessor method for the game_over variable
+    bool is_game_over();
 
     // mutator methods
     void set_selected_cell(Position cell_index);
@@ -65,19 +68,16 @@ private:
 
     Position selected_cell_index_;
 
-    bool is_game_over_;
+    bool game_over_;
 
     bool is_in_bounds(Position cell_index) const;
 
 
     // set game status to over, to be called if a correct solution is
     // implemented
-    void set_game_over_();
-
-    //
-    void input_value_(Position square, int value);
+    // void set_game_over_();
 
     // adds a candidate number to the square
-    void input_candidate_(Position square, int candidate);
+    // void input_candidate_(Position square, int candidate);
 
 };

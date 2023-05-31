@@ -37,7 +37,7 @@ private:
 
     // returns ture if the array has one of each integer from 1-9 (inclusive)
     // returns false otherwise
-    bool is_legal_values(const std::array<int, BOARD_SIZE>& values) const;
+    // bool is_legal_values(const std::array<int, BOARD_SIZE>& values) const;
 
     // given an array of up to 9 numbers, returns a set representing which
     // numbers are duplicates
@@ -58,7 +58,7 @@ public:
 
     // find which squares have redundant values and return them as a
     // Position_set
-    Position_set find_contradictions() const;
+    // Position_set find_contradictions() const;
 
 
     // helper function for find_contradictions()
@@ -70,7 +70,7 @@ public:
     Position_set find_contradicting_squares(Position cell_index) const;
 
     // accessor methods
-    int get_cell_value(int row, int col) const;
+    // int get_cell_value(int row, int col) const;
 
     // returns a live reference to a Cell in the board
     // modifying this reference modifies the cell!
@@ -100,11 +100,11 @@ public:
 
 
 
-    std::map<int, bool> get_candidates(int row, int col) const;
+    // std::map<int, bool> get_candidates(int row, int col) const;
 
     // mutator methods
-    void set_cell_value(int row, int col, int value);
-    void set_candidate(int row, int col, bool value);
+    // void set_cell_value(int row, int col, int value);
+    // void set_candidate(int row, int col, bool value);
 
 
 
@@ -115,6 +115,7 @@ public:
 
 
     void mark_duplicates();
+
 
     // TODO
     // std::array<Cell, BOARD_SIZE> process

@@ -157,3 +157,21 @@ void Model::attempt_clear_selected_cell()
         curr_cell.set_value(0);
     }
 }
+
+
+void Model::check_game_over(){
+    for (int r = 0; r < BOARD_SIZE; r++){
+        for (int c = 0; c < BOARD_SIZE; c++){
+            Cell curr_cell = board_.get_cell(c, r);
+            if (curr_cell.get_value() == 0 or curr_cell.is_inconsistent()){
+                game_over_ = false;
+                return;
+            }
+        }
+    }
+    game_over_ = true;
+}
+
+bool Model::is_game_over(){
+    return game_over_;
+}

@@ -127,6 +127,11 @@ Controller::on_key(Key key)
     Board& my_board = model_.get_board_reference();
     my_board.mark_duplicates();
 
+
+    model_.check_game_over();
+
+    std::cout << "Game over: " << model_.is_game_over() << "\n";
+
     std::cout << "exiting on key\n";
 }
 
