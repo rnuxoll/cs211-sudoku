@@ -133,7 +133,7 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     }
 
     if (cell.is_hint()) {
-        set.add_sprite(reveal_sprite, corner_in_screen);
+        set.add_sprite(reveal_sprite, corner_in_screen,3);
     }
     // draw grid lines
     Position lower_hor_line_pos = cell_index.down_by(1);
