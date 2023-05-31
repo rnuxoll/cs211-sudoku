@@ -69,6 +69,24 @@ private:
 
     ge211::Font sans72_{"sans.ttf", 72};
 
+    ge211::Text_sprite y_sprite;
+    ge211::Text_sprite o_sprite;
+    ge211::Text_sprite u_sprite;
+    ge211::Text_sprite w_sprite;
+    ge211::Text_sprite i_sprite;
+    ge211::Text_sprite n_sprite;
+    ge211::Text_sprite p_sprite;
+    ge211::Text_sprite r_sprite;
+    ge211::Text_sprite e_sprite;
+    ge211::Text_sprite s_sprite;
+    ge211::Text_sprite apos_sprite;
+    ge211::Text_sprite f_sprite;
+    ge211::Text_sprite g_sprite;
+    ge211::Text_sprite a_sprite;
+    ge211::Text_sprite m_sprite;
+
+
+
 
 
     // draws the sudoku board, with helper functions
