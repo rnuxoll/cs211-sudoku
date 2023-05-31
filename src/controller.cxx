@@ -11,7 +11,6 @@ Controller::Controller(std::string board_string, std::string solution_string)
           view_(model_),
           mouse_posn{0, 0}
 {
-    // std::cout << "Controller constructor\n";
 }
 
 ge211::Dims<int>
@@ -41,41 +40,20 @@ Controller::on_mouse_up(ge211::events::Mouse_button, ge211::Posn<int>) {
 void
 Controller::on_key(Key key)
 {
-
-    std::cout << "Key press: " << key.code() << "\n";
-    model_.print_board();
-
-    std::cout << "Printed board\n";
-
     if (key == Key::code('q')) {
         quit();
     }
-    // todo delete this
-    // testing clause, set the top left corner to row_inconsistent if i is pressed
-    // else if (key == Key::code('i')){
-    //     std::cout << "setting the top left to be row_inconsistent\n";
-    //     Board& board_ref = model_.get_board_reference();
-    //     Cell& top_left = board_ref.get_cell_reference(0, 0);
-    //     top_left.set_inconsistent(true);
-    //
-    //     std::cout << "final value of set row_inconsistent = " << top_left
-    //     .is_inconsistent() << "\n";
-    // }
     else if (key == Key::up() or key == Key::code('w')){
         // move up
-        std::cout << "up\n";
         model_.move_select_up();
     }
     else if (key == Key::left() or key == Key::code('a')){
-        std::cout << "left\n";
         model_.move_select_left();
     }
     else if (key == Key::right() or key == Key::code('d')){
-        std::cout << "right\n";
         model_.move_select_right();
     }
     else if (key == Key::down() or key == Key::code('s')){
-        std::cout << "down\n";
         model_.move_select_down();
     }
     // if user presses backspace
@@ -123,16 +101,10 @@ Controller::on_key(Key key)
     // after all key presses have been processed and the model has been
     // updated, it is now time to update the inconsistencies
 
-    model_.print_board();
     Board& my_board = model_.get_board_reference();
     my_board.mark_duplicates();
 
-
     model_.check_game_over();
-
-    std::cout << "Game over: " << model_.is_game_over() << "\n";
-
-    std::cout << "exiting on key\n";
 }
 
 

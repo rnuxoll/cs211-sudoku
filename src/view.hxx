@@ -99,6 +99,26 @@ private:
     void draw_eight(ge211::Sprite_set& set, Position box_coord, bool is_hint);
     void draw_nine(ge211::Sprite_set& set, Position box_coord, bool is_hint);
 
+    // functions used to draw new game message
+    void draw_y(ge211::Sprite_set& set, Position box_coord);
+    void draw_o(ge211::Sprite_set& set, Position box_coord);
+    void draw_u(ge211::Sprite_set& set, Position box_coord);
+    void draw_w(ge211::Sprite_set& set, Position box_coord);
+    void draw_i(ge211::Sprite_set& set, Position box_coord);
+    void draw_n(ge211::Sprite_set& set, Position box_coord);
+
+    void draw_p(ge211::Sprite_set& set, Position box_coord);
+    void draw_r(ge211::Sprite_set& set, Position box_coord);
+    void draw_e(ge211::Sprite_set& set, Position box_coord);
+    void draw_s(ge211::Sprite_set& set, Position box_coord);
+
+    void draw_apostrophe(ge211::Sprite_set& set, Position box_coord);
+    void draw_f(ge211::Sprite_set& set, Position box_coord);
+
+    void draw_g(ge211::Sprite_set& set, Position box_coord);
+    void draw_a(ge211::Sprite_set& set, Position box_coord);
+    void draw_m(ge211::Sprite_set& set, Position box_coord);
+
     // helper function for draw_numbers which gives the
     ge211::Posn<int> get_center_of_square_in_screen(View::Position);
 

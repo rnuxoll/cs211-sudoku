@@ -11,10 +11,7 @@ Board::Board(std::string board_string, Dimensions dims)
     std::stringstream ss(board_string);
     std::string line;
 
-    // TODO modify this
-    std::cout << "Board constructor\n";
-
-    std::cout << board_string;
+    // std::cout << board_string;
 
     // for (int i = 0; i < dims.width; i++){
     //     for (int j = 0; j < dims.height; j++){
@@ -205,21 +202,21 @@ void Board::mark_duplicates_in_square(int square_index)
 
     std::set<int> duplicate_indices = get_duplicates(square_cells);
 
-    if (square_index == 0){
-        std::cout << "Found that the cells in square_index " << square_index
-        << "have the following values: ";
-
-        for (int i = 0; i < 9; i++) {
-            std::cout << square_cells[i].get_value() << ' ';
-        }
-        std::cout << "\n";
-
-        std::cout << "Get duplicates told us that the duplicate indices are: ";
-        for (const int& value : duplicate_indices) {
-            std::cout << value << ' ';
-        }
-        std::cout << "\n";
-    }
+    // if (square_index == 0){
+    //     std::cout << "Found that the cells in square_index " << square_index
+    //     << "have the following values: ";
+    //
+    //     for (int i = 0; i < 9; i++) {
+    //         std::cout << square_cells[i].get_value() << ' ';
+    //     }
+    //     std::cout << "\n";
+    //
+    //     std::cout << "Get duplicates told us that the duplicate indices are: ";
+    //     for (const int& value : duplicate_indices) {
+    //         std::cout << value << ' ';
+    //     }
+    //     std::cout << "\n";
+    // }
 
     int start_row = (square_index / 3) * 3;
     int start_col = (square_index % 3) * 3;
@@ -240,7 +237,7 @@ void Board::mark_duplicates_in_square(int square_index)
 
             // if the index in 1d form is in the list of duplicate indices
             if (duplicate_indices.find(i) != duplicate_indices.end()){
-                std::cout << "Marking cell: " << cells_index << "as "
+                // std::cout << "Marking cell: " << cells_index << "as "
                                                                 "inconsistent\n";
                 // this if statement is hitting on the correct cells
                 cell_to_mark.set_inconsistent(true, 's');
@@ -269,7 +266,7 @@ void Board::mark_duplicates_in_square(int square_index)
 void Board::mark_duplicates(){
     // we will iterate through every row, column, and square in the same loop
     for (int i = 0; i < BOARD_SIZE; i++){
-        std::cout << "marking duplicates in row and col: " << i << "\n";
+        // std::cout << "marking duplicates in row and col: " << i << "\n";
         mark_duplicates_in_row(i);
         mark_duplicates_in_col(i);
         // todo at the beginning of the game, something is being initialized
@@ -277,7 +274,7 @@ void Board::mark_duplicates(){
         mark_duplicates_in_square(i);
     }
 
-    std::cout << "finished marking duplicates!\n";
+    // std::cout << "finished marking duplicates!\n";
 }
 
 Cell Board::get_cell(int col, int row) const{

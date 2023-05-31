@@ -120,8 +120,8 @@ void Model::process_numerical_input(int n){
     }
     // otherwise, set the value of this cell to the user input
     else{
-        std::cout << "Setting value of " << curr_cell.get_index() << "to " <<
-        n << "\n";
+        // std::cout << "Setting value of " << curr_cell.get_index() << "to "
+        // << n << "\n";
         curr_cell.set_value(n);
     }
 }
@@ -153,7 +153,7 @@ void Model::attempt_clear_selected_cell()
         return;
     }
     else{
-        std::cout << "Clearing cell: " << curr_cell.get_index() << "\n";
+        // std::cout << "Clearing cell: " << curr_cell.get_index() << "\n";
         curr_cell.set_value(0);
     }
 }
