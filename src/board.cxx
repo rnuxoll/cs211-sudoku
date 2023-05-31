@@ -233,7 +233,7 @@ void Board::mark_duplicates_in_square(int square_index)
             // now check if i is in the list of duplicate indices
             // if i is indeed in the list of duplicate indices, then
             // mark that cell in the board as inconsistent
-            Cell cell_to_mark = get_cell_reference(start_col + c,
+            Cell& cell_to_mark = get_cell_reference(start_col + c,
                                                    start_row + r);
 
             Position cells_index = cell_to_mark.get_index();
