@@ -16,6 +16,7 @@ Model::Model(std::string board_string, std::string solution_string)
       selected_cell_index_(4, 4)
 {
     std::cout << "Model constructor\n";
+    board_.mark_duplicates();
 
 }
 
