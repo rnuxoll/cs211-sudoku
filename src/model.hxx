@@ -52,6 +52,8 @@ public:
     // passes only if the cell is not a hint and not a given
     void attempt_clear_selected_cell();
 
+    void reveal_answer();
+
 
 private:
     //

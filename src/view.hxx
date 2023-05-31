@@ -36,6 +36,8 @@ private:
     ge211::Rectangle_sprite const white_square_sprite;
     ge211::Rectangle_sprite const shaded_square_sprite;
     ge211::Rectangle_sprite const selected_square_sprite;
+    ge211::Rectangle_sprite const reveal_sprite;
+
 
     ge211::Circle_sprite const contradiction_dot_sprite;
 

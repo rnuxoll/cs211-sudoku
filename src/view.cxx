@@ -11,6 +11,8 @@ static Color const number_color {0, 0, 0};
 static Color const value_square_color {255, 255, 255};
 static Color const given_square_color {211,211,211};
 static Color const selected_square_color {238,232,170};
+static Color const reveal_square_color {0,0,255};
+
 static Color const gridline_color {0, 0, 0};
 static Color const red_dot_color{205, 92,92};
 
@@ -19,6 +21,7 @@ View::View(Model const& model)
           white_square_sprite({grid_size, grid_size}, value_square_color),
           shaded_square_sprite({grid_size, grid_size}, given_square_color),
           selected_square_sprite({grid_size, grid_size}, selected_square_color),
+          reveal_sprite({grid_size, grid_size}, reveal_square_color),
           contradiction_dot_sprite(grid_size / 8, red_dot_color),
           horizontal_grid_line_sprite({grid_size, grid_size / 30},
                                       gridline_color),
@@ -129,6 +132,9 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
         set.add_sprite(contradiction_dot_sprite, corner_in_screen, 4);
     }
 
+    if (cell.is_hint()) {
+        set.add_sprite(reveal_sprite, corner_in_screen);
+    }
     // draw grid lines
     Position lower_hor_line_pos = cell_index.down_by(1);
     Position lower_ver_line_pos = cell_index.right_by(1);

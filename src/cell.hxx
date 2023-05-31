@@ -52,7 +52,7 @@ public:
     // set inconsistent sets col inconsistent if code is c
     // set inconsistent sets square inconsistent if code is s
     void set_inconsistent(bool value, char code);
-
+    void set_hint(bool value);
     // accessor methods
     bool is_fixed() const;
     bool is_inconsistent() const;

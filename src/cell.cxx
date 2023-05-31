@@ -69,6 +69,13 @@ Cell::is_hint() const
 }
 
 void
+Cell::set_hint(bool value)
+{
+    hint = value;
+}
+
+
+void
 Cell::set_inconsistent(bool value, char code)
 {
     switch(code){

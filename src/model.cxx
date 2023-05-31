@@ -125,6 +125,24 @@ void Model::process_numerical_input(int n){
     }
 }
 
+void
+Model::reveal_answer(){
+    Cell& curr_cell = board_.get_cell_reference(selected_cell_index_.x,
+                                                selected_cell_index_.y);
+    Cell& soln_cell = solution_.get_cell_reference(selected_cell_index_.x,
+                                                   selected_cell_index_.y);
+    if (!curr_cell.is_fixed()) {
+        curr_cell.set_hint(true);
+        curr_cell.set_value(soln_cell.get_value());
+    }
+
+   /*if (curr_cell.is_hint()) {
+    } else {
+        return;
+    }*/
+}
+
+
 void Model::attempt_clear_selected_cell()
 {
     Cell& curr_cell = board_.get_cell_reference(selected_cell_index_.x,

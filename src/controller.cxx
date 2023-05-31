@@ -111,6 +111,8 @@ Controller::on_key(Key key)
     }
     else if (key == Key::code(57)){
         model_.process_numerical_input(9);
+    } else if (key == Key::code('h')) {
+        model_.reveal_answer();
     }
 
     if (key == ge211::Key::code(' ')){

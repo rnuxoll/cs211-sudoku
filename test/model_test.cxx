@@ -3,7 +3,7 @@
 
 TEST_CASE("example test (TODO: replace this)")
 {
-    CHECK(1 + 1 == 2);
+
 }
 
 //
@@ -11,3 +11,5 @@ TEST_CASE("example test (TODO: replace this)")
 //
 // These tests should demonstrate your functional requirements.
 //
+
+// Test Idea 1
