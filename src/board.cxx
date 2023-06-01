@@ -37,6 +37,7 @@ Board::Board(std::string board_string, Dimensions dims)
         }
         ++row;
     }
+    mark_duplicates();
 }
 
 

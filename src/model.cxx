@@ -18,8 +18,6 @@ Model::Model(const std::pair<Board, Board>& board_solution)
     solution_(board_solution.second),
     selected_cell_index_(4, 4)
 {
-    board_.mark_duplicates();
-    solution_.mark_duplicates();
 }
 
 bool
