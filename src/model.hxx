@@ -16,10 +16,13 @@ public:
 
     Model(): Model(get_random_board()) {};
 
-    // "e" for easy game
+
+    // "b" for beginner game
     // "n" for normal game
-    // "h" for hard game
+    // "e" for expert game
     void start_new_game(char difficulty);
+
+
 
     Model(const std::pair<Board, Board>& board_solution);
 
@@ -61,6 +64,10 @@ public:
     void reveal_answer();
 
     static std::pair<Board, Board> get_random_board();
+
+    static std::pair<Board, Board> get_random_beginner_game();
+    static std::pair<Board, Board> get_random_normal_game();
+    static std::pair<Board, Board> get_random_expert_game();
 
 
 private:

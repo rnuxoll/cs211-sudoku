@@ -48,6 +48,7 @@ Controller::on_key(Key key)
         // strings, loaded in as one of its parameters and then it will select
         // one at random when this clause hits
         // and then it will p
+        model_.start_new_game('e');
         return;
     }
     else if (key == Key::up() or key == Key::code('w')){
