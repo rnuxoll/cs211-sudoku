@@ -18,6 +18,8 @@ Model::Model(const std::pair<Board, Board>& board_solution)
     solution_(board_solution.second),
     selected_cell_index_(4, 4)
 {
+    board_.mark_duplicates();
+    solution_.mark_duplicates();
 }
 
 bool
@@ -197,15 +199,15 @@ std::pair<Board, Board> Model::get_random_board(){
             "3_4_5_2_8_6_1_7_9_\n";
 
         str board_2 =
-                "8_2_7_0_0_0_0_6_1_\n"
-                "0_1_5_9_0_7_0_0_0_\n"
-                "0_0_0_0_6_0_0_8_5_\n"
-                "4_0_8_3_1_0_0_5_0_\n"
-                "1_0_0_7_4_0_0_0_2_\n"
-                "2_0_9_0_0_0_1_0_7_\n"
-                "0_4_0_0_9_6_3_0_0_\n"
-                "0_6_1_0_2_0_5_0_0_\n"
-                "9_8_0_0_0_4_2_0_6_\n";
+            "8_2_7_0_0_0_0_6_1_\n"
+            "0_1_5_9_0_7_0_0_0_\n"
+            "0_0_0_0_6_0_0_8_5_\n"
+            "4_0_8_3_1_0_0_5_0_\n"
+            "1_0_0_7_4_0_0_0_2_\n"
+            "2_0_9_0_0_0_1_0_7_\n"
+            "0_4_0_0_9_6_3_0_0_\n"
+            "0_6_1_0_2_0_5_0_0_\n"
+            "9_8_0_0_0_4_2_0_6_\n";
 
         str solution_2 =
             "8_2_7_4_3_5_9_6_1_\n"
@@ -239,4 +241,10 @@ std::pair<Board, Board> Model::get_random_board(){
                                             {BOARD_SIZE, BOARD_SIZE});
 
         return std::make_pair(chosen_board, chosen_board_solution);
+}
+
+
+void Model::start_new_game(char difficulty)
+{
+    // std::pair<Board, Board>
 }

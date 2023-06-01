@@ -16,6 +16,11 @@ public:
 
     Model(): Model(get_random_board()) {};
 
+    // "e" for easy game
+    // "n" for normal game
+    // "h" for hard game
+    void start_new_game(char difficulty);
+
     Model(const std::pair<Board, Board>& board_solution);
 
     Rectangle all_positions() const;
