@@ -33,7 +33,7 @@ private:
 
     // the sudoku board here is an array of Cell objects
     // std::vector<std::vector<Cell>> board;
-    std::array<std::array<Cell, BOARD_SIZE>, BOARD_SIZE> board;
+    std::array<std::array<Cell, BOARD_SIZE>, BOARD_SIZE> board_;
 
     // returns ture if the array has one of each integer from 1-9 (inclusive)
     // returns false otherwise
@@ -53,9 +53,6 @@ private:
 public:
     // constructor
     explicit Board(std::string board_string, Dimensions dims);
-
-    Rectangle all_positions() const;
-
 
     // accessor methods
     // returns a live reference to a Cell in the board
@@ -81,7 +78,6 @@ public:
     // 0 1 2
     // 3 4 5
     // 6 7 8
-    // std::array<std::array<Cell, 3>, 3> get_square_cell_values(int square_index);
     std::array<Cell, BOARD_SIZE> get_square_cell_values(int square_index);
 
     // mutator methods
@@ -95,5 +91,3 @@ public:
     void mark_duplicates();
 
 };
-
-

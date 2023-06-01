@@ -22,11 +22,7 @@ public:
     // "e" for expert game
     void start_new_game(char difficulty);
 
-
-
     Model(const std::pair<Board, Board>& board_solution);
-
-    Rectangle all_positions() const;
 
     // Returns whether the game is finished. This is true when a correct
     // solution has been input

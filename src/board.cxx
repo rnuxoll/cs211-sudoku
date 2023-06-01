@@ -13,23 +13,18 @@ Board::Board(std::string board_string, Dimensions dims)
 
     int row = 0;
     while (std::getline(ss, line, '\n') && row < BOARD_SIZE) {
-        for (int col = 0; col < BOARD_SIZE; ++col) {
-            char c = line[col * 2];  // Because every other char is an underscore '_'
+        for (int col = 0; col < BOARD_SIZE; col++) {
+            // Because every other char is an underscore '_'
+            char c = line[col * 2];
             int value = (c == '_') ? 0 : c - '0';  // Convert char to int
-            board[col][row] = Cell(value, {col, row});
+            board_[col][row] = Cell(value, {col, row});
         }
-        ++row;
+        row++;
     }
     mark_duplicates();
 }
 
 
-Board::Rectangle
-Board::all_positions() const
-{
-    Position the_origin = {0, 0};
-    return Rectangle::from_top_left(the_origin, dims_);
-}
 
 std::set<int>
 Board::get_duplicates(const std::array<Cell, BOARD_SIZE> values)
@@ -66,7 +61,7 @@ Board::get_row_cell_values(int row)
 
     std::array<Cell, 9> row_values;
     for (int c = 0; c < 9; c++){
-        row_values[c] = board[c][row];
+        row_values[c] = board_[c][row];
     }
 
     return row_values;
@@ -81,12 +76,11 @@ Board::get_col_cell_values(int col)
 
     std::array<Cell, BOARD_SIZE> col_values;
     for (int r = 0; r < BOARD_SIZE; r++){
-        col_values[r] = board[col][r];
+        col_values[r] = board_[col][r];
     }
     return col_values;
 }
 
-// std::array<std::array<Cell, 3>, 3>
 std::array<Cell, BOARD_SIZE>
 Board::get_square_cell_values(int square_index) {
     if (square_index < 0 || square_index >= 9) {
@@ -100,7 +94,7 @@ Board::get_square_cell_values(int square_index) {
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            square_values[3*i + j] = board[start_col + j][start_row + i];
+            square_values[3*i + j] = board_[start_col + j][start_row + i];
         }
     }
 
@@ -197,25 +191,24 @@ void Board::mark_duplicates_in_square(int square_index)
 
 
 // calling this function has the Board go through every row, column, and then
-// every square and then update all of its constituent Cells to be row_inconsistent_
-// if they are duplicates
+// every square and then update all of its constituent Cells to be
+// row_inconsistent_ if they are duplicates
 void Board::mark_duplicates(){
     // we will iterate through every row, column, and square in the same loop
     for (int i = 0; i < BOARD_SIZE; i++){
         // std::cout << "marking duplicates in row and col: " << i << "\n";
         mark_duplicates_in_row(i);
         mark_duplicates_in_col(i);
-        // todo at the beginning of the game, something is being initialized
         // wrong because all of the squares are starting off with red dots
         mark_duplicates_in_square(i);
     }
 }
 
 Cell Board::get_cell(int col, int row) const{
-    return board[col][row];
+    return board_[col][row];
 }
 
 Cell& Board::get_cell_reference(int col, int row)
 {
-    return board[col][row];
+    return board_[col][row];
 }

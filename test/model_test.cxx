@@ -1,38 +1,6 @@
 #include "model.hxx"
 #include <catch.hxx>
 
-TEST_CASE("example test (TODO: replace this)")
-{
-
-}
-
-//
-// TODO: Write preliminary model tests.
-//
-// These tests should demonstrate your functional requirements.
-//
-
-/*struct Test_access
-{
-    Model& model;
-
-    // Constructs a `Test_access` with a reference to the Model under test.
-    explicit Test_access(Model&);
-    // Sets the player at `posn` to `player`.
-
-    Board& board ()
-    {
-        return model.board_;
-    }
-    Position_set
-    find_flips ( Model :: Position p ,
-                 Model :: Dimensions d )
-    {
-        return model . find_flips_ (p , d );
-    }
-};*/
-// Test 1: Input a board with a row inconsistency and check that the cells
-// are marked inconsistent
 
 TEST_CASE("Mark Duplicates Row")
 {
@@ -428,8 +396,3 @@ TEST_CASE("Clear cells and hints")
     CHECK(board2.get_cell(1,4).get_value() == 2);
 
 }
-
-
-/*Test_access::Test_access(Model& model)
-        : model(model)
-{ }*/

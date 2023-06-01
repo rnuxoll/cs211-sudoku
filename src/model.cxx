@@ -62,6 +62,7 @@ void Model::move_select_left()
     set_selected_cell(new_pos);
 }
 
+
 void Model::move_select_right()
 {
     Position new_pos = selected_cell_index_.right_by(1);
@@ -69,19 +70,12 @@ void Model::move_select_right()
 }
 
 
-
-
-Model::Rectangle
-Model::all_positions() const
-{
-    return board_.all_positions();
-}
-
 Board
 Model::get_board() const
 {
     return board_;
 }
+
 
 Board&
 Model::get_board_reference()
@@ -234,19 +228,17 @@ std::pair<Board, Board> Model::get_random_board(){
         str board_array[] = {board_1, board_2};
         str solution_array[] = {solution_1, solution_2};
 
-        // get the board_array_size of arrays
         size_t board_array_size = sizeof(board_array) / sizeof(board_array[0]);
 
-        // create random engine
         std::default_random_engine generator;
-        generator.seed(std::random_device()()); // to get different outcomes each time you run the code
-        std::uniform_int_distribution<size_t> distribution(0, board_array_size - 1); // define the distribution
+        generator.seed(std::random_device()());
+        std::uniform_int_distribution<size_t>
+                distribution(0, board_array_size - 1);
 
-        // generate a random index_
         size_t randomIndex = distribution(generator);
 
-        // return pair of strings at the randomly selected index_
-        Board chosen_board = Board(board_array[randomIndex], {BOARD_SIZE, BOARD_SIZE});
+        Board chosen_board = Board(board_array[randomIndex],
+                                   {BOARD_SIZE, BOARD_SIZE});
         Board chosen_board_solution = Board(solution_array[randomIndex],
                                             {BOARD_SIZE, BOARD_SIZE});
 
@@ -286,14 +278,14 @@ std::pair<Board, Board> Model::get_random_beginner_game(){
 
     // create random engine
     std::default_random_engine generator;
-    generator.seed(std::random_device()()); // to get different outcomes each time you run the code
-    std::uniform_int_distribution<size_t> distribution(0, board_array_size - 1); // define the distribution
+    generator.seed(std::random_device()());
+    std::uniform_int_distribution<size_t>
+            distribution(0, board_array_size - 1);
 
-    // generate a random index_
     size_t randomIndex = distribution(generator);
 
-    // return pair of strings at the randomly selected index_
-    Board chosen_board = Board(board_array[randomIndex], {BOARD_SIZE, BOARD_SIZE});
+    Board chosen_board = Board(board_array[randomIndex],
+                               {BOARD_SIZE, BOARD_SIZE});
     Board chosen_board_solution = Board(solution_array[randomIndex],
                                         {BOARD_SIZE, BOARD_SIZE});
 
@@ -329,19 +321,20 @@ std::pair<Board, Board> Model::get_random_normal_game(){
     str board_array[] = {board_1};
     str solution_array[] = {solution_1};
 
-    // get the board_array_size of arrays
     size_t board_array_size = sizeof(board_array) / sizeof(board_array[0]);
 
-    // create random engine
     std::default_random_engine generator;
-    generator.seed(std::random_device()()); // to get different outcomes each time you run the code
-    std::uniform_int_distribution<size_t> distribution(0, board_array_size - 1); // define the distribution
+    generator.seed(std::random_device()());
+    // normal distribution
+    std::uniform_int_distribution<size_t>
+            distribution(0, board_array_size - 1);
 
     // generate a random index_
     size_t randomIndex = distribution(generator);
 
     // return pair of strings at the randomly selected index_
-    Board chosen_board = Board(board_array[randomIndex], {BOARD_SIZE, BOARD_SIZE});
+    Board chosen_board =
+            Board(board_array[randomIndex], {BOARD_SIZE, BOARD_SIZE});
     Board chosen_board_solution = Board(solution_array[randomIndex],
                                         {BOARD_SIZE, BOARD_SIZE});
 
@@ -373,23 +366,19 @@ std::pair<Board, Board> Model::get_random_expert_game(){
             "9_6_4_2_8_3_5_7_1_\n";
 
 
-    // define two arrays of strings
     str board_array[] = {board_1};
     str solution_array[] = {solution_1};
 
-    // get the board_array_size of arrays
     size_t board_array_size = sizeof(board_array) / sizeof(board_array[0]);
 
-    // create random engine
     std::default_random_engine generator;
-    generator.seed(std::random_device()()); // to get different outcomes each time you run the code
-    std::uniform_int_distribution<size_t> distribution(0, board_array_size - 1); // define the distribution
+    generator.seed(std::random_device()());
+    std::uniform_int_distribution<size_t> distribution(0, board_array_size - 1);
 
-    // generate a random index_
     size_t randomIndex = distribution(generator);
 
-    // return pair of strings at the randomly selected index_
-    Board chosen_board = Board(board_array[randomIndex], {BOARD_SIZE, BOARD_SIZE});
+    Board chosen_board = Board(board_array[randomIndex],
+                               {BOARD_SIZE, BOARD_SIZE});
     Board chosen_board_solution = Board(solution_array[randomIndex],
                                         {BOARD_SIZE, BOARD_SIZE});
 
