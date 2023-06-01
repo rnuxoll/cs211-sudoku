@@ -42,13 +42,22 @@ Controller::on_key(Key key)
     if (key == Key::code('q')) {
         quit();
     }
+    else if (key == Key::code('b')){
+        model_.start_new_game('b');
+        // the return statement prevents the stuff at the end of the function
+        // from being called
+        return;
+    }
     else if (key == Key::code('n')){
-        // todo start new game
-        // I think the controller will have to have a set or array of new board
-        // strings, loaded in as one of its parameters and then it will select
-        // one at random when this clause hits
-        // and then it will p
+        model_.start_new_game('n');
+        // the return statement prevents the stuff at the end of the function
+        // from being called
+        return;
+    }
+    else if (key == Key::code('e')){
         model_.start_new_game('e');
+        // the return statement prevents the stuff at the end of the function
+        // from being called
         return;
     }
     else if (key == Key::up() or key == Key::code('w')){

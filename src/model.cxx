@@ -407,7 +407,6 @@ std::pair<Board, Board> Model::get_random_expert_game(){
 
 
 
-
 void Model::start_new_game(char difficulty)
 {
     // this is just done because C++ insists we initialize it with a value
