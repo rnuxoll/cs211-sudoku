@@ -1,4 +1,5 @@
 #include "model.hxx"
+#include <random>
 
 
 // 2D-list of numbers represents board
@@ -9,14 +10,17 @@
 
 
 using Position = ge211::Posn<int>;
+using str = std::string;
 
-Model::Model(std::string board_string, std::string solution_string)
-    : board_(board_string, {9, 9}),
-      solution_(solution_string, {9, 9}),
+Model::Model(str board_string, str solution_string)
+    : board_(board_string, {BOARD_SIZE, BOARD_SIZE}),
+      solution_(solution_string, {BOARD_SIZE, BOARD_SIZE}),
       selected_cell_index_(4, 4)
 {
     // std::cout << "Model constructor\n";
     board_.mark_duplicates();
+
+
 
 }
 
@@ -170,4 +174,51 @@ void Model::check_game_over(){
 
 bool Model::is_game_over() const{
     return game_over_;
+}
+
+std::pair<Board, Board> Model::get_random_board(){
+
+        str board_1 =
+            "5_3_0_0_7_0_0_0_0_\n"
+            "6_0_0_1_9_5_0_0_0_\n"
+            "0_9_8_0_0_0_0_6_0_\n"
+            "8_0_0_0_6_0_0_0_3_\n"
+            "4_0_0_8_0_3_0_0_1_\n"
+            "7_0_0_0_2_0_0_0_6_\n"
+            "0_6_0_0_0_0_2_8_0_\n"
+            "0_0_0_4_1_9_0_0_5_\n"
+            "0_0_0_0_8_0_0_7_9_\n";
+
+        str solution_1 =
+            "5_3_4_6_7_8_9_1_2_\n"
+            "6_7_2_1_9_5_3_4_8_\n"
+            "1_9_8_3_4_2_5_6_7_\n"
+            "8_5_9_7_6_1_4_2_3_\n"
+            "4_2_6_8_5_3_7_9_1_\n"
+            "7_1_3_9_2_4_8_5_6_\n"
+            "9_6_1_5_3_7_2_8_4_\n"
+            "2_8_7_4_1_9_6_3_5_\n"
+            "3_4_5_2_8_6_1_7_9_\n";
+
+        // define two arrays of strings
+        str board_array[] = {board_1};
+        str solution_array[] = {solution_1};
+
+        // get the board_array_size of arrays
+        size_t board_array_size = sizeof(board_array) / sizeof(board_array[0]);
+
+        // create random engine
+        std::default_random_engine generator;
+        generator.seed(std::random_device()()); // to get different outcomes each time you run the code
+        std::uniform_int_distribution<size_t> distribution(0, board_array_size - 1); // define the distribution
+
+        // generate a random index
+        size_t randomIndex = distribution(generator);
+
+        // return pair of strings at the randomly selected index
+        Board chosen_board = Board(board_array[randomIndex], {BOARD_SIZE, BOARD_SIZE});
+        Board chosen_board_solution = Board(solution_array[randomIndex],
+                                            {BOARD_SIZE, BOARD_SIZE});
+
+        return std::make_pair(chosen_board, chosen_board_solution);
 }

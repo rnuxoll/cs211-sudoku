@@ -28,9 +28,7 @@ View::View(Model const& model)
           vertical_grid_line_sprite({grid_size / 30, grid_size},
                                     gridline_color)
 
-          // todo initialize all of the other sprites
 {
-    // std::cout << "View Constructor\n";
 
 }
 
@@ -176,11 +174,6 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
         set.add_sprite(contradiction_dot_sprite, corner_in_screen, 4);
     }
 
-    // todo delete forever
-    // if (cell.is_hint()) {
-    //     set.add_sprite(reveal_sprite, corner_in_screen,3);
-    // }
-
 
     // draw grid lines
     Position lower_hor_line_pos = cell_index.down_by(1);
@@ -306,7 +299,7 @@ is_hint){
 void View::draw_regular_two(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(two_sprite, number_pos_in_screen,5);
+    set.add_sprite(two_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -317,7 +310,7 @@ void View::draw_regular_two(ge211::Sprite_set& set, Position cell_index){
 void View::draw_regular_three(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(three_sprite, number_pos_in_screen,5);
+    set.add_sprite(three_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -328,7 +321,7 @@ void View::draw_regular_three(ge211::Sprite_set& set, Position cell_index){
 void View::draw_regular_four(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(four_sprite, number_pos_in_screen,5);
+    set.add_sprite(four_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -339,7 +332,7 @@ void View::draw_regular_four(ge211::Sprite_set& set, Position cell_index){
 void View::draw_regular_five(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(five_sprite, number_pos_in_screen,5);
+    set.add_sprite(five_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -350,7 +343,7 @@ void View::draw_regular_five(ge211::Sprite_set& set, Position cell_index){
 void View::draw_regular_six(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(six_sprite, number_pos_in_screen,5);
+    set.add_sprite(six_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -361,7 +354,7 @@ void View::draw_regular_six(ge211::Sprite_set& set, Position cell_index){
 void View::draw_regular_seven(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(seven_sprite, number_pos_in_screen,5);
+    set.add_sprite(seven_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -372,7 +365,7 @@ void View::draw_regular_seven(ge211::Sprite_set& set, Position cell_index){
 void View::draw_regular_eight(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(eight_sprite, number_pos_in_screen,5);
+    set.add_sprite(eight_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -383,7 +376,7 @@ void View::draw_regular_eight(ge211::Sprite_set& set, Position cell_index){
 void View::draw_regular_nine(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(nine_sprite, number_pos_in_screen,5);
+    set.add_sprite(nine_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -485,7 +478,7 @@ void View::draw_hint_nine(ge211::Sprite_set& set, View::Position cell_index)
 void View::draw_y(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(y_sprite, number_pos_in_screen,5);
+    set.add_sprite(y_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -496,7 +489,7 @@ void View::draw_y(ge211::Sprite_set& set, Position cell_index){
 void View::draw_o(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(o_sprite, number_pos_in_screen,5);
+    set.add_sprite(o_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -507,7 +500,7 @@ void View::draw_o(ge211::Sprite_set& set, Position cell_index){
 void View::draw_u(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(u_sprite, number_pos_in_screen,5);
+    set.add_sprite(u_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -519,7 +512,7 @@ void View::draw_w(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
     number_pos_in_screen = number_pos_in_screen.right_by(-6);
 
-    set.add_sprite(w_sprite, number_pos_in_screen,5);
+    set.add_sprite(w_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -531,7 +524,7 @@ void View::draw_i(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
     number_pos_in_screen = number_pos_in_screen.right_by(10);
 
-    set.add_sprite(i_sprite, number_pos_in_screen,5);
+    set.add_sprite(i_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -542,7 +535,7 @@ void View::draw_i(ge211::Sprite_set& set, Position cell_index){
 void View::draw_n(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(n_sprite, number_pos_in_screen,5);
+    set.add_sprite(n_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -553,7 +546,7 @@ void View::draw_n(ge211::Sprite_set& set, Position cell_index){
 void View::draw_p(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(p_sprite, number_pos_in_screen,5);
+    set.add_sprite(p_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -564,7 +557,7 @@ void View::draw_p(ge211::Sprite_set& set, Position cell_index){
 void View::draw_r(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(r_sprite, number_pos_in_screen,5);
+    set.add_sprite(r_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -575,7 +568,7 @@ void View::draw_r(ge211::Sprite_set& set, Position cell_index){
 void View::draw_e(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(e_sprite, number_pos_in_screen,5);
+    set.add_sprite(e_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -586,7 +579,7 @@ void View::draw_e(ge211::Sprite_set& set, Position cell_index){
 void View::draw_s(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(s_sprite, number_pos_in_screen,5);
+    set.add_sprite(s_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -597,7 +590,7 @@ void View::draw_s(ge211::Sprite_set& set, Position cell_index){
 void View::draw_apostrophe(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(apos_sprite, number_pos_in_screen,5);
+    set.add_sprite(apos_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -608,7 +601,7 @@ void View::draw_apostrophe(ge211::Sprite_set& set, Position cell_index){
 void View::draw_f(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(f_sprite, number_pos_in_screen,5);
+    set.add_sprite(f_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -619,7 +612,7 @@ void View::draw_f(ge211::Sprite_set& set, Position cell_index){
 void View::draw_g(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(g_sprite, number_pos_in_screen,5);
+    set.add_sprite(g_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -630,7 +623,7 @@ void View::draw_g(ge211::Sprite_set& set, Position cell_index){
 void View::draw_a(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(a_sprite, number_pos_in_screen,5);
+    set.add_sprite(a_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);
@@ -641,7 +634,7 @@ void View::draw_a(ge211::Sprite_set& set, Position cell_index){
 void View::draw_m(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
 
-    set.add_sprite(m_sprite, number_pos_in_screen,5);
+    set.add_sprite(m_sprite, number_pos_in_screen,TEXT_Z);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
     number_builder.color(number_color);

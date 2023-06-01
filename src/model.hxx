@@ -42,8 +42,6 @@ public:
 
     Position get_selected_cell() const;
 
-
-
     void print_board() const;
 
     // process_numerical_input function will take an int
@@ -56,6 +54,8 @@ public:
     void attempt_clear_selected_cell();
 
     void reveal_answer();
+
+    std::pair<Board, Board> get_random_board();
 
 
 private:
