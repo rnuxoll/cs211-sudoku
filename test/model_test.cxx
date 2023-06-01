@@ -22,8 +22,11 @@ TEST_CASE("Mark Duplicates Row")
                                    "9_6_1_5_3_7_2_8_4_\n"
                                    "2_8_7_4_1_9_6_3_5_\n"
                                    "3_4_5_2_8_6_1_7_9_\n";
-    const std::pair<Board, Board>& board_pair = std::make_pair(Board(board_string, {BOARD_SIZE,BOARD_SIZE}),
-                                                               Board(solution_string,{BOARD_SIZE,BOARD_SIZE}));
+    const std::pair<Board, Board>& board_pair =
+            std::make_pair(Board(board_string,
+                                 {BOARD_SIZE,BOARD_SIZE}),
+                           Board(solution_string,
+                                 {BOARD_SIZE,BOARD_SIZE}));
     Model model = Model(board_pair);
     Board board = model.get_board();
     CHECK(board.get_cell(4, 5).is_inconsistent());
@@ -54,9 +57,13 @@ TEST_CASE("Mark Duplicates Column")
                                    "9_6_1_5_3_7_2_8_4_\n"
                                    "2_8_7_4_1_9_6_3_5_\n"
                                    "3_4_5_2_8_6_1_7_9_\n";
-    const std::pair<Board, Board>& board_pair = std::make_pair(Board(board_string, {BOARD_SIZE,BOARD_SIZE}),
-                                                               Board(solution_string,{BOARD_SIZE,BOARD_SIZE}));
-    Model model = Model(board_pair);    Board board = model.get_board();
+    const std::pair<Board, Board>& board_pair =
+            std::make_pair(Board(board_string,
+                                 {BOARD_SIZE,BOARD_SIZE}),
+                           Board(solution_string,
+                                 {BOARD_SIZE,BOARD_SIZE}));
+    Model model = Model(board_pair);
+    Board board = model.get_board();
     CHECK(board.get_cell(8, 2).is_inconsistent());
     CHECK(board.get_cell(8, 4).is_inconsistent());
 
@@ -86,8 +93,11 @@ TEST_CASE("Mark Duplicates Square")
                                    "9_6_1_5_3_7_2_8_4_\n"
                                    "2_8_7_4_1_9_6_3_5_\n"
                                    "3_4_5_2_8_6_1_7_9_\n";
-    const std::pair<Board, Board>& board_pair = std::make_pair(Board(board_string, {BOARD_SIZE,BOARD_SIZE}),
-                                                               Board(solution_string,{BOARD_SIZE,BOARD_SIZE}));
+    const std::pair<Board, Board>& board_pair =
+            std::make_pair(Board(board_string,
+                                 {BOARD_SIZE,BOARD_SIZE}),
+                           Board(solution_string,
+                                 {BOARD_SIZE,BOARD_SIZE}));
     Model model = Model(board_pair);
     Board board = model.get_board();
     CHECK(board.get_cell(6, 0).is_inconsistent());
@@ -118,8 +128,11 @@ TEST_CASE("Mark Duplicates 1")
                                    "9_6_1_5_3_7_2_8_4_\n"
                                    "2_8_7_4_1_9_6_3_5_\n"
                                    "3_4_5_2_8_6_1_7_9_\n";
-    const std::pair<Board, Board>& board_pair = std::make_pair(Board(board_string, {BOARD_SIZE,BOARD_SIZE}),
-                                                               Board(solution_string,{BOARD_SIZE,BOARD_SIZE}));
+    const std::pair<Board, Board>& board_pair =
+            std::make_pair(Board(board_string,
+                                 {BOARD_SIZE,BOARD_SIZE}),
+                           Board(solution_string,
+                                 {BOARD_SIZE,BOARD_SIZE}));
     Model model = Model(board_pair);
     Board board = model.get_board();
     CHECK(board.get_cell(2, 3).is_inconsistent());
@@ -149,9 +162,13 @@ TEST_CASE("Mark Duplicates 2")
                                    "9_6_1_5_3_7_2_8_4_\n"
                                    "2_8_7_4_1_9_6_3_5_\n"
                                    "3_4_5_2_8_6_1_7_9_\n";
-    const std::pair<Board, Board>& board_pair = std::make_pair(Board(board_string, {BOARD_SIZE,BOARD_SIZE}),
-                                                               Board(solution_string,{BOARD_SIZE,BOARD_SIZE}));
-    Model model = Model(board_pair);    Board board = model.get_board();
+    const std::pair<Board, Board>& board_pair =
+            std::make_pair(Board(board_string,
+                                 {BOARD_SIZE,BOARD_SIZE}),
+                           Board(solution_string,
+                                 {BOARD_SIZE,BOARD_SIZE}));
+    Model model = Model(board_pair);
+    Board board = model.get_board();
     CHECK(board.get_cell(0, 0).is_inconsistent());
     CHECK(board.get_cell(2, 0).is_inconsistent());
     CHECK(board.get_cell(2, 1).is_inconsistent());
@@ -180,8 +197,11 @@ TEST_CASE("Game over")
                                    "9_6_1_5_3_7_2_8_4_\n"
                                    "2_8_7_4_1_9_6_3_5_\n"
                                    "3_4_5_2_8_6_1_7_9_\n";
-    const std::pair<Board, Board>& board_pair = std::make_pair(Board(board_string, {BOARD_SIZE,BOARD_SIZE}),
-                                                               Board(solution_string,{BOARD_SIZE,BOARD_SIZE}));
+    const std::pair<Board, Board>& board_pair =
+            std::make_pair(Board(board_string,
+                                 {BOARD_SIZE,BOARD_SIZE}),
+                           Board(solution_string,
+                                 {BOARD_SIZE,BOARD_SIZE}));
     Model model = Model(board_pair);
     Board board = model.get_board();
     model.check_game_over();
@@ -209,8 +229,11 @@ TEST_CASE("Fixed values")
                                    "9_6_1_5_3_7_2_8_4_\n"
                                    "2_8_7_4_1_9_6_3_5_\n"
                                    "3_4_5_2_8_6_1_7_9_\n";
-    const std::pair<Board, Board>& board_pair = std::make_pair(Board(board_string, {BOARD_SIZE,BOARD_SIZE}),
-                                                               Board(solution_string,{BOARD_SIZE,BOARD_SIZE}));
+    const std::pair<Board, Board>& board_pair =
+            std::make_pair(Board(board_string,
+                                 {BOARD_SIZE,BOARD_SIZE}),
+                           Board(solution_string,
+                                 {BOARD_SIZE,BOARD_SIZE}));
     Model model = Model(board_pair);
     Board board = model.get_board();
     for (int row = 0; row < BOARD_SIZE; ++row) {
@@ -249,8 +272,11 @@ TEST_CASE("Enter values")
                                    "9_6_1_5_3_7_2_8_4_\n"
                                    "2_8_7_4_1_9_6_3_5_\n"
                                    "3_4_5_2_8_6_1_7_9_\n";
-    const std::pair<Board, Board>& board_pair = std::make_pair(Board(board_string, {BOARD_SIZE,BOARD_SIZE}),
-                                                               Board(solution_string,{BOARD_SIZE,BOARD_SIZE}));
+    const std::pair<Board, Board>& board_pair =
+            std::make_pair(Board(board_string,
+                                 {BOARD_SIZE,BOARD_SIZE}),
+                           Board(solution_string,
+                                 {BOARD_SIZE,BOARD_SIZE}));
     Model model = Model(board_pair);
     model.set_selected_cell({1,3});
     model.process_numerical_input(5);
@@ -323,8 +349,11 @@ TEST_CASE("Model move") {
                                    "9_6_1_5_3_7_2_8_4_\n"
                                    "2_8_7_4_1_9_6_3_5_\n"
                                    "3_4_5_2_8_6_1_7_9_\n";
-    const std::pair<Board, Board>& board_pair = std::make_pair(Board(board_string, {BOARD_SIZE,BOARD_SIZE}),
-                                                               Board(solution_string,{BOARD_SIZE,BOARD_SIZE}));
+    const std::pair<Board, Board>& board_pair =
+            std::make_pair(Board(board_string,
+                                 {BOARD_SIZE,BOARD_SIZE}),
+                           Board(solution_string,
+                                 {BOARD_SIZE,BOARD_SIZE}));
     Model model = Model(board_pair);
     model.set_selected_cell({1,3});
     model.move_select_down();
@@ -370,13 +399,17 @@ TEST_CASE("Clear cells and hints")
                                   "9_6_1_5_3_7_2_8_4_\n"
                                   "2_8_7_4_1_9_6_3_5_\n"
                                   "3_4_5_2_8_6_1_7_9_\n";
-    const std::pair<Board, Board>& board_pair = std::make_pair(Board(board_string, {BOARD_SIZE,BOARD_SIZE}),
-                                                               Board(solution_string,{BOARD_SIZE,BOARD_SIZE}));
+    const std::pair<Board, Board>& board_pair =
+            std::make_pair(Board(board_string,
+                                 {BOARD_SIZE,BOARD_SIZE}),
+                           Board(solution_string,
+                                 {BOARD_SIZE,BOARD_SIZE}));
     Model model = Model(board_pair);
     model.set_selected_cell({1, 2});
+    // Attempt to clear fixed_ cell
     model.attempt_clear_selected_cell();
     Board board = model.get_board();
-    CHECK(board.get_cell(1, 2).get_value() == 9); // Attempt to clear fixed_ cell
+    CHECK(board.get_cell(1, 2).get_value() == 9);
 
     model.set_selected_cell({1, 3}); // select cell not fixed_
     model.process_numerical_input(1); // enter value_ 1
