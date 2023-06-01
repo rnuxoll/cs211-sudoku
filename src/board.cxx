@@ -11,23 +11,6 @@ Board::Board(std::string board_string, Dimensions dims)
     std::stringstream ss(board_string);
     std::string line;
 
-    // std::cout << board_string;
-
-    // for (int i = 0; i < dims.width; i++){
-    //     for (int j = 0; j < dims.height; j++){
-    //         board[i][j] = Cell(1, ge211::Posn<int>(i, j));
-    //     }
-    // }
-    // int row = 0;
-    // while (std::getline(ss, line, '\n') && row < BOARD_SIZE) {
-    //     for (int col = 0; col < BOARD_SIZE; ++col) {
-    //         char c = line[col * 2];  // Because every other char is an underscore '_'
-    //         int value = (c == '_') ? 0 : c - '0';  // Convert char to int
-    //         board[row][col] = Cell(value, {row, col});
-    //     }
-    //     ++row;
-    // }
-
     int row = 0;
     while (std::getline(ss, line, '\n') && row < BOARD_SIZE) {
         for (int col = 0; col < BOARD_SIZE; ++col) {
@@ -77,28 +60,28 @@ const
     return return_set;
 }
 
-Position_set
-Board::find_contradicting_squares(Position cell_index) const
-{
-    Cell current_cell = get_cell(cell_index.x, cell_index.y);
-    int current_value = current_cell.get_value();
-    //get_duplicates()
-    std::array<Cell, BOARD_SIZE> row;
-    for (int i = 0; i < BOARD_SIZE; ++i) {
-        row[i] = get_cell(cell_index.x + i, cell_index.y);
-    }
-    std::set<int> set_of_duplicates = get_duplicates(row);
-    for (int i = 0; i < BOARD_SIZE; ++i) {
-        if (set_of_duplicates.find(board[cell_index.x + i][cell_index.y]
-                                               .get_value()) !=
-                                               set_of_duplicates.end()) {
-            //board[cell_index.x + i][cell_index.y].set_inconsistent();
-        }
-    }
-
-
-    return Position_set();
-}
+// Position_set
+// Board::find_contradicting_squares(Position cell_index) const
+// {
+//     Cell current_cell = get_cell(cell_index.x, cell_index.y);
+//     int current_value = current_cell.get_value();
+//     //get_duplicates()
+//     std::array<Cell, BOARD_SIZE> row;
+//     for (int i = 0; i < BOARD_SIZE; ++i) {
+//         row[i] = get_cell(cell_index.x + i, cell_index.y);
+//     }
+//     std::set<int> set_of_duplicates = get_duplicates(row);
+//     for (int i = 0; i < BOARD_SIZE; ++i) {
+//         if (set_of_duplicates.find(board[cell_index.x + i][cell_index.y]
+//                                                .get_value()) !=
+//                                                set_of_duplicates.end()) {
+//             //board[cell_index.x + i][cell_index.y].set_inconsistent();
+//         }
+//     }
+//
+//
+//     return Position_set();
+// }
 
 std::array<Cell, BOARD_SIZE>
 Board::get_row_cell_values(int row)
@@ -203,22 +186,6 @@ void Board::mark_duplicates_in_square(int square_index)
 
     std::set<int> duplicate_indices = get_duplicates(square_cells);
 
-    // if (square_index == 0){
-    //     std::cout << "Found that the cells in square_index " << square_index
-    //     << "have the following values: ";
-    //
-    //     for (int i = 0; i < 9; i++) {
-    //         std::cout << square_cells[i].get_value() << ' ';
-    //     }
-    //     std::cout << "\n";
-    //
-    //     std::cout << "Get duplicates told us that the duplicate indices are: ";
-    //     for (const int& value : duplicate_indices) {
-    //         std::cout << value << ' ';
-    //     }
-    //     std::cout << "\n";
-    // }
-
     int start_row = (square_index / 3) * 3;
     int start_col = (square_index % 3) * 3;
 
@@ -234,12 +201,8 @@ void Board::mark_duplicates_in_square(int square_index)
             Cell& cell_to_mark = get_cell_reference(start_col + c,
                                                    start_row + r);
 
-            Position cells_index = cell_to_mark.get_index();
-
             // if the index in 1d form is in the list of duplicate indices
             if (duplicate_indices.find(i) != duplicate_indices.end()){
-                // std::cout << "Marking cell: " << cells_index << "as "
-                                                                "inconsistent\n";
                 // this if statement is hitting on the correct cells
                 cell_to_mark.set_inconsistent(true, 's');
             }
@@ -248,8 +211,6 @@ void Board::mark_duplicates_in_square(int square_index)
             }
         }
     }
-
-
 
     // since grid indexes are defined as follows
     // 0 1 2
@@ -274,8 +235,6 @@ void Board::mark_duplicates(){
         // wrong because all of the squares are starting off with red dots
         mark_duplicates_in_square(i);
     }
-
-    // std::cout << "finished marking duplicates!\n";
 }
 
 Cell Board::get_cell(int col, int row) const{

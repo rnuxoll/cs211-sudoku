@@ -67,7 +67,7 @@ public:
     // returns an empty position_set if there are no contradicting squares
     // Position: cell_index the index of the cell whose contradictions
     // the function is supposed to find
-    Position_set find_contradicting_squares(Position cell_index) const;
+    // Position_set find_contradicting_squares(Position cell_index) const;
 
     // accessor methods
     // int get_cell_value(int row, int col) const;
