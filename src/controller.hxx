@@ -19,9 +19,9 @@ private:
     View view_;
 
     ge211::Posn<int> mouse_posn;
-    void on_mouse_move(ge211::Posn<int>);
+    void on_mouse_move(ge211::Posn<int>) override;
 
-    void on_mouse_up(ge211::events::Mouse_button, ge211::Posn<int>);
+    void on_mouse_up(ge211::events::Mouse_button, ge211::Posn<int>) override;
 
     void on_key(ge211::Key) override;
 
