@@ -56,22 +56,8 @@ public:
 
     Rectangle all_positions() const;
 
-    // find which squares have redundant values and return them as a
-    // Position_set
-    // Position_set find_contradictions() const;
-
-
-    // helper function for find_contradictions()
-    // finds all the cells that contradict the current value and returns
-    // a Position_set with the indexes of the squares that do
-    // returns an empty position_set if there are no contradicting squares
-    // Position: cell_index the index of the cell whose contradictions
-    // the function is supposed to find
-    // Position_set find_contradicting_squares(Position cell_index) const;
 
     // accessor methods
-    // int get_cell_value(int row, int col) const;
-
     // returns a live reference to a Cell in the board
     // modifying this reference modifies the cell!
 
@@ -98,15 +84,7 @@ public:
     // std::array<std::array<Cell, 3>, 3> get_square_cell_values(int square_index);
     std::array<Cell, BOARD_SIZE> get_square_cell_values(int square_index);
 
-
-
-    // std::map<int, bool> get_candidates(int row, int col) const;
-
     // mutator methods
-    // void set_cell_value(int row, int col, int value);
-    // void set_candidate(int row, int col, bool value);
-
-
 
     void mark_duplicates_in_row(int row);
     void mark_duplicates_in_col(int col);
@@ -115,10 +93,6 @@ public:
 
 
     void mark_duplicates();
-
-
-    // TODO
-    // std::array<Cell, BOARD_SIZE> process
 
 };
 
