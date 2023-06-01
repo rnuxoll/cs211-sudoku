@@ -59,7 +59,7 @@ private:
     ge211::Text_sprite eight_sprite;
     ge211::Text_sprite nine_sprite;
 
-    // hint number sprites
+    // hint_ number sprites
     ge211::Text_sprite one_hint_sprite;
     ge211::Text_sprite two_hint_sprite;
     ge211::Text_sprite three_hint_sprite;

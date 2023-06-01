@@ -17,14 +17,14 @@ private:
 
     using Position = ge211::Posn<int>;
 
-    int value;
-    bool fixed;
-    // true if this square's value is redundant with another square's value
-    bool row_inconsistent;
-    bool col_inconsistent;
-    bool square_inconsistent;
-    bool hint;
-    Position index;
+    int value_;
+    bool fixed_;
+    // true if this square's value_ is redundant with another square's value_
+    bool row_inconsistent_;
+    bool col_inconsistent_;
+    bool square_inconsistent_;
+    bool hint_;
+    Position index_;
 
     /*
     // candidate set will be a map with keys that are the numbers 1-9 and
@@ -36,16 +36,17 @@ private:
 
 
 public:
-    Cell() : value(0), fixed(false), row_inconsistent(false),
-    col_inconsistent(false), square_inconsistent(false), hint(false),
-             index{0, 0} {}
+    Cell() : value_(0), fixed_(false),
+            row_inconsistent_(false),
+            col_inconsistent_(false),
+            square_inconsistent_(false),
+            hint_(false), index_{0, 0} {}
 
     // Constructor
     // initialize each square as having no candidates entered
     Cell(int value, Position ind);
     int get_value() const;
     void set_value(int value);
-    void set_fixed(bool value);
     // set inconsistent sets row inconsistent if code is r
     // set inconsistent sets col inconsistent if code is c
     // set inconsistent sets square inconsistent if code is s

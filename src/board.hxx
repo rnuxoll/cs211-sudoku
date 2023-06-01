@@ -70,7 +70,7 @@ public:
 
     std::array<Cell, BOARD_SIZE> get_col_cell_values(int col);
 
-    // maybe we can have it return index values instead of numbers
+    // maybe we can have it return index_ values instead of numbers
     // top-left square is 0, top-center is 1, top-right is 2, center-left is
     // 3, etc.
 

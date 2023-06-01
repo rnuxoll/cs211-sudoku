@@ -210,7 +210,7 @@ TEST_CASE("Game over")
     CHECK(model.is_game_over());
 }
 
-// Test 7: Check that the fixed values load properly
+// Test 7: Check that the fixed_ values load properly
 TEST_CASE("Fixed values")
 {
     std::string board_string ="5_3_0_0_7_0_0_0_0_\n"
@@ -248,7 +248,7 @@ TEST_CASE("Fixed values")
 
 // Test 8: Check that the model can correctly process input, i.e test
 // set_selected_cell and process_numerical_input, with corners and out of
-// bounds and trying to modify fixed cell
+// bounds and trying to modify fixed_ cell
 TEST_CASE("Enter values")
 {
     std::string board_string = "0_3_0_0_7_0_0_0_0_\n"
@@ -313,7 +313,7 @@ TEST_CASE("Enter values")
         }
     }
 
-    // Attempting to change a fixed cell does nothing
+    // Attempting to change a fixed_ cell does nothing
     model.set_selected_cell({0,1});
     model.process_numerical_input(8);
     Board board_6 = model.get_board();
@@ -390,18 +390,18 @@ TEST_CASE("Clear cells and hints")
     model.set_selected_cell({1, 2});
     model.attempt_clear_selected_cell();
     Board board = model.get_board();
-    CHECK(board.get_cell(1, 2).get_value() == 9); // Attempt to clear fixed cell
+    CHECK(board.get_cell(1, 2).get_value() == 9); // Attempt to clear fixed_ cell
 
-    model.set_selected_cell({1, 3}); // select cell not fixed
-    model.process_numerical_input(1); // enter value 1
+    model.set_selected_cell({1, 3}); // select cell not fixed_
+    model.process_numerical_input(1); // enter value_ 1
     model.set_selected_cell({1, 4}); // move selected cell
     model.set_selected_cell({1, 3}); // move back
     model.attempt_clear_selected_cell(); // clear
     Board board1 = model.get_board();
-    CHECK(board1.get_cell(1, 3).get_value() == 0); // check that value is 0
+    CHECK(board1.get_cell(1, 3).get_value() == 0); // check that value_ is 0
 
-    // Try to clear hint cell, also a test of reveal_answer()
-    model.set_selected_cell({1, 4}); // select cell not fixed
+    // Try to clear hint_ cell, also a test of reveal_answer()
+    model.set_selected_cell({1, 4}); // select cell not fixed_
     model.reveal_answer();
     Board board2 = model.get_board();
     CHECK(board2.get_cell(1,4).is_hint());

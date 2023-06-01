@@ -8,26 +8,23 @@
 using Position = ge211::Posn<int>;
 
 Cell::Cell(int value, Position ind)
-    : value(value),
-      fixed(value != 0), // 0s indicate blank squares
-    row_inconsistent(false),
-      hint(false),
-      index(ind)
+    : value_(value),
+      fixed_(value != 0), // 0s indicate blank squares
+    row_inconsistent_(false),
+      hint_(false),
+      index_(ind)
 {
 }
 
 void Cell::set_value(int newValue) {
     if(newValue >= 0 && newValue <= 9) {
-        value = newValue;
+        value_ = newValue;
     } else {
-        throw std::out_of_range("Invalid value for cell. Value must be"
+        throw std::out_of_range("Invalid value_ for cell. Value must be"
                                 " between 0 and 9.");
     }
 }
 
-void Cell::set_fixed(bool isFixed) {
-    fixed = isFixed;
-}
 
 /*
 void Cell::set_candidate(int candidate, bool isCandidate) {
@@ -42,32 +39,32 @@ void Cell::set_candidate(int candidate, bool isCandidate) {
 int
 Cell::get_value() const
 {
-    return value;
-};
+    return value_;
+}
 
 
 bool
 Cell::is_fixed() const
 {
-    return fixed;
+    return fixed_;
 }
 
 bool
 Cell::is_inconsistent() const
 {
-    return row_inconsistent or col_inconsistent or square_inconsistent;
+    return row_inconsistent_ or col_inconsistent_ or square_inconsistent_;
 }
 
 bool
 Cell::is_hint() const
 {
-    return hint;
+    return hint_;
 }
 
 void
 Cell::set_hint(bool value)
 {
-    hint = value;
+    hint_ = value;
 }
 
 
@@ -76,13 +73,13 @@ Cell::set_inconsistent(bool value, char code)
 {
     switch(code){
     case 'r':
-        row_inconsistent = value;
+        row_inconsistent_ = value;
         break;
     case 'c':
-        col_inconsistent = value;
+        col_inconsistent_ = value;
         break;
     case 's':
-        square_inconsistent = value;
+        square_inconsistent_ = value;
         break;
     }
 }
@@ -90,6 +87,6 @@ Cell::set_inconsistent(bool value, char code)
 Position
 Cell::get_index()
 {
-    return index;
+    return index_;
 }
 

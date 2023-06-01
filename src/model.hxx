@@ -54,11 +54,11 @@ public:
 
     // process_numerical_input function will take an int
     // and will update the model only if that square is not a
-    // fixed or not a hint
+    // fixed_ or not a hint_
     void process_numerical_input(int n);
 
-    // attempt to clear the value from the selected cell
-    // passes only if the cell is not a hint and not a given
+    // attempt to clear the value_ from the selected cell
+    // passes only if the cell is not a hint_ and not a given
     void attempt_clear_selected_cell();
 
     void reveal_answer();

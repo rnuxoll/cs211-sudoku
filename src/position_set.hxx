@@ -41,7 +41,7 @@ public:
     Position_set() noexcept = default;
 
     /// Returns the set of all possible positions. Because `coord_limit`
-    /// is fixed and finite, this set isn't infinite---It has
+    /// is fixed_ and finite, this set isn't infinite---It has
     /// `coord_limit * coord_limit` elements.
     static Position_set universe();
 

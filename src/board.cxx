@@ -42,17 +42,13 @@ const
                 // without this clause, everything would be a duplicate
                 continue;
             } else {
-                // if the duplicate value is 0, then it's a blank square and
+                // if the duplicate value_ is 0, then it's a blank square and
                 // not really a duplicate
                 if (values[i].get_value() != 0 and values[i].get_value() ==
                 values[j].get_value
                 ()) {
-
-                    // modification: return indexes of duplicates
-                    // return_set.insert(values[i].get_value());
                     return_set.insert(i);
                     return_set.insert(j);
-                    //values[i].set_inconsistent();
                 }
             }
         }
@@ -65,7 +61,7 @@ std::array<Cell, BOARD_SIZE>
 Board::get_row_cell_values(int row)
 {
     if (row < 0 || row >= 9){
-        throw std::out_of_range("Row index must be between 0 and 8");
+        throw std::out_of_range("Row index_ must be between 0 and 8");
     }
 
     std::array<Cell, 9> row_values;
@@ -80,7 +76,7 @@ std::array<Cell, BOARD_SIZE>
 Board::get_col_cell_values(int col)
 {
     if (col < 0 || col >= BOARD_SIZE){
-        throw std::out_of_range("Row index must be between 0 and 8");
+        throw std::out_of_range("Row index_ must be between 0 and 8");
     }
 
     std::array<Cell, BOARD_SIZE> col_values;
@@ -94,7 +90,7 @@ Board::get_col_cell_values(int col)
 std::array<Cell, BOARD_SIZE>
 Board::get_square_cell_values(int square_index) {
     if (square_index < 0 || square_index >= 9) {
-        throw std::out_of_range("Grid index must be between 0 and 8");
+        throw std::out_of_range("Grid index_ must be between 0 and 8");
     }
 
     std::array<Cell, 9> square_values;
@@ -126,7 +122,7 @@ Board::mark_duplicates_in_row(int row){
     for (int col = 0; col < BOARD_SIZE; col++){
         Cell& cell_to_mark = get_cell_reference(col, row);
         if (duplicate_indices.find(col) != duplicate_indices.end()){
-            // if this cell's index is in the set of duplicate indices
+            // if this cell's index_ is in the set of duplicate indices
             // it is marking the positions in
             cell_to_mark.set_inconsistent(true, 'r');
         }
@@ -172,14 +168,14 @@ void Board::mark_duplicates_in_square(int square_index)
     // to the corresponding board position.
     for (int r = 0; r < 3; r++) {
         for (int c = 0; c < 3; c++) {
-            int i = c + 3 * r; // the corresponding index in 1d form
+            int i = c + 3 * r; // the corresponding index_ in 1d form
             // now check if i is in the list of duplicate indices
             // if i is indeed in the list of duplicate indices, then
             // mark that cell in the board as inconsistent
             Cell& cell_to_mark = get_cell_reference(start_col + c,
                                                    start_row + r);
 
-            // if the index in 1d form is in the list of duplicate indices
+            // if the index_ in 1d form is in the list of duplicate indices
             if (duplicate_indices.find(i) != duplicate_indices.end()){
                 // this if statement is hitting on the correct cells
                 cell_to_mark.set_inconsistent(true, 's');
@@ -201,7 +197,7 @@ void Board::mark_duplicates_in_square(int square_index)
 
 
 // calling this function has the Board go through every row, column, and then
-// every square and then update all of its constituent Cells to be row_inconsistent
+// every square and then update all of its constituent Cells to be row_inconsistent_
 // if they are duplicates
 void Board::mark_duplicates(){
     // we will iterate through every row, column, and square in the same loop

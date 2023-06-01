@@ -33,7 +33,7 @@ Model::is_in_bounds(Position cell_index) const {
 }
 
 
-// sets the selected cell only if the given cell index is in bounds
+// sets the selected cell only if the given cell index_ is in bounds
 void
 Model::set_selected_cell(Position cell_index){
     if (is_in_bounds(cell_index)){
@@ -113,14 +113,14 @@ void Model::print_board() const{
 void Model::process_numerical_input(int n){
     Cell& curr_cell = board_.get_cell_reference(selected_cell_index_.x,
                                                selected_cell_index_.y);
-    // if the current cell is fixed or a hint, then we can't write over this
+    // if the current cell is fixed_ or a hint_, then we can't write over this
     // cell
     if (curr_cell.is_fixed() or curr_cell.is_hint()){
         return;
     }
-    // otherwise, set the value of this cell to the user input
+    // otherwise, set the value_ of this cell to the user input
     else{
-        // std::cout << "Setting value of " << curr_cell.get_index() << "to "
+        // std::cout << "Setting value_ of " << curr_cell.get_index() << "to "
         // << n << "\n";
         curr_cell.set_value(n);
     }
@@ -230,10 +230,10 @@ std::pair<Board, Board> Model::get_random_board(){
         generator.seed(std::random_device()()); // to get different outcomes each time you run the code
         std::uniform_int_distribution<size_t> distribution(0, board_array_size - 1); // define the distribution
 
-        // generate a random index
+        // generate a random index_
         size_t randomIndex = distribution(generator);
 
-        // return pair of strings at the randomly selected index
+        // return pair of strings at the randomly selected index_
         Board chosen_board = Board(board_array[randomIndex], {BOARD_SIZE, BOARD_SIZE});
         Board chosen_board_solution = Board(solution_array[randomIndex],
                                             {BOARD_SIZE, BOARD_SIZE});
@@ -277,10 +277,10 @@ std::pair<Board, Board> Model::get_random_beginner_game(){
     generator.seed(std::random_device()()); // to get different outcomes each time you run the code
     std::uniform_int_distribution<size_t> distribution(0, board_array_size - 1); // define the distribution
 
-    // generate a random index
+    // generate a random index_
     size_t randomIndex = distribution(generator);
 
-    // return pair of strings at the randomly selected index
+    // return pair of strings at the randomly selected index_
     Board chosen_board = Board(board_array[randomIndex], {BOARD_SIZE, BOARD_SIZE});
     Board chosen_board_solution = Board(solution_array[randomIndex],
                                         {BOARD_SIZE, BOARD_SIZE});
@@ -325,10 +325,10 @@ std::pair<Board, Board> Model::get_random_normal_game(){
     generator.seed(std::random_device()()); // to get different outcomes each time you run the code
     std::uniform_int_distribution<size_t> distribution(0, board_array_size - 1); // define the distribution
 
-    // generate a random index
+    // generate a random index_
     size_t randomIndex = distribution(generator);
 
-    // return pair of strings at the randomly selected index
+    // return pair of strings at the randomly selected index_
     Board chosen_board = Board(board_array[randomIndex], {BOARD_SIZE, BOARD_SIZE});
     Board chosen_board_solution = Board(solution_array[randomIndex],
                                         {BOARD_SIZE, BOARD_SIZE});
@@ -373,10 +373,10 @@ std::pair<Board, Board> Model::get_random_expert_game(){
     generator.seed(std::random_device()()); // to get different outcomes each time you run the code
     std::uniform_int_distribution<size_t> distribution(0, board_array_size - 1); // define the distribution
 
-    // generate a random index
+    // generate a random index_
     size_t randomIndex = distribution(generator);
 
-    // return pair of strings at the randomly selected index
+    // return pair of strings at the randomly selected index_
     Board chosen_board = Board(board_array[randomIndex], {BOARD_SIZE, BOARD_SIZE});
     Board chosen_board_solution = Board(solution_array[randomIndex],
                                         {BOARD_SIZE, BOARD_SIZE});
@@ -388,7 +388,7 @@ std::pair<Board, Board> Model::get_random_expert_game(){
 
 void Model::start_new_game(char difficulty)
 {
-    // this is just done because C++ insists we initialize it with a value
+    // this is just done because C++ insists we initialize it with a value_
     std::pair<Board, Board> board_solution = get_random_normal_game();
     // as the current one and returns false
 
