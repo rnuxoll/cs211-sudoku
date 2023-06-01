@@ -15,6 +15,7 @@ static Color const reveal_square_color {0,0,255};
 
 static Color const gridline_color {0, 0, 0};
 static Color const red_dot_color{205, 92,92};
+static Color const congrats_text_color{255,255,255};
 
 View::View(Model const& model)
         : model_(model),
@@ -50,7 +51,7 @@ View::draw(ge211::Sprite_set& set)
 ge211::Dims<int>
 View::initial_window_dimensions() const
 {
-    return {grid_size*9, grid_size*9};
+    return {grid_size*BOARD_SIZE, grid_size*BOARD_SIZE};
 }
 
 // given a position of a square in board coordinates, convert it to
@@ -116,42 +117,121 @@ void View::draw_board(ge211::Sprite_set& set){
 
 void View::draw_congratulations(ge211::Sprite_set& set)
 {
-    for (int r = 0; r < 9; r++){
-        for (int c = 0; c < 9; c++){
-            Cell blank_cell = Cell(0, {c, r});
-            draw_cell(set, blank_cell, false);
-        }
-    }
+    draw_you_win(set, {0,1});
+    draw_for_new_game(set, {0, 2});
+    draw_press(set,{0,3});
+    draw_difficulty_levels(set, {0,4});
+
+    // for (int r = 0; r < 9; r++){
+    //     for (int c = 0; c < 9; c++){
+    //         Cell blank_cell = Cell(0, {c, r});
+    //         draw_cell(set, blank_cell, false);
+    //     }
+    // }
+
+
+
     // draw y in 3, 2
-    draw_y(set, {3,2});
-    draw_o(set, {4, 2});
-    draw_u(set, {5,2});
-    draw_w(set,{3,3});
-    draw_i(set,{4,3});
-    draw_n(set,{5,3});
+    // draw_y(set, {3,2});
+    // draw_o(set, {4, 2});
+    // draw_u(set, {5,2});
+    // draw_w(set,{3,3});
+    // draw_i(set,{4,3});
+    // draw_n(set,{5,3});
+    //
+    // draw_p(set,{1,5});
+    // draw_r(set, {2,5});
+    // draw_e(set, {3,5});
+    // draw_s(set, {4,5});
+    // draw_s(set,{5,5});
+    //
+    // // draw_apostrophe(set,{6,5});
+    // draw_n(set,{7,5});
+    // //draw_apostrophe(set,{8,5});
+    //
+    // draw_f(set,{1,6});
+    // draw_o(set,{2,6});
+    // draw_r(set, {3,6});
+    //
+    // draw_n(set,{5,6});
+    // draw_e(set,{6,6});
+    // draw_w(set,{7,6});
+    //
+    // draw_g(set,{2,7});
+    // draw_a(set, {3,7});
+    // draw_m(set,{4,7});
+    // draw_e(set,{5,7});
+}
 
-    draw_p(set,{1,5});
-    draw_r(set, {2,5});
-    draw_e(set, {3,5});
-    draw_s(set, {4,5});
-    draw_s(set,{5,5});
 
-    // draw_apostrophe(set,{6,5});
-    draw_n(set,{7,5});
-    //draw_apostrophe(set,{8,5});
+void View::draw_you_win(ge211::Sprite_set& set, View::Position start_cell_index)
+{
+    Position number_pos_in_screen = cell_index_to_number_pos(start_cell_index);
+    set.add_sprite(you_win_sprite, number_pos_in_screen,TEXT_Z);
 
-    draw_f(set,{1,6});
-    draw_o(set,{2,6});
-    draw_r(set, {3,6});
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(congrats_text_color);
+    number_builder.message("You win");
+    you_win_sprite.reconfigure(number_builder);
+}
 
-    draw_n(set,{5,6});
-    draw_e(set,{6,6});
-    draw_w(set,{7,6});
 
-    draw_g(set,{2,7});
-    draw_a(set, {3,7});
-    draw_m(set,{4,7});
-    draw_e(set,{5,7});
+void View::draw_for_new_game(
+        ge211::Sprite_set& set,
+        Position start_cell_index)
+{
+    Position number_pos_in_screen = cell_index_to_number_pos(start_cell_index);
+    set.add_sprite(for_new_game_sprite, number_pos_in_screen,TEXT_Z);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(congrats_text_color);
+    number_builder.message("For new game,");
+    for_new_game_sprite.reconfigure(number_builder);
+}
+
+void View::draw_press(ge211::Sprite_set& set, Position start_cell_index){
+    Position number_pos_in_screen = cell_index_to_number_pos(start_cell_index);
+    set.add_sprite(press_sprite, number_pos_in_screen,TEXT_Z);
+
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(congrats_text_color);
+    number_builder.message("press: ");
+    press_sprite.reconfigure(number_builder);
+}
+
+
+void View::draw_difficulty_levels(
+        ge211::Sprite_set& set,
+        View::Position start_cell_index)
+{
+    Position beginner_pos_in_screen = cell_index_to_number_pos
+            (start_cell_index);
+
+    Position normal_pos_in_screen = cell_index_to_number_pos(start_cell_index
+            .down_by(1));
+
+    Position expert_pos_in_screen = cell_index_to_number_pos(start_cell_index
+            .down_by(2));
+
+    set.add_sprite(b_beginner_sprite, beginner_pos_in_screen,TEXT_Z);
+    set.add_sprite(n_normal_sprite, normal_pos_in_screen, TEXT_Z);
+    set.add_sprite(e_expert_sprite, expert_pos_in_screen, TEXT_Z);
+
+    ge211::Text_sprite::Builder beginner_builder(sans72_);
+    beginner_builder.color(congrats_text_color);
+    beginner_builder.message("B-Beginner");
+
+    ge211::Text_sprite::Builder normal_builder(sans72_);
+    normal_builder.color(congrats_text_color);
+    normal_builder.message("N-Normal");
+
+    ge211::Text_sprite::Builder expert_builder(sans72_);
+    expert_builder.color(congrats_text_color);
+    expert_builder.message("E-Expert");
+
+    b_beginner_sprite.reconfigure(beginner_builder);
+    n_normal_sprite.reconfigure(normal_builder);
+    e_expert_sprite.reconfigure(expert_builder);
 }
 
 

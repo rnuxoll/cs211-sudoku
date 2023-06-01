@@ -16,7 +16,8 @@ using str = std::string;
 Model::Model(const std::pair<Board, Board>& board_solution)
     : board_(board_solution.first),
     solution_(board_solution.second),
-    selected_cell_index_(4, 4)
+    selected_cell_index_(4, 4),
+    game_over_(false)
 {
 }
 

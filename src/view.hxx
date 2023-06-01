@@ -71,6 +71,7 @@ private:
     ge211::Text_sprite nine_hint_sprite;
 
     ge211::Font sans72_{"sans.ttf", 72};
+    // ge211::Font sans36_{"sans.ttf", 36};
 
     ge211::Text_sprite y_sprite;
     ge211::Text_sprite o_sprite;
@@ -88,7 +89,12 @@ private:
     ge211::Text_sprite a_sprite;
     ge211::Text_sprite m_sprite;
 
-
+    ge211::Text_sprite you_win_sprite;
+    ge211::Text_sprite for_new_game_sprite;
+    ge211::Text_sprite press_sprite;
+    ge211::Text_sprite b_beginner_sprite;
+    ge211::Text_sprite n_normal_sprite;
+    ge211::Text_sprite e_expert_sprite;
 
 
 
@@ -97,17 +103,23 @@ private:
 
     void draw_congratulations(ge211::Sprite_set& set);
 
+    void draw_you_win(ge211::Sprite_set& set, Position start_cell_index);
+
+    void draw_for_new_game(ge211::Sprite_set& set,
+                           Position start_cell_index);
+
+    void draw_press(ge211::Sprite_set& set, Position start_cell_index);
+
+    void draw_difficulty_levels(ge211::Sprite_set& set, Position
+    start_cell_index);
+
+
+
     // helper function for draw board which draws the numbers on the board
     // void draw_numbers(ge211::Sprite_set& set);
 
     // helper function for draw board which draws an individual cell
     void draw_cell(ge211::Sprite_set& set, Cell cell, bool selected);
-
-    // draw a white square
-    void draw_value_square(ge211::Sprite_set& set, Position cell_index);
-
-    // draw a shaded square
-    void draw_given_square(ge211::Sprite_set set, Position cell_index);
 
     // other helper functions for draw board
     void draw_one(ge211::Sprite_set& set, Position cell_index, bool is_hint);
