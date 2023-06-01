@@ -9,9 +9,8 @@ using Position = ge211::Posn<int>;
 Controller::Controller(std::string board_string, std::string solution_string)
         : model_(board_string, solution_string),
           view_(model_),
-          mouse_posn{0, 0},
-{
-}
+          mouse_posn{0, 0}
+{ }
 
 ge211::Dims<int>
 Controller::initial_window_dimensions() const
