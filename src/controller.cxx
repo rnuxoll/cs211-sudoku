@@ -9,7 +9,7 @@ using Position = ge211::Posn<int>;
 Controller::Controller(std::string board_string, std::string solution_string)
         : model_(board_string, solution_string),
           view_(model_),
-          mouse_posn{0, 0}
+          mouse_posn{0, 0},
 {
 }
 
@@ -42,6 +42,14 @@ Controller::on_key(Key key)
 {
     if (key == Key::code('q')) {
         quit();
+    }
+    else if (key == Key::code('n')){
+        // todo start new game
+        // I think the controller will have to have a set or array of new board
+        // strings, loaded in as one of its parameters and then it will select
+        // one at random when this clause hits
+        // and then it will p
+        return;
     }
     else if (key == Key::up() or key == Key::code('w')){
         // move up

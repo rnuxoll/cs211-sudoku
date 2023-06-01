@@ -72,7 +72,7 @@ View::screen_to_board(ge211::Posn<int> screen) const
 
 Position
 View::cell_index_to_number_pos(Position index) const{
-    Position screen_pos = {grid_size * index.x + 15, grid_size * index.y - 20};
+    Position screen_pos = {grid_size * index.x + 10, grid_size * index.y - 20};
     return screen_pos;
 }
 
@@ -129,6 +129,28 @@ void View::draw_congratulations(ge211::Sprite_set& set)
     draw_i(set,{4,3});
     draw_n(set,{5,3});
 
+    draw_p(set,{1,5});
+    draw_r(set, {2,5});
+    draw_e(set, {3,5});
+    draw_s(set, {4,5});
+    draw_s(set,{5,5});
+
+    // draw_apostrophe(set,{6,5});
+    draw_n(set,{7,5});
+    //draw_apostrophe(set,{8,5});
+
+    draw_f(set,{1,6});
+    draw_o(set,{2,6});
+    draw_r(set, {3,6});
+
+    draw_n(set,{5,6});
+    draw_e(set,{6,6});
+    draw_w(set,{7,6});
+
+    draw_g(set,{2,7});
+    draw_a(set, {3,7});
+    draw_m(set,{4,7});
+    draw_e(set,{5,7});
 }
 
 
@@ -341,6 +363,7 @@ void View::draw_u(ge211::Sprite_set& set, Position cell_index){
 
 void View::draw_w(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+    number_pos_in_screen = number_pos_in_screen.right_by(-6);
 
     set.add_sprite(w_sprite, number_pos_in_screen,5);
 
@@ -352,6 +375,7 @@ void View::draw_w(ge211::Sprite_set& set, Position cell_index){
 
 void View::draw_i(ge211::Sprite_set& set, Position cell_index){
     Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+    number_pos_in_screen = number_pos_in_screen.right_by(10);
 
     set.add_sprite(i_sprite, number_pos_in_screen,5);
 
