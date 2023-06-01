@@ -12,16 +12,12 @@
 using Position = ge211::Posn<int>;
 using str = std::string;
 
-Model::Model(str board_string, str solution_string)
-    : board_(board_string, {BOARD_SIZE, BOARD_SIZE}),
-      solution_(solution_string, {BOARD_SIZE, BOARD_SIZE}),
-      selected_cell_index_(4, 4)
+
+Model::Model(const std::pair<Board, Board>& board_solution)
+    : board_(board_solution.first),
+    solution_(board_solution.second),
+    selected_cell_index_(4, 4)
 {
-    // std::cout << "Model constructor\n";
-    board_.mark_duplicates();
-
-
-
 }
 
 bool

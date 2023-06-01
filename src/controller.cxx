@@ -7,7 +7,7 @@ using Position = ge211::Posn<int>;
 
 
 Controller::Controller(std::string board_string, std::string solution_string)
-        : model_(board_string, solution_string),
+        : model_(Model::get_random_board()),
           view_(model_),
           mouse_posn{0, 0}
 { }

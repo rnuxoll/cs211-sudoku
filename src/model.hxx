@@ -14,9 +14,9 @@ public:
 
     using Rectangle = Board::Rectangle;
 
-    // Model();
+    Model(): Model(get_random_board()) {};
 
-    Model(std::string board_string, std::string solution_string);
+    Model(const std::pair<Board, Board>& board_solution);
 
     Rectangle all_positions() const;
 
@@ -55,7 +55,7 @@ public:
 
     void reveal_answer();
 
-    std::pair<Board, Board> get_random_board();
+    static std::pair<Board, Board> get_random_board();
 
 
 private:
