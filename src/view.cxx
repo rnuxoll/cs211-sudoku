@@ -168,8 +168,7 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     }
     else if (cell.is_fixed()){
         set.add_sprite(shaded_square_sprite, corner_in_screen);
-    }
-    else {
+    } else {
         set.add_sprite(white_square_sprite, corner_in_screen);
     }
     // draw contradiction dot if appropriate
@@ -192,7 +191,8 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     // draw number inside
     switch (cell.get_value()){
     case 1:
-        draw_one(set, cell_index, false);
+        draw_one(set, cell_index, cell.is_hint());
+
         break;
     case 2:
         draw_two(set, cell_index, false);
@@ -228,9 +228,18 @@ void View::draw_one(ge211::Sprite_set& set, Position cell_index, bool is_hint){
     set.add_sprite(one_sprite, number_pos_in_screen,5);
 
     ge211::Text_sprite::Builder number_builder(sans72_);
-    number_builder.color(number_color);
+    if (is_hint) {
+        number_builder.color(reveal_square_color);
+    } else {
+        number_builder.color(number_color);
+    }
     number_builder.message("1");
     one_sprite.reconfigure(number_builder);
+    /*if (is_hint) {
+        number_builder.color(reveal_square_color);
+        one_sprite.reconfigure(number_builder);
+
+    }*/
 }
 
 void View::draw_two(ge211::Sprite_set& set, Position cell_index, bool is_hint){

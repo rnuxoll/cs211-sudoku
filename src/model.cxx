@@ -137,10 +137,6 @@ Model::reveal_answer(){
         curr_cell.set_value(soln_cell.get_value());
     }
 
-   /*if (curr_cell.is_hint()) {
-    } else {
-        return;
-    }*/
 }
 
 
