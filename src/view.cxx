@@ -26,7 +26,11 @@ View::View(Model const& model)
           horizontal_grid_line_sprite({grid_size, grid_size / 30},
                                       gridline_color),
           vertical_grid_line_sprite({grid_size / 30, grid_size},
-                                    gridline_color)
+                                    gridline_color),
+          thick_horizontal_grid_line_sprite({grid_size, grid_size / 15},
+                                            gridline_color),
+          thick_vertical_grid_line_sprite({grid_size / 15, grid_size},
+                                          gridline_color)
 
 {
 
@@ -175,14 +179,26 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     }
 
 
-    // draw grid lines
+    // draw thick grid lines
     Position lower_hor_line_pos = cell_index.down_by(1);
     Position lower_ver_line_pos = cell_index.right_by(1);
+
+    if (((cell_index.x + 1) % 3 == 0) && (cell_index.x !=0)) {
+
+        set.add_sprite(thick_vertical_grid_line_sprite, board_to_screen
+        (lower_ver_line_pos), 1);
+    }
+
+    if (((cell_index.y + 1 ) % 3 == 0) && (cell_index.y !=0)) {
+        set.add_sprite(thick_horizontal_grid_line_sprite,
+                       board_to_screen(lower_hor_line_pos), 1);
+    }
+
+    // Draw normal thickness grid lines
     set.add_sprite(horizontal_grid_line_sprite,
                    board_to_screen(lower_hor_line_pos), 1);
     set.add_sprite(vertical_grid_line_sprite,
                    board_to_screen(lower_ver_line_pos), 1);
-
 
     // draw number inside
     switch (cell.get_value()){

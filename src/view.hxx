@@ -46,7 +46,8 @@ private:
     // grid line sprites
     ge211::Rectangle_sprite const horizontal_grid_line_sprite;
     ge211::Rectangle_sprite const vertical_grid_line_sprite;
-
+    ge211::Rectangle_sprite const thick_horizontal_grid_line_sprite;
+    ge211::Rectangle_sprite const thick_vertical_grid_line_sprite;
     // number sprites
     ge211::Text_sprite one_sprite;
     ge211::Text_sprite two_sprite;
