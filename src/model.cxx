@@ -196,9 +196,31 @@ std::pair<Board, Board> Model::get_random_board(){
             "2_8_7_4_1_9_6_3_5_\n"
             "3_4_5_2_8_6_1_7_9_\n";
 
+        str board_2 =
+                "8_2_7_0_0_0_0_6_1_\n"
+                "0_1_5_9_0_7_0_0_0_\n"
+                "0_0_0_0_6_0_0_8_5_\n"
+                "4_0_8_3_1_0_0_5_0_\n"
+                "1_0_0_7_4_0_0_0_2_\n"
+                "2_0_9_0_0_0_1_0_7_\n"
+                "0_4_0_0_9_6_3_0_0_\n"
+                "0_6_1_0_2_0_5_0_0_\n"
+                "9_8_0_0_0_4_2_0_6_\n";
+
+        str solution_2 =
+            "8_2_7_4_3_5_9_6_1_\n"
+            "6_1_5_9_8_7_4_2_3_\n"
+            "3_9_4_2_6_1_7_8_5_\n"
+            "4_7_8_3_1_2_6_5_9_\n"
+            "1_5_6_7_4_9_8_3_2_\n"
+            "2_3_9_6_5_8_1_4_7_\n"
+            "5_4_2_1_9_6_3_7_8_\n"
+            "7_6_1_8_2_3_5_9_4_\n"
+            "9_8_3_5_7_4_2_1_6_\n";
+
         // define two arrays of strings
-        str board_array[] = {board_1};
-        str solution_array[] = {solution_1};
+        str board_array[] = {board_1, board_2};
+        str solution_array[] = {solution_1, solution_2};
 
         // get the board_array_size of arrays
         size_t board_array_size = sizeof(board_array) / sizeof(board_array[0]);
