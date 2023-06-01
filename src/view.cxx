@@ -40,7 +40,10 @@ View::View(Model const& model)
 void
 View::draw(ge211::Sprite_set& set)
 {
-    if (model_.is_game_over()){
+    if (model_.is_new_game()){
+        draw_new_game(set);
+    }
+    else if (model_.is_game_over()){
         draw_congratulations(set);
     }
     else{
@@ -115,12 +118,17 @@ void View::draw_board(ge211::Sprite_set& set){
     }
 }
 
+void View::draw_new_game(ge211::Sprite_set& set)
+{
+    draw_for_new_game(set, {0,2});
+    draw_press(set, {0,3});
+    draw_difficulty_levels(set, {2,4});
+}
+
 void View::draw_congratulations(ge211::Sprite_set& set)
 {
     draw_you_win(set, {0,1});
-    draw_for_new_game(set, {0, 2});
-    draw_press(set,{0,3});
-    draw_difficulty_levels(set, {0,4});
+    draw_new_game(set);
 
     // for (int r = 0; r < 9; r++){
     //     for (int c = 0; c < 9; c++){

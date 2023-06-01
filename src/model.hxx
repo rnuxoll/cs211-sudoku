@@ -35,6 +35,8 @@ public:
     // accessor method for the game_over variable
     bool is_game_over() const;
 
+    bool is_new_game() const;
+
     // mutator methods
     void set_selected_cell(Position cell_index);
 
@@ -80,6 +82,7 @@ private:
 
     Position selected_cell_index_;
 
+    bool new_game_;
     bool game_over_;
 
     bool is_in_bounds(Position cell_index) const;

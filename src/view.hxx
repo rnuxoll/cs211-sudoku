@@ -101,7 +101,10 @@ private:
     // draws the sudoku board, with helper functions
     void draw_board(ge211::Sprite_set& set);
 
+    void draw_new_game(ge211::Sprite_set& set);
+
     void draw_congratulations(ge211::Sprite_set& set);
+
 
     void draw_you_win(ge211::Sprite_set& set, Position start_cell_index);
 

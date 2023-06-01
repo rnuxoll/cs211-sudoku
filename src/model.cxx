@@ -17,6 +17,7 @@ Model::Model(const std::pair<Board, Board>& board_solution)
     : board_(board_solution.first),
     solution_(board_solution.second),
     selected_cell_index_(4, 4),
+    new_game_(true),
     game_over_(false)
 {
 }
@@ -171,6 +172,11 @@ void Model::check_game_over(){
 
 bool Model::is_game_over() const{
     return game_over_;
+}
+
+bool Model::is_new_game() const
+{
+    return new_game_;
 }
 
 std::pair<Board, Board> Model::get_random_board(){
@@ -391,6 +397,7 @@ void Model::start_new_game(char difficulty)
 {
     // this is just done because C++ insists we initialize it with a value_
     std::pair<Board, Board> board_solution = get_random_normal_game();
+    new_game_ = false;
     // as the current one and returns false
 
     // delay initialization of variable:
