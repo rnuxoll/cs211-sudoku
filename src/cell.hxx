@@ -36,8 +36,6 @@ private:
 
 
 public:
-    // TODO implement accessor and mutator methods for value and candidates
-
     Cell() : value(0), fixed(false), row_inconsistent(false),
     col_inconsistent(false), square_inconsistent(false), hint(false),
              index{0, 0} {}

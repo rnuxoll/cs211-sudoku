@@ -156,8 +156,6 @@ void View::draw_congratulations(ge211::Sprite_set& set)
 }
 
 
-// Todo make this check the indexes of the cell and make thicker gridlines as
-//  necessary
 void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
 {
     // draw squares

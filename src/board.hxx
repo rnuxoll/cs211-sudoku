@@ -88,7 +88,7 @@ public:
     // top-left square is 0, top-center is 1, top-right is 2, center-left is
     // 3, etc.
 
-    // todo for bonus fun, make this depend on the square root of BOARD_SIZE
+    // idea: for bonus fun, make this depend on the square root of BOARD_SIZE
     // and therefore see if you can extend it to any integer-square, not just 9
 
     // the grid indexes are defined as follows
