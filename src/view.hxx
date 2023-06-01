@@ -2,6 +2,8 @@
 
 #include "model.hxx"
 
+const int TEXT_Z = 5;
+
 class View
 {
 public:
@@ -101,41 +103,62 @@ private:
     void draw_cell(ge211::Sprite_set& set, Cell cell, bool selected);
 
     // draw a white square
-    void draw_value_square(ge211::Sprite_set& set, Position box_coord);
+    void draw_value_square(ge211::Sprite_set& set, Position cell_index);
 
     // draw a shaded square
-    void draw_given_square(ge211::Sprite_set set, Position box_coord);
+    void draw_given_square(ge211::Sprite_set set, Position cell_index);
 
     // other helper functions for draw board
-    void draw_one(ge211::Sprite_set& set, Position box_coord, bool is_hint);
-    void draw_two(ge211::Sprite_set& set, Position box_coord, bool is_hint);
-    void draw_three(ge211::Sprite_set& set, Position box_coord, bool is_hint);
-    void draw_four(ge211::Sprite_set& set, Position box_coord, bool is_hint);
-    void draw_five(ge211::Sprite_set& set, Position box_coord, bool is_hint);
-    void draw_six(ge211::Sprite_set& set, Position box_coord, bool is_hint);
-    void draw_seven(ge211::Sprite_set& set, Position box_coord, bool is_hint);
-    void draw_eight(ge211::Sprite_set& set, Position box_coord, bool is_hint);
-    void draw_nine(ge211::Sprite_set& set, Position box_coord, bool is_hint);
+    void draw_one(ge211::Sprite_set& set, Position cell_index, bool is_hint);
+    void draw_two(ge211::Sprite_set& set, Position cell_index, bool is_hint);
+    void draw_three(ge211::Sprite_set& set, Position cell_index, bool is_hint);
+    void draw_four(ge211::Sprite_set& set, Position cell_index, bool is_hint);
+    void draw_five(ge211::Sprite_set& set, Position cell_index, bool is_hint);
+    void draw_six(ge211::Sprite_set& set, Position cell_index, bool is_hint);
+    void draw_seven(ge211::Sprite_set& set, Position cell_index, bool is_hint);
+    void draw_eight(ge211::Sprite_set& set, Position cell_index, bool is_hint);
+    void draw_nine(ge211::Sprite_set& set, Position cell_index, bool is_hint);
+
+    void draw_regular_one(ge211::Sprite_set& set, Position cell_index);
+    void draw_regular_two(ge211::Sprite_set& set, Position cell_index);
+    void draw_regular_three(ge211::Sprite_set& set, Position cell_index);
+    void draw_regular_four(ge211::Sprite_set& set, Position cell_index);
+    void draw_regular_five(ge211::Sprite_set& set, Position cell_index);
+    void draw_regular_six(ge211::Sprite_set& set, Position cell_index);
+    void draw_regular_seven(ge211::Sprite_set& set, Position cell_index);
+    void draw_regular_eight(ge211::Sprite_set& set, Position cell_index);
+    void draw_regular_nine(ge211::Sprite_set& set, Position cell_index);
+
+    
+    void draw_hint_one(ge211::Sprite_set& set, Position cell_index);
+    void draw_hint_two(ge211::Sprite_set& set, Position cell_index);
+    void draw_hint_three(ge211::Sprite_set& set, Position cell_index);
+    void draw_hint_four(ge211::Sprite_set& set, Position cell_index);
+    void draw_hint_five(ge211::Sprite_set& set, Position cell_index);
+    void draw_hint_six(ge211::Sprite_set& set, Position cell_index);
+    void draw_hint_seven(ge211::Sprite_set& set, Position cell_index);
+    void draw_hint_eight(ge211::Sprite_set& set, Position cell_index);
+    void draw_hint_nine(ge211::Sprite_set& set, Position cell_index);
 
     // functions used to draw new game message
-    void draw_y(ge211::Sprite_set& set, Position box_coord);
-    void draw_o(ge211::Sprite_set& set, Position box_coord);
-    void draw_u(ge211::Sprite_set& set, Position box_coord);
-    void draw_w(ge211::Sprite_set& set, Position box_coord);
-    void draw_i(ge211::Sprite_set& set, Position box_coord);
-    void draw_n(ge211::Sprite_set& set, Position box_coord);
+    void draw_y(ge211::Sprite_set& set, Position cell_index);
+    void draw_o(ge211::Sprite_set& set, Position cell_index);
+    void draw_u(ge211::Sprite_set& set, Position cell_index);
+    void draw_w(ge211::Sprite_set& set, Position cell_index);
+    void draw_i(ge211::Sprite_set& set, Position cell_index);
+    void draw_n(ge211::Sprite_set& set, Position cell_index);
 
-    void draw_p(ge211::Sprite_set& set, Position box_coord);
-    void draw_r(ge211::Sprite_set& set, Position box_coord);
-    void draw_e(ge211::Sprite_set& set, Position box_coord);
-    void draw_s(ge211::Sprite_set& set, Position box_coord);
+    void draw_p(ge211::Sprite_set& set, Position cell_index);
+    void draw_r(ge211::Sprite_set& set, Position cell_index);
+    void draw_e(ge211::Sprite_set& set, Position cell_index);
+    void draw_s(ge211::Sprite_set& set, Position cell_index);
 
-    void draw_apostrophe(ge211::Sprite_set& set, Position box_coord);
-    void draw_f(ge211::Sprite_set& set, Position box_coord);
+    void draw_apostrophe(ge211::Sprite_set& set, Position cell_index);
+    void draw_f(ge211::Sprite_set& set, Position cell_index);
 
-    void draw_g(ge211::Sprite_set& set, Position box_coord);
-    void draw_a(ge211::Sprite_set& set, Position box_coord);
-    void draw_m(ge211::Sprite_set& set, Position box_coord);
+    void draw_g(ge211::Sprite_set& set, Position cell_index);
+    void draw_a(ge211::Sprite_set& set, Position cell_index);
+    void draw_m(ge211::Sprite_set& set, Position cell_index);
 
     // helper function for draw_numbers which gives the
     ge211::Posn<int> get_center_of_square_in_screen(View::Position);

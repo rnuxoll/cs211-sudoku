@@ -176,9 +176,12 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
         set.add_sprite(contradiction_dot_sprite, corner_in_screen, 4);
     }
 
-    if (cell.is_hint()) {
-        set.add_sprite(reveal_sprite, corner_in_screen,3);
-    }
+    // todo delete forever
+    // if (cell.is_hint()) {
+    //     set.add_sprite(reveal_sprite, corner_in_screen,3);
+    // }
+
+
     // draw grid lines
     Position lower_hor_line_pos = cell_index.down_by(1);
     Position lower_ver_line_pos = cell_index.right_by(1);
@@ -192,7 +195,6 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
     switch (cell.get_value()){
     case 1:
         draw_one(set, cell_index, cell.is_hint());
-
         break;
     case 2:
         draw_two(set, cell_index, false);
@@ -222,24 +224,11 @@ void View::draw_cell(ge211::Sprite_set& set, Cell cell, bool selected)
 }
 
 void View::draw_one(ge211::Sprite_set& set, Position cell_index, bool is_hint){
-
-    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
-
-    set.add_sprite(one_sprite, number_pos_in_screen,5);
-
-    ge211::Text_sprite::Builder number_builder(sans72_);
     if (is_hint) {
-        number_builder.color(reveal_square_color);
+        draw_hint_one(set, cell_index);
     } else {
-        number_builder.color(number_color);
+        draw_regular_one(set, cell_index);
     }
-    number_builder.message("1");
-    one_sprite.reconfigure(number_builder);
-    /*if (is_hint) {
-        number_builder.color(reveal_square_color);
-        one_sprite.reconfigure(number_builder);
-
-    }*/
 }
 
 void View::draw_two(ge211::Sprite_set& set, Position cell_index, bool is_hint){
@@ -502,4 +491,24 @@ void View::draw_m(ge211::Sprite_set& set, Position cell_index){
     number_builder.color(number_color);
     number_builder.message("M");
     m_sprite.reconfigure(number_builder);
+}
+
+void View::draw_regular_one(ge211::Sprite_set& set, View::Position cell_index)
+{
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+    set.add_sprite(one_sprite, number_pos_in_screen,TEXT_Z);
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(number_color);
+    number_builder.message("1");
+    one_sprite.reconfigure(number_builder);
+}
+
+void View::draw_hint_one(ge211::Sprite_set& set, View::Position cell_index)
+{
+    Position number_pos_in_screen = cell_index_to_number_pos(cell_index);
+    set.add_sprite(one_hint_sprite, number_pos_in_screen,TEXT_Z);
+    ge211::Text_sprite::Builder number_builder(sans72_);
+    number_builder.color(reveal_square_color);
+    number_builder.message("1");
+    one_hint_sprite.reconfigure(number_builder);
 }
