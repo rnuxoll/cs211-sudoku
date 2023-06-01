@@ -42,6 +42,9 @@ Controller::on_key(Key key)
     if (key == Key::code('q')) {
         quit();
     }
+    if (key == Key::code('m')){
+        model_.set_menu_screen();
+    }
     else if (key == Key::code('b')){
         model_.start_new_game('b');
         // the return statement prevents the stuff at the end of the function
@@ -108,10 +111,6 @@ Controller::on_key(Key key)
         model_.process_numerical_input(9);
     } else if (key == Key::code('h')) {
         model_.reveal_answer();
-    }
-
-    if (key == ge211::Key::code(' ')){
-        quit();
     }
 
 

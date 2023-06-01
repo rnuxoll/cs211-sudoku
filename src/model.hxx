@@ -37,6 +37,8 @@ public:
 
     bool is_new_game() const;
 
+    void set_menu_screen();
+
     // mutator methods
     void set_selected_cell(Position cell_index);
 

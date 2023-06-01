@@ -179,6 +179,11 @@ bool Model::is_new_game() const
     return new_game_;
 }
 
+void Model::set_menu_screen()
+{
+    new_game_ = true;
+}
+
 std::pair<Board, Board> Model::get_random_board(){
 
         str board_1 =
